@@ -1,23 +1,106 @@
 ---
+import Layout from '@/components/Layout.astro';
+import Logo from '@/components/Logo.astro';
+import { Separator } from '@/components/ui/separator';
+import { buttonVariants } from '@/components/ui/button';
 
+const displays: {
+  title: string;
+  img: string;
+}[] = [
+  {
+    title: 'Juggling',
+    img: '/display/juggling.png',
+  },
+  {
+    title: 'Diablo',
+    img: '/display/diablo.jpeg',
+  },
+  {
+    title: 'Acro Staff',
+    img: '/display/staff.jpeg',
+  },
+  {
+    title: 'Unicyling',
+    img: '/display/unicyling.jpeg',
+  },
+];
+
+const memberships: {
+  name: string;
+  price: number;
+  mostPopular: boolean;
+  benefits: string[];
+}[] = [
+  {
+    name: 'Aerial',
+    price: 5,
+    mostPopular: false,
+    benefits: ['Access to our Sunday Aerial sessions'],
+  },
+  {
+    name: 'Full',
+    price: 15,
+    mostPopular: true,
+    benefits: [
+      'Access to our Sunday Aerial sessions',
+      'Access to our Weekday sessions',
+    ],
+  },
+  {
+    name: 'Weekday',
+    price: 10,
+    mostPopular: false,
+    benefits: ['Access to our Weekday sessions'],
+  },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Lancaster University Magic and Circus Society</title>
-    <script
-      defer
-      data-domain="lumacs.co.uk"
-      src="https://ingest.tokia.dev/js/script.js"></script>
-  </head>
-  <body class="w-full h-screen flex justify-center items-center flex-col">
-    <h1 class="text-4xl font-bold text-center">
-      Lancaster University Magic and Circus Society Website
-    </h1>
-    <p>Coming soon...</p>
-  </body>
-</html>
+<Layout title="Home">
+  <h1 class="text-2xl font-bold text-center">Lancaster University</h1>
+  <Logo />
+  <h1 class="text-2xl font-bold text-center">Magic and Circus Society</h1>
+
+  <div class="grid grid-cols-2 gap-4 md:grid-cols-4 m-4">
+    {
+      displays.map(({ title, img }) => (
+        <div class="flex flex-col items-center justify-center border-2 p-2">
+          <img src={img} alt={title} class="size-40 lg:size-48" />
+          <Separator className="my-2" />
+          <h2 class="font-bold">{title}</h2>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="flex gap-32 mt-4">
+    <a
+      class={buttonVariants({})}
+      href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
+    >
+      Join Us
+    </a>
+    <a class={buttonVariants({})} href="/hire"> Hire Us </a>
+  </div>
+
+  <h2 class="font-bold text-4xl mt-4">Memberships</h2>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 m-2">
+    {
+      memberships.map(({ name, price, mostPopular, benefits }) => (
+        <div class={`flex flex-col items-center border-2 p-4 rounded-3xl w-64 h-72 ${
+          mostPopular ? 'border-primary' : '' 
+        }`}>
+          <span class="font-bold text-xl">{name} Membership</span>
+          <span>£{price}/year</span>
+          {mostPopular && <span class="text-sm">Most Popular</span>}
+          <Separator className="my-2" />
+          <ul class="flex flex-col gap-2">
+            {benefits.map((benefit) => (
+              <li class="list-disc list-inside">{benefit}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

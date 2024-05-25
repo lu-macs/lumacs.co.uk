@@ -1,0 +1,61 @@
+---
+import '@/styles.css';
+import { ModeToggle } from '@/components/ModeToggle';
+import { Separator } from '@/components/ui/separator';
+
+type Props = {
+  title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+  };
+  const isDark = getThemePreference() === 'dark';
+  document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+
+  if (typeof localStorage !== 'undefined') {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  }
+</script>
+
+<html lang="en">
+  <head>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} - LUMACS</title>
+    <script
+      defer
+      data-domain="lumacs.co.uk"
+      src="https://ingest.tokia.dev/js/script.js"></script>
+  </head>
+  <body class="">
+    <div class="m-4 flex items-center">
+      <a href="/" class="font-bold text-2xl">LUMACS</a>
+      <div class="flex-grow"></div>
+      <ModeToggle client:load />
+    </div>
+    <Separator className="mb-4" />
+    <main class="flex flex-col items-center">
+      <slot />
+    </main>
+  </body>
+</html>
