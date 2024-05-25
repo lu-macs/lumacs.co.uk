@@ -71,8 +71,8 @@ const memberships: {
   <div class="grid grid-cols-2 gap-4 md:grid-cols-4 m-4">
     {
       displays.map(({ title, img }) => (
-        <div class="flex flex-col items-center justify-center border-2 p-2">
-          <img src={img} alt={title} class="size-40 lg:size-48" />
+        <div class="flex flex-col items-center justify-center border-2 p-2 rounded-lg">
+          <img src={img} alt={title} class="size-40 lg:size-48 rounded" />
           <Separator className="my-2" />
           <h2 class="font-bold">{title}</h2>
         </div>
