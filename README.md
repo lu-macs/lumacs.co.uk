@@ -13,3 +13,4 @@ TODO:
 - [ ] form for social ideas
 - [ ] learning resorces
 - [ ] aerial move glocery
+- [ ] add seo stuff
