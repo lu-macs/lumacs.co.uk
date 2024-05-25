@@ -1,10 +1,5 @@
 TODO:
 
-- [ ] Check sitemap
-- [ ] Check robots.txt
-- [ ] Open source
-- [ ] Add a footer
-- [ ] Add a privacy policy
 - [ ] Add hire us page
 - [ ] Gallery page with filtering
 - [ ] performer bios

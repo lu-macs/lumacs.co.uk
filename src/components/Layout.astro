@@ -48,15 +48,30 @@ const { title } = Astro.props;
       data-domain="lumacs.co.uk"
       src="https://ingest.tokia.dev/js/script.js"></script>
   </head>
-  <body class="">
-    <div class="m-4 flex items-center">
+  <body class="flex flex-col h-screen">
+    <nav class="p-4 flex items-center">
       <a href="/" class="font-bold text-2xl">LUMACS</a>
       <div class="flex-grow"></div>
       <ModeToggle client:load />
-    </div>
+    </nav>
     <Separator className="mb-4" />
-    <main class="flex flex-col items-center">
+    <main class="flex flex-col items-center flex-grow">
       <slot />
     </main>
+    <Separator className="mt-4" />
+    <footer class="flex flex-col md:flex-row justify-center lg:gap-4 items-center text-center p-4">
+      <span
+        >© {new Date().getFullYear()} Lancaster University Magic and Circus Society</span
+      >
+      <a href="/privacy" class="underline hover:text-accent">Privacy Policy</a>
+      <a
+        href="https://github.com/lu-macs/lumacs.co.uk"
+        class="underline hover:text-accent">GitHub</a
+      >
+      <a
+        href="https://www.instagram.com/lu_macs/"
+        class="underline hover:text-accent">Our Instagram</a
+      >
+    </footer>
   </body>
 </html>
