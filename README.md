@@ -15,6 +15,6 @@ Images are licensed under the [IMAGE_LICENSE](IMAGE_LICENSE.md).
 - [ ] links to social media
 - [ ] list of conventions
 - [ ] form for social ideas
-- [ ] learning resorces
-- [ ] aerial move glocery
+- [ ] learning resources
+- [ ] aerial move glossary
 - [ ] add seo stuff

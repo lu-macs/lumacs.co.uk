@@ -36,6 +36,10 @@ const { title } = Astro.props;
 
 <html lang="en">
   <head>
+    <link
+      rel="canonical"
+      href={`${Astro.site}${Astro.url.pathname.slice(1)}`}
+    />
     <meta name="darkreader-lock" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta charset="utf-8" />
@@ -50,7 +54,7 @@ const { title } = Astro.props;
   </head>
   <body class="flex flex-col h-screen">
     <nav class="p-4 flex items-center">
-      <a href="/" class="font-bold text-2xl">LUMACS</a>
+      <a href="/" class="font-bold text-2xl hover:text-primary/90">LUMACS</a>
       <div class="flex-grow"></div>
       <ModeToggle client:load />
     </nav>
@@ -59,18 +63,22 @@ const { title } = Astro.props;
       <slot />
     </main>
     <Separator className="mt-4" />
-    <footer class="flex flex-col md:flex-row justify-center lg:gap-4 items-center text-center p-4">
+    <footer
+      class="flex flex-col md:flex-row justify-center lg:gap-4 items-center text-center p-4"
+    >
       <span
         >© {new Date().getFullYear()} Lancaster University Magic and Circus Society</span
       >
-      <a href="/privacy" class="underline hover:text-accent">Privacy Policy</a>
+      <a href="/privacy" class="underline hover:text-primary/90"
+        >Privacy Policy</a
+      >
       <a
         href="https://github.com/lu-macs/lumacs.co.uk"
-        class="underline hover:text-accent">GitHub</a
+        class="underline hover:text-primary/90">GitHub</a
       >
       <a
         href="https://www.instagram.com/lu_macs/"
-        class="underline hover:text-accent">Our Instagram</a
+        class="underline hover:text-primary/90">Our Instagram</a
       >
     </footer>
   </body>

@@ -108,10 +108,11 @@ const sessions: {
         <div class="flex flex-col items-center justify-center border-2 p-2 rounded-lg">
           <Image
             src={img}
-            alt={title}
+            alt={`lumacs members displaying ${title}`}
             class="size-40 lg:size-48 rounded"
             width={192}
             height={192}
+            loading="eager"
           />
           <Separator className="my-2" />
           <h2 class="font-bold">{title}</h2>
@@ -140,8 +141,8 @@ const sessions: {
           }`}
         >
           <span class="font-bold text-xl">{name} Membership</span>
-          <span>£{price}/year</span>
-          {mostPopular && <span class="text-sm">Most Popular</span>}
+          <span class="text-primary/80">£{price}/year</span>
+          {mostPopular && <span class="text-sm font-bold">Most Popular</span>}
           <Separator className="my-2" />
           <ul class="flex flex-col gap-2 w-full">
             {benefits.map((benefit) => (
@@ -160,7 +161,7 @@ const sessions: {
         <div class="flex flex-col items-center border-2 p-4 rounded-3xl w-64 h-96">
           <span class="font-bold text-xl">{day}</span>
           <span>{time}</span>
-          <span class="text-sm text-center">{location}</span>
+          <span class="text-sm text-center text-primary/80">{location}</span>
           <Separator className="my-2" />
           <ul class="flex flex-col gap-2 w-full">
             {activities.map((activity) => (
