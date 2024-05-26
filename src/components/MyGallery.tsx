@@ -4,6 +4,7 @@ export const MyGallery = ({ images }: { images: GetImages }) => {
   return (
     <div className="flex gap-1 flex-wrap justify-center">
       {images
+        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
         .filter(({ type }) => type === 'image')
         .map(({ id, tags }) => (
           <img
@@ -14,6 +15,7 @@ export const MyGallery = ({ images }: { images: GetImages }) => {
           />
         ))}
       {images
+        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
         .filter(({ type }) => type === 'video')
         .map(({ id }) => (
           <video
