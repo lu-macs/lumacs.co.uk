@@ -5,6 +5,8 @@ import { getImages } from '@/server/db/queries';
 
 export const prerender = false;
 
+console.log(import.meta.env.DATABASE_HOST);
+
 const images = await getImages();
 ---
 
