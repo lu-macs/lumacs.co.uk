@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && sed -i.bak \"s|replace-with-the-database-url|$DATABASE_URL|g\" ./src/server/db/index.ts && astro build",
     "preview": "astro preview",
     "db:push": "drizzle-kit push:mysql",
     "db:studio": "drizzle-kit studio",
