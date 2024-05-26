@@ -3,8 +3,6 @@ import { drizzle } from 'drizzle-orm/planetscale-serverless';
 
 import * as schema from './schema';
 
-console.log(import.meta.env.DATABASE_URL);
-
 export const db = import.meta.env.PROD
   ? drizzle(
       new Client({
