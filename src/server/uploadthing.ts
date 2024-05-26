@@ -18,7 +18,7 @@ export const ourFileRouter = {
       })
     )
     // Set permissions and file types for this FileRoute
-    .middleware(async ({ req, input }) => {
+    .middleware(async ({ input }) => {
       // This code runs on your server before upload
 
       if (input.password !== import.meta.env.UPLOADTHING_PASSWORD) {
@@ -28,7 +28,7 @@ export const ourFileRouter = {
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return {};
     })
-    .onUploadComplete(async ({ metadata, file }) => {
+    .onUploadComplete(async ({ file }) => {
       // This code RUNS ON YOUR SERVER after upload
 
       console.log('file url', file.url);
