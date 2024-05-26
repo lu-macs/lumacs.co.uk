@@ -3,6 +3,7 @@ import Layout from '@/components/Layout.astro';
 import Logo from '@/components/Logo.astro';
 import { Separator } from '@/components/ui/separator';
 import { buttonVariants } from '@/components/ui/button';
+import { Image } from 'astro:assets';
 
 const displays: {
   title: string;
@@ -58,15 +59,19 @@ const memberships: {
 const sessions: {
   day: string;
   time: string;
+  location: string;
   activities: string[];
 }[] = [
   {
     day: 'Monday & Wednesday',
+    location:
+      'Usually LICA lobby but if the whether is nice then Lancaster Square (next to LICA)',
     time: '6pm - 8pm',
     activities: ['Juggling', 'Diablo', 'Acro Staff', 'and more!'],
   },
   {
     day: 'Sunday',
+    location: 'Brandrigg Room, Cartmel College',
     time: '4pm - 8pm',
     activities: [
       'Aerial Hoop',
@@ -79,6 +84,7 @@ const sessions: {
   {
     day: 'Friday',
     time: '5pm - 6pm',
+    location: 'Check the discord for the location',
     activities: ['Bring your own equipment'],
   },
 ];
@@ -100,7 +106,13 @@ const sessions: {
     {
       displays.map(({ title, img }) => (
         <div class="flex flex-col items-center justify-center border-2 p-2 rounded-lg">
-          <img src={img} alt={title} class="size-40 lg:size-48 rounded" />
+          <Image
+            src={img}
+            alt={title}
+            class="size-40 lg:size-48 rounded"
+            width={192}
+            height={192}
+          />
           <Separator className="my-2" />
           <h2 class="font-bold">{title}</h2>
         </div>
@@ -144,10 +156,11 @@ const sessions: {
   <h2 class="font-bold text-4xl mt-4">Sessions</h2>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-3 m-2">
     {
-      sessions.map(({ day, time, activities }) => (
+      sessions.map(({ day, time, activities, location }) => (
         <div class="flex flex-col items-center border-2 p-4 rounded-3xl w-64 h-96">
           <span class="font-bold text-xl">{day}</span>
           <span>{time}</span>
+          <span class="text-sm text-center">{location}</span>
           <Separator className="my-2" />
           <ul class="flex flex-col gap-2 w-full">
             {activities.map((activity) => (
