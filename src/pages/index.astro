@@ -54,6 +54,34 @@ const memberships: {
     benefits: ['Access to our Weekday sessions'],
   },
 ];
+
+const sessions: {
+  day: string;
+  time: string;
+  activities: string[];
+}[] = [
+  {
+    day: 'Monday & Wednesday',
+    time: '6pm - 8pm',
+    activities: ['Juggling', 'Diablo', 'Acro Staff', 'and more!'],
+  },
+  {
+    day: 'Sunday',
+    time: '4pm - 8pm',
+    activities: [
+      'Aerial Hoop',
+      'Aerial Silks',
+      'Come in time for warmup',
+      'Bring/come in sports clothing',
+      'Something that covers at least the back and the knees',
+    ],
+  },
+  {
+    day: 'Friday',
+    time: '5pm - 6pm',
+    activities: ['Bring your own equipment'],
+  },
+];
 ---
 
 <Layout title="Home">
@@ -103,9 +131,27 @@ const memberships: {
           <span>£{price}/year</span>
           {mostPopular && <span class="text-sm">Most Popular</span>}
           <Separator className="my-2" />
-          <ul class="flex flex-col gap-2">
+          <ul class="flex flex-col gap-2 w-full">
             {benefits.map((benefit) => (
               <li class="list-disc list-inside">{benefit}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2 class="font-bold text-4xl mt-4">Sessions</h2>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 m-2">
+    {
+      sessions.map(({ day, time, activities }) => (
+        <div class="flex flex-col items-center border-2 p-4 rounded-3xl w-64 h-96">
+          <span class="font-bold text-xl">{day}</span>
+          <span>{time}</span>
+          <Separator className="my-2" />
+          <ul class="flex flex-col gap-2 w-full">
+            {activities.map((activity) => (
+              <li class="list-disc list-inside">{activity}</li>
             ))}
           </ul>
         </div>
