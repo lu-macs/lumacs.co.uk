@@ -1,17 +1,25 @@
 ---
+import { HireForm } from '@/components/HireForm';
 import Layout from '@/components/Layout.astro';
 ---
 
 <Layout title="Hire Us">
   <h1 class="text-2xl font-bold text-center">Hire Us</h1>
-  <p class="text-center">
-    This page is under construction. For now just send us an email at
-    <a class="underline hover:text-accent" href="mailto:hello@lumacs.co.uk"
-      >hello@lumacs.co.uk</a
+  <p class="text-center max-w-2xl">
+    We're excited to be at your event, either fill out the form below (we'll
+    give you a price estimate) or send us an email at <a
+      class="underline hover:text-muted-foreground"
+      href="mailto:hello@lumacs.co.uk">hello@lumacs.co.uk</a
     > or message us on
     <a
-      class="underline hover:text-accent"
+      class="underline hover:text-muted-foreground"
       href="https://www.instagram.com/lu_macs/">Instagram</a
-    >.
+    >. We do charge for the time the performers spend at the event not the time
+    they spend performing.
+    <!-- To see some of our previous events or see some of our performers, check
+    out our <a class="underline hover:text-muted-foreground" href="/gallery"
+      >Gallery</a
+    >. -->
   </p>
+  <HireForm client:load />
 </Layout>
