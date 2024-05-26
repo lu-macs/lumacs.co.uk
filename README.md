@@ -4,7 +4,7 @@ This is the source code for the website of Lancaster University Magic and Circus
 
 ## License
 
-The website is licensed under the [MIT License](LICENSE).
+The website is licensed under the [MIT License](LICENSE.md).
 Images are licensed under the [IMAGE_LICENSE](IMAGE_LICENSE.md).
 
 # TODO
