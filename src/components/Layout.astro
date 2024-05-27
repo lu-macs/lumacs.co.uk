@@ -2,6 +2,7 @@
 import '@/styles.css';
 import { ModeToggle } from '@/components/ModeToggle';
 import { Separator } from '@/components/ui/separator';
+import { Toaster } from '@/components/ui/sonner';
 
 type Props = {
   title: string;
@@ -38,7 +39,7 @@ const { title } = Astro.props;
   <head>
     <link
       rel="canonical"
-      href={`${Astro.site}${Astro.url.pathname.slice(1)}`}
+      href={`${Astro.site}${Astro.url.pathname.slice(1).replace(/\/$/, '')}/`}
     />
     <meta name="darkreader-lock" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -53,6 +54,8 @@ const { title } = Astro.props;
       src="https://ingest.tokia.dev/js/script.js"></script>
   </head>
   <body class="flex flex-col h-screen">
+    <Toaster client:load />
+
     <nav class="p-4 flex items-center">
       <a href="/" class="font-bold text-2xl hover:text-muted-foreground"
         >LUMACS</a
@@ -71,7 +74,7 @@ const { title } = Astro.props;
       <span
         >© {new Date().getFullYear()} Lancaster University Magic and Circus Society</span
       >
-      <a href="/privacy" class="underline hover:text-muted-foreground"
+      <a href="/privacy/" class="underline hover:text-muted-foreground"
         >Privacy Policy</a
       >
       <a

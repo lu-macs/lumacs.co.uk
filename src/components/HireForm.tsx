@@ -33,42 +33,22 @@ import { cn } from '@/lib/utils';
 import { CalendarIcon } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { toast } from 'sonner';
 
-// x name
-// x preferred method of contact (email, instagram, facebook)
-// x username/email
-// x location
-// x brief description of event
-// x date
-
-// do you want normal performers? (a brief description of what normal performers will be doing)
-// num of normal performers
-// amount of time for normal performers
-
-// do you want fire performers? (a brief description of what fire performers will be doing)
-// num fire performers
-// amount of time for fire performers
-
-// do you want aerial performers? (a brief description of what aerial performers will be doing)
-// num aerial performers
-// amount of time for aerial performers
-
-// price estimate
-
-const HireFormSchema = z.object({
-  name: z.string(),
-  company: z.string(),
+export const HireFormSchema = z.object({
+  name: z.string().min(1).max(200),
+  company: z.string().min(1).max(200),
   preferredContactMethod: z.enum(['email', 'instagram', 'facebook']),
-  username: z.string(),
-  location: z.string(),
-  briefDescriptionOfEvent: z.string(),
+  username: z.string().min(1).max(200),
+  location: z.string().min(1).max(200),
+  briefDescriptionOfEvent: z.string().min(1).max(1000),
   date: z.date(),
-  numNormalPerformers: z.number(),
-  amountOfTimeForNormalPerformers: z.number(),
-  numFirePerformers: z.number(),
-  amountOfTimeForFirePerformers: z.number(),
-  numAerialPerformers: z.number(),
-  amountOfTimeForAerialPerformers: z.number(),
+  numNormalPerformers: z.number().min(0).max(20),
+  amountOfTimeForNormalPerformers: z.number().min(0).max(10),
+  numFirePerformers: z.number().min(0).max(20),
+  amountOfTimeForFirePerformers: z.number().min(0).max(10),
+  numAerialPerformers: z.number().min(0).max(20),
+  amountOfTimeForAerialPerformers: z.number().min(0).max(10),
 });
 
 export const HireForm = () => {
@@ -93,13 +73,29 @@ export const HireForm = () => {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof HireFormSchema>) => {
+  const onSubmit = async (data: z.infer<typeof HireFormSchema>) => {
     console.log(data);
+
+    try {
+      await fetch('/api/hire', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      toast('Thank you for your submission!');
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      toast('There was an error submitting your form. Please try again later.');
+    }
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mx-2">
         <FormField
           control={form.control}
           name="name"
@@ -196,11 +192,16 @@ export const HireForm = () => {
           name="briefDescriptionOfEvent"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Brief Description of Event</FormLabel>
+              <FormLabel>
+                Brief Description of Event (
+                {form.getValues('briefDescriptionOfEvent').length}/1000
+                characters)
+              </FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="A fun event for university students where they can have a go at juggling. We need experienced jugglers to help out."
                   className="resize-y"
+                  maxLength={1000}
                   {...field}
                 />
               </FormControl>
@@ -285,11 +286,13 @@ export const HireForm = () => {
                   <FormLabel>Number of circus/magic Performers</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="0"
                       {...field}
+                      placeholder="0"
                       type="number"
                       min={0}
                       max={20}
+                      value={field.value}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
                   <FormDescription>
@@ -310,11 +313,13 @@ export const HireForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="0"
                       {...field}
+                      placeholder="0"
                       type="number"
                       min={0}
                       max={10}
+                      value={field.value}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
                   <FormDescription>
@@ -357,11 +362,13 @@ export const HireForm = () => {
                   <FormLabel>Number of Fire Performers</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="0"
                       {...field}
+                      placeholder="0"
                       type="number"
                       min={0}
                       max={20}
+                      value={field.value}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
                   <FormDescription>
@@ -381,11 +388,13 @@ export const HireForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="0"
                       {...field}
+                      placeholder="0"
                       type="number"
                       min={0}
                       max={10}
+                      value={field.value}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
                   <FormDescription>
@@ -428,11 +437,13 @@ export const HireForm = () => {
                   <FormLabel>Number of Aerial Performers</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="0"
                       {...field}
+                      placeholder="0"
                       type="number"
                       min={0}
                       max={20}
+                      value={field.value}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
                   <FormDescription>
@@ -452,11 +463,13 @@ export const HireForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="0"
                       {...field}
+                      placeholder="0"
                       type="number"
                       min={0}
                       max={10}
+                      value={field.value}
+                      onChange={(e) => field.onChange(Number(e.target.value))}
                     />
                   </FormControl>
                   <FormDescription>
