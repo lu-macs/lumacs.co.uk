@@ -76,21 +76,24 @@ export const HireForm = () => {
   const onSubmit = async (data: z.infer<typeof HireFormSchema>) => {
     console.log(data);
 
-    try {
-      await fetch('/api/hire', {
+    toast.promise(
+      fetch('/api/hire', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
-      });
-
-      toast('Thank you for your submission!');
-      form.reset();
-    } catch (error) {
-      console.error(error);
-      toast('There was an error submitting your form. Please try again later.');
-    }
+      }),
+      {
+        loading: 'Submitting your form...',
+        success: () => {
+          form.reset();
+          return 'Thank you for your submission!';
+        },
+        error:
+          'There was an error submitting your form. Please try again later.',
+      }
+    );
   };
 
   return (
