@@ -105,14 +105,10 @@ export const HireForm = () => {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Name of Primary Contact</FormLabel>
               <FormControl>
-                <Input placeholder="Ell" {...field} />
+                <Input placeholder="John Smith" {...field} />
               </FormControl>
-              <FormDescription>
-                This is the name of the person we should contact and discuss
-                anything with.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -127,7 +123,7 @@ export const HireForm = () => {
                 <Input placeholder="Magic and Circus Society" {...field} />
               </FormControl>
               <FormDescription>
-                This is the name of the company or organisation hiring us.
+                Name of the hiring company or organisation.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -152,7 +148,7 @@ export const HireForm = () => {
                 </SelectContent>
               </Select>
               <FormDescription>
-                This is the preferred method of contact for us to use.
+                We will contact you via this method.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -164,14 +160,13 @@ export const HireForm = () => {
           name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username / Email</FormLabel>
+              <FormLabel>Media Handle / Email</FormLabel>
               <FormControl>
                 <Input placeholder="hello@lumacs.co.uk" {...field} />
               </FormControl>
               <FormDescription>
-                This is the username or email we should contact and discuss
-                anything with (this should match with your preferred contact
-                method).
+                The media handle or email we will contact you via (this should
+                match with your preferred contact method).
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -188,7 +183,8 @@ export const HireForm = () => {
                 <Input placeholder="Lancaster Uni campus" {...field} />
               </FormControl>
               <FormDescription>
-                Where will your event take place?
+                Where will your event take place? Please be as specific as you
+                can regarding venue.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -209,8 +205,8 @@ export const HireForm = () => {
                 />
               </FormControl>
               <FormDescription>
-                This is a brief description of the event you are looking to
-                organise and what you want us to do at the event.
+                Briefly describe your event and the services you need us to
+                provide.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -275,7 +271,7 @@ export const HireForm = () => {
             }}
           />
           <Label htmlFor="showNormalPerformers">
-            Do you want normal performers?
+            Do you want circus/magic performers?
           </Label>
         </div>
 
@@ -286,7 +282,7 @@ export const HireForm = () => {
               name="numNormalPerformers"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Number of Normal Performers</FormLabel>
+                  <FormLabel>Number of circus/magic Performers</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="0"
@@ -297,7 +293,7 @@ export const HireForm = () => {
                     />
                   </FormControl>
                   <FormDescription>
-                    How many normal do you want to perform?
+                    How many circus/magic do you want to perform?
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -309,7 +305,8 @@ export const HireForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    Number of hours of performance for each normal performer
+                    Number of hours of performance for each circus/magic
+                    performer
                   </FormLabel>
                   <FormControl>
                     <Input
@@ -321,8 +318,8 @@ export const HireForm = () => {
                     />
                   </FormControl>
                   <FormDescription>
-                    How many hours do you want each normal performer to spend at
-                    the event?
+                    How many hours do you want each circus/magic performer to
+                    spend at the event?
                   </FormDescription>
                   <FormMessage />
                 </FormItem>

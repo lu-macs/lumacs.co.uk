@@ -20,3 +20,4 @@ Images are licensed under the [IMAGE_LICENSE](IMAGE_LICENSE.md).
 - [ ] add seo stuff
 - [ ] add tags to gallery
 - [ ] add search to gallery
+- [ ] check if uploadthing is getting the environment variables; its probably not
