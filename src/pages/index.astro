@@ -102,6 +102,16 @@ const sessions: {
     take part in paid performances both on and off campus.
   </p>
 
+  <div class="flex gap-32 mt-4">
+    <a
+      class={buttonVariants({})}
+      href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
+    >
+      Join Us
+    </a>
+    <a class={buttonVariants({})} href="/hire/"> Hire Us </a>
+  </div>
+
   <div class="grid grid-cols-2 gap-4 md:grid-cols-4 m-4">
     {
       displays.map(({ title, img }) => (
@@ -121,17 +131,7 @@ const sessions: {
     }
   </div>
 
-  <div class="flex gap-32 mt-4">
-    <a
-      class={buttonVariants({})}
-      href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
-    >
-      Join Us
-    </a>
-    <a class={buttonVariants({})} href="/hire"> Hire Us </a>
-  </div>
-
-  <h2 class="font-bold text-4xl mt-4">Memberships</h2>
+  <h2 class="font-bold text-4xl">Memberships</h2>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-3 m-2">
     {
       memberships.map(({ name, price, mostPopular, benefits }) => (
