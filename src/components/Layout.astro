@@ -6,9 +6,10 @@ import { Toaster } from '@/components/ui/sonner';
 
 type Props = {
   title: string;
+  description: string;
 };
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <script is:inline>
@@ -48,6 +49,7 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title} - LUMACS</title>
+    <meta name="description" content={description} />
     <script
       defer
       data-domain="lumacs.co.uk"

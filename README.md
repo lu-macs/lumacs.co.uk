@@ -9,7 +9,6 @@ Images are licensed under the [IMAGE_LICENSE](IMAGE_LICENSE.md).
 
 # TODO
 
-- [ ] Add hire us page
 - [ ] Gallery page with filtering
 - [ ] performer bios
 - [ ] links to social media

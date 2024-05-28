@@ -1,0 +1,134 @@
+---
+import Layout from '@/components/Layout.astro';
+import { Separator } from '@/components/ui/separator';
+
+// TBC
+// Scottish Juggling convention (Dundee)
+// Chocfest (York)
+
+const conventions: {
+  name: string;
+  location: string;
+  startDate?: string;
+  endDate?: string;
+  website?: string;
+}[] = [
+  {
+    name: 'World Juggling Day',
+    location: 'Marbury Country Park',
+    startDate: 'June 14th',
+    endDate: 'June 16th',
+    website: 'https://www.worldjugglingday.uk/',
+  },
+  {
+    name: 'Play Festival',
+    location: 'Hopton Court',
+    startDate: 'August 14th',
+    endDate: 'August 18th',
+    website: 'https://play-festival.co.uk/',
+  },
+  {
+    name: 'Broxford',
+    location: 'Kiln Lane, Garsington',
+    startDate: 'September 11th',
+    endDate: 'September 16th',
+    website: 'https://www.facebook.com/broxford',
+  },
+  {
+    name: 'Southern Circus and Juggling Convention',
+    location: 'Five Rivers Leisure Centre, Salisbury',
+    startDate: 'November 16th, 11am',
+    endDate: 'November 16th, 10pm',
+    website: 'https://buzzaction.org/',
+  },
+  {
+    name: 'Leeds Juggling Convention',
+    location: 'St Mary’s School Menston LS29 6AE',
+    startDate: 'October 19th, 10am',
+    endDate: 'October 19th, 9pm',
+    website: 'https://sites.google.com/site/leedsjugglingconvention/',
+  },
+  {
+    name: 'Camvention',
+    location: 'Cambridge',
+    startDate: 'October 5th',
+    endDate: 'October 5th',
+    website: 'http://www.chaos.org.uk/ccc/camvention/index.html',
+  },
+  {
+    name: 'Scottish Juggling convention',
+    location: 'Dundee',
+    website: 'https://www.facebook.com/scottishjugglingconvention/',
+  },
+  {
+    name: 'Chocfest',
+    location: 'York',
+    website: 'https://www.chocfest.net/',
+  },
+  {
+    name: 'LUMACS Convention (name pending)',
+    location: 'Lancaster University',
+    website: 'https://lumacs.co.uk',
+  },
+]
+  // sort by alphabetical order
+  .sort((a, b) => a.name.localeCompare(b.name))
+  // then where possible sort by start date
+  .sort((a, b) => {
+    if (a.startDate && b.startDate) {
+      return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
+    }
+    if (a.startDate && !b.startDate) {
+      return -1;
+    }
+    if (b.startDate) {
+      return 1;
+    }
+    return 0;
+  });
+---
+
+<Layout
+  title="Conventions"
+  description="Circus (mainly juggling) conventions in the UK"
+>
+  <h1 class="text-2xl font-bold text-center">Conventions</h1>
+  <p class="text-center max-w-2xl">
+    This page contains information about circus conventions in the UK. It is not
+    an exhaustive list, but rather a selection of ones we have found. If you
+    would like to add a convention to this list, please contact us at
+    <a
+      class="underline hover:text-muted-foreground"
+      href="mailto:hello@lumacs.co.uk">hello@lumacs.co.uk</a
+    > or open a pull request/issue on
+    <a
+      class="underline hover:text-muted-foreground"
+      href="https://github.com/lu-macs/lumacs.co.uk">GitHub</a
+    >.
+  </p>
+  <div class="flex flex-col gap-1 pt-4">
+    {
+      conventions
+        .map(({ name, location, startDate, endDate, website }) => (
+          <div class="flex flex-col items-center">
+            <span class="font-bold text-xl">{name}</span>
+            {website && (
+              <a
+                href={website}
+                target="_blank"
+                class="underline hover:text-muted-foreground"
+              >
+                {website}
+              </a>
+            )}
+            <div>
+              <span>{startDate && startDate}</span> -
+              <span>{endDate && endDate}</span>
+            </div>
+            <span class="text-sm text-center text-primary/80">{location}</span>
+          </div>
+        ))
+        .reduce((acc, cur) => [...acc, <Separator />, cur], [])
+    }
+  </div>
+</Layout>
