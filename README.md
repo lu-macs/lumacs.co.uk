@@ -12,7 +12,6 @@ Images are licensed under the [IMAGE_LICENSE](IMAGE_LICENSE.md).
 - [ ] Gallery page with filtering
 - [ ] performer bios
 - [ ] links to social media
-- [ ] list of conventions
 - [ ] form for social ideas
 - [ ] learning resources
 - [ ] aerial move glossary

@@ -3,6 +3,7 @@ import '@/styles.css';
 import { ModeToggle } from '@/components/ModeToggle';
 import { Separator } from '@/components/ui/separator';
 import { Toaster } from '@/components/ui/sonner';
+import { ResourcesLinks } from './ResourcesLinks';
 
 type Props = {
   title: string;
@@ -58,10 +59,11 @@ const { title, description } = Astro.props;
   <body class="flex flex-col h-screen">
     <Toaster client:load />
 
-    <nav class="p-4 flex items-center">
+    <nav class="p-4 flex items-center gap-4">
       <a href="/" class="font-bold text-2xl hover:text-muted-foreground"
         >LUMACS</a
       >
+      <ResourcesLinks client:load />
       <div class="flex-grow"></div>
       <ModeToggle client:load />
     </nav>
