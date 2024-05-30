@@ -51,6 +51,6 @@
   },
   "devDependencies": {
     "drizzle-kit": "^0.20.14",
-    "mysql2": "^3.9.7"
+    "mysql2": "^3.9.8"
   }
 }
