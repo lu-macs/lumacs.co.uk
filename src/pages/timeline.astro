@@ -1,0 +1,208 @@
+---
+import Layout from '@/components/Layout.astro';
+
+/**
+ * Society of Lancaster University Jugglers (SLUJ) founded
+ * https://web.archive.org/web/19991006025222/http://www.lancaster.ac.uk/socs/sluj/
+ * https://www.facebook.com/groups/14891937214/?_rdr
+ *
+ * Lancaster University Magic and Illusion Society (LUMIS) founded
+ * https://www.facebook.com/lu.magicandcircus
+ *
+ * SLUJ shuts down
+ *
+ * LUMIS becomes Lancaster University Magic and Circus Society (LUMACS)
+ *
+ * LUMACS convention
+ * https://www.jugglingedge.com/group.php?GroupID=67
+ */
+
+const items: {
+  title: string;
+  date: string;
+  description: string;
+  image?: string;
+}[] = [
+  {
+    title: 'Society of Lancaster University Jugglers (SLUJ) founded',
+    date: '1993 (or earlier)', // TODO: contact student union to check
+    description:
+      'SLUJ was founded some time in or before 1993 as a society for various learning and using circus equipment such as juggling balls, juggling clubs, juggling rings, diabolos, devil sticks, unicycles and fire torches.',
+    image: '/timeline/slujlogo.png',
+  },
+  {
+    title: 'Halloween Juggling Convention',
+    date: 'October 31st, 1993',
+    description:
+      'The first Lancaster Uni Circus Convention, a one day event with a variety of circus and juggling activities.',
+  },
+  {
+    title: 'Lancaster University Halloween Juggling Convention',
+    date: 'October 30th, 1994',
+    description: 'The second Lancaster Uni Circus Convention',
+  },
+  {
+    title: 'Lancaster Juggling Convention',
+    date: 'October 28th, 1995',
+    description:
+      'The third Lancaster Uni Circus Convention, a one day event, mainly for juggling.',
+  },
+  {
+    title: "Lancaster University's Fourth Hallowe'en Juggling Convention",
+    date: 'November 2nd, 1996',
+    description: 'The fourth Lancaster Uni Circus Convention.',
+  },
+  {
+    title: '5th Lancaster Hallowe\'en Juggling Convention',
+    date: 'October 31st, 1998',
+    description:
+      'The fifth Lancaster Uni Circus Convention.',
+  },
+  {
+    title: '6th Lancaster Hallowe\'en Juggling Convention',
+    date: 'November 10th, 2001',
+    description: 'The sixth Lancaster Uni Circus Convention, a one day event with a variety of circus and juggling activities.',
+  },
+  {
+    title: 'Lancaster Halloween Juggling Convention',
+    date: 'November 1st, 2003',
+    description: 'The seventh Lancaster Uni Circus Convention.',
+  },
+  {
+    title: 'Lancaster University Magic and Illusion Society (LUMIS) founded',
+    date: 'Unknown',
+    description: 'LUMIS was founded as a society for magic and illusion.',
+    image: '/timeline/logov1.png',
+  },
+  {
+    title: 'SLUJ shuts down',
+    date: 'Sometime 2013/2014', // TODO: contact student union to check
+    description:
+      'SLUJ was shut down in 2013 or 2014 presumably due to the lack of members.',
+  },
+  {
+    title:
+      'LUMIS becomes Lancaster University Magic and Circus Society (LUMACS)',
+    date: '2014', // TODO: contact student union to check
+    description:
+      'LUMIS was rebranded to LUMACS and became a society for magic and circus replacing SLUJ.',
+  },
+  {
+    title: 'New Logo',
+    date: 'September 2nd, 2014',
+    description: 'A new logo was designed and the old one was retired.',
+    image: '/timeline/logov2.png',
+  },
+  {
+    title: 'New New Logo',
+    date: 'Augsut 26th, 2016',
+    description:
+      'Once again, a new logo was designed and the old one was retired.',
+    image: '/timeline/logov3.jpeg',
+  },
+  {
+    title: 'Juggling Clubs 2017',
+    date: 'June 30th, 2017 to July 3rd, 2017',
+    description:
+      'The eighth Lancaster Uni Circus Convention, now run by LUMACS, a 3 day event focusing on magic and circus.',
+  },
+  {
+    title: 'Lancaster Magic and Circus Convention 2019',
+    date: 'April 4th, 2019 to April 5th, 2019',
+    description:
+      'The ninth Lancaster Uni Circus Convention, a 2 day event focusing on magic and circus.',
+  }
+];
+---
+
+<Layout
+  title="Timeline"
+  description="History of Lancaster University Magic and Circus Society (LUMACS)"
+>
+  <h1 class="text-2xl font-bold text-center">Our History</h1>
+  <p class="text-center max-w-2xl">
+    A breif history of the society, and the societies the proceeded it. If you
+    notice any errors or have any suggestions, please contact us at
+    <a
+      class="underline hover:text-muted-foreground"
+      href="mailto:hello@lumacs.co.uk">hello@lumacs.co.uk</a
+    >.
+  </p>
+  <div class="container mx-auto">
+    <div class="relative">
+      <div
+        class="border-l-8 rounded border-border absolute h-full md:left-1/2 transform -translate-x-1/2"
+      >
+      </div>
+      <div class="space-y-12">
+        {
+          items.map(({ title, date, description, image }, i) => (
+            <>
+              <div class="md:hidden">
+                <div class="flex items-center w-full">
+                  <div class="w-10 flex">
+                    <div class="size-6 bg-primary rounded-full z-10 -translate-x-1/2" />
+                  </div>
+                  <div class="w-5/6">
+                    <h2 class="text-xl font-semibold">{title}</h2>
+                    <p class="mt-2 text-muted-foreground">{date}</p>
+                    <p class="mt-2">{description}</p>
+                    {image && (
+                      <img
+                        src={image}
+                        alt={`${title} timeline image`}
+                        width="200"
+                        class="rounded-lg mt-2"
+                      />
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div class="hidden md:flex">
+                <div class="flex items-center w-full">
+                  <div class="w-1/2 pr-8 text-right">
+                    {i % 2 === 0 && (
+                      <>
+                        <h2 class="text-xl font-semibold">{title}</h2>
+                        <p class="mt-2 text-muted-foreground">{date}</p>
+                        <p class="mt-2">{description}</p>
+                        {image && (
+                          <img
+                            src={image}
+                            alt={`${title} timeline image`}
+                            width="200"
+                            class="rounded-lg float-right mt-2"
+                          />
+                        )}
+                      </>
+                    )}
+                  </div>
+                  <div class="w-10 flex justify-center">
+                    <div class="size-6 bg-primary rounded-full z-10" />
+                  </div>
+                  <div class="w-1/2 pl-8 text-left">
+                    {i % 2 === 1 && (
+                      <>
+                        <h2 class="text-xl font-semibold">{title}</h2>
+                        <p class="mt-2 text-muted-foreground">{date}</p>
+                        <p class="mt-2">{description}</p>
+                        {image && (
+                          <img
+                            src={image}
+                            alt={`${title} timeline image`}
+                            width="200"
+                            class="rounded-lg mt-2"
+                          />
+                        )}
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>

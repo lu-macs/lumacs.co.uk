@@ -121,7 +121,9 @@ const conventions: {
               <span>{startDate && startDate}</span> -
               <span>{endDate && endDate}</span>
             </div>
-            <span class="text-sm text-center text-primary/80">{location}</span>
+            <span class="text-sm text-center text-muted-foreground">
+              {location}
+            </span>
           </div>
         ))
         .reduce((acc, cur) => [...acc, <Separator />, cur], [])
