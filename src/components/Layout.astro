@@ -67,8 +67,21 @@ const { title, description } = Astro.props;
       <div class="flex-grow"></div>
       <ModeToggle client:load />
     </nav>
-    <Separator className="mb-4" />
-    <main class="flex flex-col items-center flex-grow">
+    <Separator />
+    <main class="flex flex-col items-center flex-grow relative">
+      <div class="absolute left-0 top-0 -z-10 h-full w-full overflow-hidden">
+        <div
+          class="pointer-events-none absolute inset-x-0 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+          aria-hidden="true"
+        >
+          <div
+            class="relative left-[calc(50%)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-purple-600 to-primary-muted opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style="clip-path: polygon(16% 45%, 48% 40%, 1% 26%, 85% 0%, 100% 46%, 30% 3%, 78% 75%, 85% 85%, 13% 100%, 100% 58%, 75% 52%, 45% 71%)"
+          >
+          </div>
+        </div>
+      </div>
+      <div class="mb-4"></div>
       <slot />
     </main>
     <Separator className="mt-4" />
