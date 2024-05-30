@@ -69,6 +69,7 @@ const { title, description } = Astro.props;
     </nav>
     <Separator />
     <main class="flex flex-col items-center flex-grow relative">
+      {/* cool colour bg thing */}
       <div class="absolute left-0 top-0 -z-10 h-full w-full overflow-hidden">
         <div
           class="pointer-events-none absolute inset-x-0 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -83,8 +84,22 @@ const { title, description } = Astro.props;
       </div>
       <div class="mb-4"></div>
       <slot />
+      <div class="mt-4"></div>
+      {/* cool colour bg thing */}
+      <div class="absolute top-0 left-0 -z-10 h-full w-full overflow-hidden">
+        <div
+          class="pointer-events-none absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+          aria-hidden="true"
+        >
+          <div
+            class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-pink-500 to-primary-muted opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            style="clip-path: polygon(16% 45%, 48% 40%, 1% 26%, 85% 0%, 100% 46%, 30% 3%, 78% 75%, 85% 85%, 13% 100%, 100% 58%, 75% 52%, 45% 71%)"
+          >
+          </div>
+        </div>
+      </div>
     </main>
-    <Separator className="mt-4" />
+    <Separator />
     <footer
       class="flex flex-col md:flex-row justify-center lg:gap-4 items-center text-center p-4"
     >
