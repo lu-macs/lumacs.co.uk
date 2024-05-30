@@ -10,6 +10,7 @@ export default defineConfig({
   site: 'https://lumacs.co.uk',
   prefetch: {
     prefetchAll: true,
+    defaultStrategy: 'load',
   },
   integrations: [
     tailwind({
