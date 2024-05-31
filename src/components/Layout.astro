@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 import '@/styles.css';
 import { ModeToggle } from '@/components/ModeToggle';
 import { Separator } from '@/components/ui/separator';
@@ -22,19 +24,37 @@ const { title, description } = Astro.props;
       ? 'dark'
       : 'light';
   };
+
   const isDark = getThemePreference() === 'dark';
   document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
 
+  let transitioning = false;
+
   if (typeof localStorage !== 'undefined') {
     const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      if (!transitioning) {
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      }
     });
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['class'],
     });
   }
+
+  document.addEventListener('astro:before-preparation', () => {
+    transitioning = true;
+  });
+
+  document.addEventListener('astro:before-swap', (ev) => {
+    const isDark = getThemePreference() === 'dark';
+    ev.newDocument.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+  });
+
+  document.addEventListener('astro:after-swap', () => {
+    transitioning = false;
+  });
 </script>
 
 <html lang="en">
@@ -52,14 +72,16 @@ const { title, description } = Astro.props;
     <title>{title} - LUMACS</title>
     <meta name="description" content={description} />
     <script
+      is:inline
       defer
       data-domain="lumacs.co.uk"
       src="https://ingest.tokia.dev/js/script.js"></script>
+    <ViewTransitions />
   </head>
   <body class="flex flex-col h-screen">
     <Toaster client:load />
 
-    <nav class="p-4 flex items-center gap-4">
+    <nav class="p-4 flex items-center gap-4" transition:name="nav">
       <a href="/" class="font-bold text-2xl hover:text-muted-foreground"
         >LUMACS</a
       >
@@ -70,7 +92,10 @@ const { title, description } = Astro.props;
     <Separator />
     <main class="flex flex-col items-center flex-grow relative">
       {/* cool colour bg thing */}
-      <div class="absolute left-0 top-0 -z-10 h-full w-full overflow-hidden">
+      <div
+        class="absolute left-0 top-0 -z-10 h-full w-full overflow-hidden"
+        transition:name="top-colour-thing"
+      >
         <div
           class="pointer-events-none absolute inset-x-0 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -86,7 +111,10 @@ const { title, description } = Astro.props;
       <slot />
       <div class="mt-4"></div>
       {/* cool colour bg thing */}
-      <div class="absolute top-0 left-0 -z-10 h-full w-full overflow-hidden">
+      <div
+        class="absolute top-0 left-0 -z-10 h-full w-full overflow-hidden"
+        transition:name="bottom-colour-thing"
+      >
         <div
           class="pointer-events-none absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
           aria-hidden="true"
@@ -102,6 +130,7 @@ const { title, description } = Astro.props;
     <Separator />
     <footer
       class="flex flex-col md:flex-row justify-center lg:gap-4 items-center text-center p-4"
+      transition:name="footer"
     >
       <span
         >© {new Date().getFullYear()} Lancaster University Magic and Circus Society</span

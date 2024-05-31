@@ -22,6 +22,9 @@ export const ResourcesLinks = () => {
           <MenubarItem asChild>
             <a href="/conventions/">Conventions</a>
           </MenubarItem>
+          <MenubarItem asChild>
+            <a href="/timeline/">Our History</a>
+          </MenubarItem>
           <MenubarSeparator />
           <MenubarItem asChild>
             <a href="/privacy/">Privacy Policy</a>
