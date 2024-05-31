@@ -1,5 +1,6 @@
 ---
 import Layout from '@/components/Layout.astro';
+import { Image } from 'astro:assets';
 
 /**
  * Society of Lancaster University Jugglers (SLUJ) founded
@@ -21,14 +22,22 @@ const items: {
   title: string;
   date: string;
   description: string;
-  image?: string;
+  image?: {
+    src: string;
+    alt: string;
+    ratio: number; // height / width
+  };
 }[] = [
   {
     title: 'Society of Lancaster University Jugglers (SLUJ) founded',
     date: '1993 (or earlier)', // TODO: contact student union to check
     description:
       'SLUJ was founded some time in or before 1993 as a society for various learning and using circus equipment such as juggling balls, juggling clubs, juggling rings, diabolos, devil sticks, unicycles and fire torches.',
-    image: '/timeline/slujlogo.png',
+    image: {
+      src: '/timeline/slujlogo.png',
+      alt: 'SLUJ logo',
+      ratio: 1,
+    },
   },
   {
     title: 'Halloween Juggling Convention',
@@ -72,7 +81,11 @@ const items: {
     title: 'Lancaster University Magic and Illusion Society (LUMIS) founded',
     date: 'Unknown',
     description: 'LUMIS was founded as a society for magic and illusion.',
-    image: '/timeline/logov1.png',
+    image: {
+      src: '/timeline/logov1.png',
+      alt: 'LUMIS logo',
+      ratio: 367 / 981,
+    },
   },
   {
     title: 'SLUJ shuts down',
@@ -83,22 +96,25 @@ const items: {
   {
     title:
       'LUMIS becomes Lancaster University Magic and Circus Society (LUMACS)',
-    date: '2014', // TODO: contact student union to check
+    date: 'September 2nd, 2014', // TODO: contact student union to check
     description:
       'LUMIS was rebranded to LUMACS and became a society for magic and circus replacing SLUJ.',
-  },
-  {
-    title: 'New Logo',
-    date: 'September 2nd, 2014',
-    description: 'A new logo was designed and the old one was retired.',
-    image: '/timeline/logov2.png',
+    image: {
+      src: '/timeline/logov2.png',
+      alt: 'LUMACS logo',
+      ratio: 895 / 1018,
+    },
   },
   {
     title: 'New New Logo',
     date: 'Augsut 26th, 2016',
     description:
       'Once again, a new logo was designed and the old one was retired.',
-    image: '/timeline/logov3.jpeg',
+    image: {
+      src: '/timeline/logov3.jpeg',
+      alt: 'LUMACS new logo',
+      ratio: 1,
+    },
   },
   {
     title: 'Juggling Clubs 2017',
@@ -148,10 +164,11 @@ const items: {
                     <p class="mt-2 text-muted-foreground">{date}</p>
                     <p class="mt-2">{description}</p>
                     {image && (
-                      <img
-                        src={image}
-                        alt={`${title} timeline image`}
-                        width="200"
+                      <Image
+                        width={200}
+                        height={200 * image.ratio}
+                        src={image.src}
+                        alt={image.alt}
                         class="rounded-lg mt-2"
                       />
                     )}
@@ -167,11 +184,12 @@ const items: {
                         <p class="mt-2 text-muted-foreground">{date}</p>
                         <p class="mt-2">{description}</p>
                         {image && (
-                          <img
-                            src={image}
-                            alt={`${title} timeline image`}
-                            width="200"
-                            class="rounded-lg float-right mt-2"
+                          <Image
+                            width={200}
+                            height={200 * image.ratio}
+                            src={image.src}
+                            alt={image.alt}
+                            class="rounded-lg mt-2 float-right"
                           />
                         )}
                       </>
@@ -187,10 +205,11 @@ const items: {
                         <p class="mt-2 text-muted-foreground">{date}</p>
                         <p class="mt-2">{description}</p>
                         {image && (
-                          <img
-                            src={image}
-                            alt={`${title} timeline image`}
-                            width="200"
+                          <Image
+                            width={200}
+                            height={200 * image.ratio}
+                            src={image.src}
+                            alt={image.alt}
                             class="rounded-lg mt-2"
                           />
                         )}
