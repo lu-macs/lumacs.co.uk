@@ -43,12 +43,12 @@ export const HireFormSchema = z.object({
   location: z.string().min(1).max(200),
   briefDescriptionOfEvent: z.string().min(1).max(1000),
   date: z.date(),
-  numNormalPerformers: z.number().min(0).max(20),
-  amountOfTimeForNormalPerformers: z.number().min(0).max(10),
-  numFirePerformers: z.number().min(0).max(20),
-  amountOfTimeForFirePerformers: z.number().min(0).max(10),
-  numAerialPerformers: z.number().min(0).max(20),
-  amountOfTimeForAerialPerformers: z.number().min(0).max(10),
+  numNormalPerformers: z.number().min(0).max(100),
+  amountOfTimeForNormalPerformers: z.number().min(0).max(100),
+  numFirePerformers: z.number().min(0).max(100),
+  amountOfTimeForFirePerformers: z.number().min(0).max(100),
+  numAerialPerformers: z.number().min(0).max(100),
+  amountOfTimeForAerialPerformers: z.number().min(0).max(100),
 });
 
 export const HireForm = () => {
@@ -293,7 +293,7 @@ export const HireForm = () => {
                       placeholder="0"
                       type="number"
                       min={0}
-                      max={20}
+                      max={100}
                       value={field.value}
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
@@ -320,7 +320,7 @@ export const HireForm = () => {
                       placeholder="0"
                       type="number"
                       min={0}
-                      max={10}
+                      max={100}
                       value={field.value}
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
@@ -369,7 +369,7 @@ export const HireForm = () => {
                       placeholder="0"
                       type="number"
                       min={0}
-                      max={20}
+                      max={100}
                       value={field.value}
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
@@ -395,7 +395,7 @@ export const HireForm = () => {
                       placeholder="0"
                       type="number"
                       min={0}
-                      max={10}
+                      max={100}
                       value={field.value}
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
@@ -444,7 +444,7 @@ export const HireForm = () => {
                       placeholder="0"
                       type="number"
                       min={0}
-                      max={20}
+                      max={100}
                       value={field.value}
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
@@ -470,7 +470,7 @@ export const HireForm = () => {
                       placeholder="0"
                       type="number"
                       min={0}
-                      max={10}
+                      max={100}
                       value={field.value}
                       onChange={(e) => field.onChange(Number(e.target.value))}
                     />
