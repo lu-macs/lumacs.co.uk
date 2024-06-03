@@ -6,6 +6,7 @@ import { ModeToggle } from '@/components/ModeToggle';
 import { Separator } from '@/components/ui/separator';
 import { Toaster } from '@/components/ui/sonner';
 import { ResourcesLinks } from './ResourcesLinks';
+import { CommandSearch } from './CommandSearch';
 
 type Props = {
   title: string;
@@ -80,6 +81,7 @@ const { title, description } = Astro.props;
   </head>
   <body class="flex flex-col h-screen">
     <Toaster client:load />
+    <CommandSearch client:load />
 
     <nav class="p-4 flex items-center gap-4" transition:name="nav">
       <a href="/" class="font-bold text-2xl hover:text-muted-foreground"
