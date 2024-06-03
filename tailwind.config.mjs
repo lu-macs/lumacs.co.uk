@@ -14,6 +14,12 @@ module.exports = withUt({
       },
     },
     extend: {
+      backgroundImage: {
+        'radial-gradient-content':
+          'radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40%)',
+        'radial-gradient-border':
+          'radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.4), transparent 40%)',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

@@ -9,7 +9,7 @@ Images are licensed under the [IMAGE_LICENSE](IMAGE_LICENSE.md).
 
 # TODO
 
-- [ ] Gallery page with filtering
+- [ ] Gallery page with filtering https://www.lightgalleryjs.com/docs/react-image-video-gallery/
 - [ ] performer bios
 - [ ] links to social media
 - [ ] form for social ideas

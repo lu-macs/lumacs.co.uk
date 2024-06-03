@@ -2,45 +2,10 @@
 import Layout from '@/components/Layout.astro';
 import { Separator } from '@/components/ui/separator';
 import { buttonVariants } from '@/components/ui/button';
+import { Cards } from '@/components/Cards';
 import { Image } from 'astro:assets';
 
-const displays: {
-  title: string;
-  img: string;
-}[] = [
-  {
-    title: 'Fire Devil Sticks',
-    img: '/display/fire.jpeg',
-  },
-  {
-    title: 'Unicycling',
-    img: '/display/unicycling.jpeg',
-  },
-  {
-    title: 'Aerial Hoop',
-    img: '/display/hoop.jpeg',
-  },
-  {
-    title: 'Juggling',
-    img: '/display/juggling.jpeg',
-  },
-  {
-    title: 'Aerial Silks',
-    img: '/display/silksstar.jpeg',
-  },
-  {
-    title: 'Diablo',
-    img: '/display/diablo.jpeg',
-  },
-  {
-    title: 'Acro Staff',
-    img: '/display/staff.jpeg',
-  },
-  {
-    title: 'Aerial Silks',
-    img: '/display/silksstanding.jpeg',
-  },
-];
+
 
 const memberships: {
   name: string;
@@ -136,24 +101,7 @@ const sessions: {
     <a class={buttonVariants({})} href="/hire/"> Hire Us </a>
   </div>
 
-  <div class="grid grid-cols-2 gap-4 md:grid-cols-4 m-4">
-    {
-      displays.map(({ title, img }) => (
-        <div class="flex flex-col items-center justify-center border-2 p-2 rounded-lg">
-          <Image
-            src={img.split('.')[0] + '.webp'}
-            alt={`lumacs members displaying ${title}`}
-            class="size-40 lg:size-48 rounded"
-            width={192}
-            height={192}
-            loading="eager"
-          />
-          <Separator className="my-2" />
-          <h2 class="font-bold">{title}</h2>
-        </div>
-      ))
-    }
-  </div>
+  <Cards client:load />
 
   <h2 class="font-bold text-4xl">Memberships</h2>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-3 m-2">
