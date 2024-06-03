@@ -11,9 +11,10 @@ import { CommandSearch } from './CommandSearch';
 type Props = {
   title: string;
   description: string;
+  noindex?: boolean;
 };
 
-const { title, description } = Astro.props;
+const { title, description, noindex } = Astro.props;
 ---
 
 <script is:inline>
@@ -70,6 +71,7 @@ const { title, description } = Astro.props;
     <link rel="icon" type="image/png" href="/logogaybg.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex" />}
     <title>{title} - LUMACS</title>
     <meta name="description" content={description} />
     <script
