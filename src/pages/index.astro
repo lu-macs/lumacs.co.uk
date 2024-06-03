@@ -2,10 +2,8 @@
 import Layout from '@/components/Layout.astro';
 import { Separator } from '@/components/ui/separator';
 import { buttonVariants } from '@/components/ui/button';
-import { Cards } from '@/components/Cards';
+import { DisplayCards } from '@/components/DisplayCards';
 import { Image } from 'astro:assets';
-
-
 
 const memberships: {
   name: string;
@@ -101,7 +99,7 @@ const sessions: {
     <a class={buttonVariants({})} href="/hire/"> Hire Us </a>
   </div>
 
-  <Cards client:load />
+  <DisplayCards client:load />
 
   <h2 class="font-bold text-4xl">Memberships</h2>
   <div class="grid grid-cols-1 gap-4 md:grid-cols-3 m-2">
