@@ -87,6 +87,14 @@ export const CommandSearch = () => {
           >
             Privacy Policy
           </CommandItem>
+          <CommandItem
+            onSelect={() => {
+              setOpen(false);
+              navigate('/admin/');
+            }}
+          >
+            Admin
+          </CommandItem>
         </CommandGroup>
       </CommandList>
     </CommandDialog>
