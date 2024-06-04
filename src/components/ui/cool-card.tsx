@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import { cn } from '@/lib/utils';
 
-export const Separator = ({ className }: { className?: string }) => {
+const useMousePosition = () => {
   const el = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -18,6 +18,12 @@ export const Separator = ({ className }: { className?: string }) => {
     document.addEventListener('mousemove', handleMouseMove);
     return () => document.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  return el;
+};
+
+export const Separator = ({ className }: { className?: string }) => {
+  const el = useMousePosition();
 
   return (
     <SeparatorPrimitive.Root
@@ -31,21 +37,7 @@ export const Separator = ({ className }: { className?: string }) => {
 };
 
 export const Card = ({ children }: { children: React.ReactNode }) => {
-  const el = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (el.current) {
-        const rect = el.current.getBoundingClientRect(),
-          x = e.clientX - rect.left,
-          y = e.clientY - rect.top;
-        el.current.style.setProperty('--mouse-x', x.toString() + 'px');
-        el.current.style.setProperty('--mouse-y', y.toString() + 'px');
-      }
-    };
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  const el = useMousePosition();
 
   return (
     <div
