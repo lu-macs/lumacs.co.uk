@@ -39,6 +39,26 @@ export const GET: APIRoute = async ({
     }),
   });
 
+  console.info({
+    method: 'POST',
+    headers: {
+      'User-Agent': request.headers.get('User-Agent') ?? '',
+      'X-Forwarded-For':
+        request.headers.get('X-Forwarded-For') ?? clientAddress,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      domain: 'lumacs.co.uk',
+      name: 'Redirect',
+      url: request.url,
+      referrer: request.headers.get('Referer') ?? '',
+      props: {
+        from: id,
+        to: redirects.get(id)!,
+      },
+    }),
+  });
+
   return redirect(redirects.get(id)!, 307);
 };
 
