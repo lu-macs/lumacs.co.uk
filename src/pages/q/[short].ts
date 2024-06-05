@@ -29,7 +29,7 @@ export const GET: APIRoute = async ({
     },
     body: JSON.stringify({
       domain: 'lumacs.co.uk',
-      name: 'redirect',
+      name: 'Redirect',
       url: request.url,
       referrer: request.headers.get('Referer') ?? '',
       props: {
