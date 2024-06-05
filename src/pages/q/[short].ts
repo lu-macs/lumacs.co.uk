@@ -20,6 +20,7 @@ export const GET: APIRoute = async ({
   }
 
   await fetch('https://ingest.tokia.dev/api/event', {
+    method: 'POST',
     headers: {
       'User-Agent': request.headers.get('User-Agent') ?? '',
       'X-Forwarded-For': request.headers.get('X-Forwarded-For') ?? '',
@@ -34,20 +35,6 @@ export const GET: APIRoute = async ({
         from: id,
         to: redirects.get(id)!,
       },
-    }),
-  });
-
-  console.log({
-    'User-Agent': request.headers.get('User-Agent') ?? '',
-    'X-Forwarded-For': request.headers.get('X-Forwarded-For') ?? clientAddress,
-    'Content-Type': 'application/json',
-    domain: 'lumacs.co.uk',
-    name: 'Redirect',
-    url: request.url,
-    referrer: request.headers.get('Referer') ?? '',
-    props: JSON.stringify({
-      from: id,
-      to: redirects.get(id)!,
     }),
   });
 
