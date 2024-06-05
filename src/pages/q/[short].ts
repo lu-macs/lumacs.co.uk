@@ -29,7 +29,7 @@ export const GET: APIRoute = async ({
       url: request.url,
       referrer: request.headers.get('Referer') ?? '',
       props: JSON.stringify({
-        from: request.url,
+        from: id,
         to: redirects.get(id)!,
       }),
     },
