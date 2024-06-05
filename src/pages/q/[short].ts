@@ -7,7 +7,12 @@ redirects.set(
   'https://docs.google.com/forms/d/e/1FAIpQLSdQbtldzvZ76Bp57kv4P38s9TQy1bneilsPVwNx3i1I_40jkg/viewform'
 );
 
-export const GET: APIRoute = async ({ params, redirect, request }) => {
+export const GET: APIRoute = async ({
+  params,
+  redirect,
+  request,
+  clientAddress,
+}) => {
   const id = params.short;
 
   if (!id || !redirects.has(id)) {
@@ -28,6 +33,20 @@ export const GET: APIRoute = async ({ params, redirect, request }) => {
         to: redirects.get(id)!,
       }),
     },
+  });
+
+  console.log({
+    'User-Agent': request.headers.get('User-Agent') ?? '',
+    'X-Forwarded-For': request.headers.get('X-Forwarded-For') ?? clientAddress,
+    'Content-Type': 'application/json',
+    domain: 'lumacs.co.uk',
+    name: 'Redirect',
+    url: request.url,
+    referrer: request.headers.get('Referer') ?? '',
+    props: JSON.stringify({
+      from: id,
+      to: redirects.get(id)!,
+    }),
   });
 
   return redirect(redirects.get(id)!, 307);
