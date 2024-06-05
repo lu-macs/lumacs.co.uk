@@ -24,15 +24,17 @@ export const GET: APIRoute = async ({
       'User-Agent': request.headers.get('User-Agent') ?? '',
       'X-Forwarded-For': request.headers.get('X-Forwarded-For') ?? '',
       'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
       domain: 'lumacs.co.uk',
       name: 'redirect',
       url: request.url,
       referrer: request.headers.get('Referer') ?? '',
-      props: JSON.stringify({
+      props: {
         from: id,
         to: redirects.get(id)!,
-      }),
-    },
+      },
+    }),
   });
 
   console.log({
