@@ -45,6 +45,7 @@ export const GET: APIRoute = async ({
       'User-Agent': request.headers.get('User-Agent') ?? '',
       'X-Forwarded-For':
         request.headers.get('X-Forwarded-For') ?? clientAddress,
+      'X-Real-IP': request.headers.get('X-Forwarded-For') ?? clientAddress,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
