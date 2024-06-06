@@ -20,6 +20,9 @@ export const ResourcesLinks = () => {
             <a href="/hire/">Hire Us</a>
           </MenubarItem>
           <MenubarItem asChild>
+            <a href="/events/">Events</a>
+          </MenubarItem>
+          <MenubarItem asChild>
             <a href="/conventions/">Conventions</a>
           </MenubarItem>
           <MenubarItem asChild>

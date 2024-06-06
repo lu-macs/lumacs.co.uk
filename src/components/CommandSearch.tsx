@@ -66,6 +66,14 @@ export const CommandSearch = () => {
           <CommandItem
             onSelect={() => {
               setOpen(false);
+              navigate('/events/');
+            }}
+          >
+            Events
+          </CommandItem>
+          <CommandItem
+            onSelect={() => {
+              setOpen(false);
               navigate('/conventions/');
             }}
           >

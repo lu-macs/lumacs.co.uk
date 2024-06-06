@@ -1,0 +1,94 @@
+---
+import Layout from '@/components/Layout.astro';
+import { Separator } from '@/components/ui/separator';
+
+// all time are in british time, including daylight savings time
+
+const events: {
+  name: string;
+  description: string;
+  location: string;
+  startDate?: Date;
+  endDate?: Date;
+}[] = [
+  {
+    name: 'Picnic',
+    description: 'A fantasy themed picnic.',
+    location: 'Lancaster', // starts at 12
+    startDate: new Date('2024-06-21T12:00:00+01:00'),
+  },
+  {
+    name: 'LUSU Summer Ball',
+    description: 'A fun ball run by LUSU.',
+    location: 'The Great Hall, Lancaster University',
+    startDate: new Date('2024-06-22T18:00:00+01:00'),
+    endDate: new Date('2024-06-23T03:00:00+01:00'),
+  },
+  {
+    name: 'Pride',
+    description: 'Lancaster Pride',
+    location: 'Dalton Square, Lancaster',
+    startDate: new Date('2024-06-23T11:00:00+01:00'),
+  },
+  {
+    name: 'End of Year Showcase',
+    description:
+      'A small showcase just for members to celebrate the end of the university year. (Time, location and dates pending)',
+    location: 'LICA, Lancaster University',
+    startDate: new Date('2024-06-27T19:00:00+01:00'),
+  },
+];
+
+const options = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false, // Use 24-hour format
+  timeZone: 'Europe/London',
+} satisfies Intl.DateTimeFormatOptions;
+
+const formatter = new Intl.DateTimeFormat('en-UK', options);
+---
+
+<Layout
+  title="Events"
+  description="Events for the Lancaster University Magic and Circus Society (LUMACS)"
+>
+  <h1 class="text-2xl font-bold text-center">Events</h1>
+  <p class="text-center max-w-2xl">
+    These are the events and socials that we are either running or will be at.
+  </p>
+  {
+    // sort by start date, if no start date put at end and filter out events that are more than a day in the past
+    events
+      .sort((a, b) => {
+        if (a.startDate && b.startDate) {
+          return a.startDate.getTime() - b.startDate.getTime();
+        }
+        if (a.startDate && !b.startDate) {
+          return -1;
+        }
+        if (b.startDate) {
+          return 1;
+        }
+        return 0;
+      })
+      .filter(({ startDate }) => startDate)
+      .map(({ name, description, location, startDate, endDate }) => (
+        <div class="flex flex-col items-center max-w-2xl text-center">
+          <span class="font-bold text-xl">{name}</span>
+          <span>{description}</span>
+          <span class="text-sm text-center text-muted-foreground">
+            {location}
+          </span>
+          <span class="text-sm text-center text-muted-foreground">
+            {formatter.format(startDate)}{' '}
+            {endDate && `- ${formatter.format(endDate)}`}
+          </span>
+        </div>
+      ))
+      .reduce((acc, cur) => [...acc, <Separator className="my-2" />, cur], [])
+  }
+</Layout>
