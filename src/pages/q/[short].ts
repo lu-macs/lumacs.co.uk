@@ -6,6 +6,10 @@ redirects.set(
   'vote',
   'https://docs.google.com/forms/d/e/1FAIpQLSdQbtldzvZ76Bp57kv4P38s9TQy1bneilsPVwNx3i1I_40jkg/viewform'
 );
+redirects.set(
+  'insta',
+  'https://www.instagram.com/lu_macs/'
+);
 
 export const GET: APIRoute = async ({
   params,
