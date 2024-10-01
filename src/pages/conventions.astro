@@ -10,34 +10,6 @@ const conventions: {
   website?: string;
 }[] = [
   {
-    name: 'World Juggling Day',
-    location: 'Marbury Country Park',
-    startDate: 'June 14th',
-    endDate: 'June 16th',
-    website: 'https://www.worldjugglingday.uk/',
-  },
-  {
-    name: 'Play Festival',
-    location: 'Hopton Court',
-    startDate: 'August 14th',
-    endDate: 'August 18th',
-    website: 'https://play-festival.co.uk/',
-  },
-  {
-    name: 'Broxford',
-    location: 'Kiln Lane, Garsington',
-    startDate: 'September 11th',
-    endDate: 'September 16th',
-    website: 'https://www.facebook.com/broxford',
-  },
-  {
-    name: 'Southern Circus and Juggling Convention',
-    location: 'Five Rivers Leisure Centre, Salisbury',
-    startDate: 'November 16th, 11am',
-    endDate: 'November 16th, 10pm',
-    website: 'https://buzzaction.org/',
-  },
-  {
     name: 'Leeds Juggling Convention',
     location: 'St Mary’s School Menston LS29 6AE',
     startDate: 'October 19th, 10am',
@@ -45,11 +17,11 @@ const conventions: {
     website: 'https://sites.google.com/site/leedsjugglingconvention/',
   },
   {
-    name: 'Camvention',
-    location: 'Cambridge',
-    startDate: 'October 5th',
-    endDate: 'October 5th',
-    website: 'http://www.chaos.org.uk/ccc/camvention/index.html',
+    name: 'Southern Circus and Juggling Convention',
+    location: 'Five Rivers Leisure Centre, Salisbury',
+    startDate: 'November 16th, 11am',
+    endDate: 'November 16th, 10pm',
+    website: 'https://buzzaction.org/',
   },
   {
     name: 'Scottish Juggling convention',
@@ -66,22 +38,7 @@ const conventions: {
     location: 'Lancaster University',
     website: 'https://lumacs.co.uk',
   },
-]
-  // sort by alphabetical order
-  .sort((a, b) => a.name.localeCompare(b.name))
-  // then where possible sort by start date
-  .sort((a, b) => {
-    if (a.startDate && b.startDate) {
-      return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
-    }
-    if (a.startDate && !b.startDate) {
-      return -1;
-    }
-    if (b.startDate) {
-      return 1;
-    }
-    return 0;
-  });
+];
 ---
 
 <Layout

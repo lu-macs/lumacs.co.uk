@@ -10,34 +10,7 @@ const events: {
   location: string;
   startDate?: Date;
   endDate?: Date;
-}[] = [
-  {
-    name: 'Picnic',
-    description: 'A fantasy themed picnic.',
-    location: 'Lancaster', // starts at 12
-    startDate: new Date('2024-06-21T12:00:00+01:00'),
-  },
-  {
-    name: 'LUSU Summer Ball',
-    description: 'A fun ball run by LUSU.',
-    location: 'The Great Hall, Lancaster University',
-    startDate: new Date('2024-06-22T18:00:00+01:00'),
-    endDate: new Date('2024-06-23T03:00:00+01:00'),
-  },
-  {
-    name: 'Pride',
-    description: 'Lancaster Pride',
-    location: 'Dalton Square, Lancaster',
-    startDate: new Date('2024-06-23T11:00:00+01:00'),
-  },
-  {
-    name: 'End of Year Showcase',
-    description:
-      'A small showcase just for members to celebrate the end of the university year. (Time, location and dates pending)',
-    location: 'LICA, Lancaster University',
-    startDate: new Date('2024-06-27T19:00:00+01:00'),
-  },
-];
+}[] = [];
 
 const options = {
   year: 'numeric',
@@ -62,33 +35,38 @@ const formatter = new Intl.DateTimeFormat('en-UK', options);
   </p>
   {
     // sort by start date, if no start date put at end and filter out events that are more than a day in the past
-    events
-      .sort((a, b) => {
-        if (a.startDate && b.startDate) {
-          return a.startDate.getTime() - b.startDate.getTime();
-        }
-        if (a.startDate && !b.startDate) {
-          return -1;
-        }
-        if (b.startDate) {
-          return 1;
-        }
-        return 0;
-      })
-      .filter(({ startDate }) => startDate)
-      .map(({ name, description, location, startDate, endDate }) => (
-        <div class="flex flex-col items-center max-w-2xl text-center">
-          <span class="font-bold text-xl">{name}</span>
-          <span>{description}</span>
-          <span class="text-sm text-center text-muted-foreground">
-            {location}
-          </span>
-          <span class="text-sm text-center text-muted-foreground">
-            {formatter.format(startDate)}{' '}
-            {endDate && `- ${formatter.format(endDate)}`}
-          </span>
-        </div>
-      ))
-      .reduce((acc, cur) => [...acc, <Separator className="my-2" />, cur], [])
+    events.length < 1
+      ? 'We currently have no planned events.'
+      : events
+          .sort((a, b) => {
+            if (a.startDate && b.startDate) {
+              return a.startDate.getTime() - b.startDate.getTime();
+            }
+            if (a.startDate && !b.startDate) {
+              return -1;
+            }
+            if (b.startDate) {
+              return 1;
+            }
+            return 0;
+          })
+          .filter(({ startDate }) => startDate)
+          .map(({ name, description, location, startDate, endDate }) => (
+            <div class="flex flex-col items-center max-w-2xl text-center">
+              <span class="font-bold text-xl">{name}</span>
+              <span>{description}</span>
+              <span class="text-sm text-center text-muted-foreground">
+                {location}
+              </span>
+              <span class="text-sm text-center text-muted-foreground">
+                {formatter.format(startDate)}{' '}
+                {endDate && `- ${formatter.format(endDate)}`}
+              </span>
+            </div>
+          ))
+          .reduce(
+            (acc, cur) => [...acc, <Separator className="my-2" />, cur],
+            []
+          )
   }
 </Layout>
