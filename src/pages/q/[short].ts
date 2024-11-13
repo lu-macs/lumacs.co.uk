@@ -10,6 +10,10 @@ redirects.set(
   'insta',
   'https://www.instagram.com/lu_macs/'
 );
+redirects.set(
+  'join',
+  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs'
+);
 
 export const GET: APIRoute = async ({
   params,
