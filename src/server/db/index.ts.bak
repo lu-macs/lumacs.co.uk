@@ -9,7 +9,7 @@ export const db =
   import.meta.env.NODE_ENV !== 'development'
     ? drizzle(
         new Client({
-          url: '',
+          url: 'replace-with-the-database-url',
           fetch: (url, init) => {
             init && delete init['cache'];
             return fetch(url, init);

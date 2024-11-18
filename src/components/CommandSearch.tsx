@@ -55,14 +55,14 @@ export const CommandSearch = () => {
           >
             Hire Us
           </CommandItem>
-          <CommandItem
+          {/* <CommandItem
             onSelect={() => {
               setOpen(false);
               navigate('/gallery/');
             }}
           >
             Gallery
-          </CommandItem>
+          </CommandItem> */}
           <CommandItem
             onSelect={() => {
               setOpen(false);

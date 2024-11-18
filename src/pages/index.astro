@@ -1,5 +1,6 @@
 ---
 import Layout from '@/components/Layout.astro';
+import Logo from '@/components/Logo.astro';
 import { buttonVariants } from '@/components/ui/button';
 import { Card, Separator } from '@/components/ui/cool-card';
 import { Image } from 'astro:assets';
@@ -79,8 +80,7 @@ const sessions: {
 }[] = [
   {
     day: 'Monday & Wednesday',
-    location:
-      'Usually LICA lobby but if the weather is nice then Lancaster Square (next to LICA)',
+    location: 'Usually LICA, check the discord for more information',
     time: '6pm - 8pm',
     activities: ['Juggling', 'Diablo', 'Acro Staff', 'and more!'],
   },
@@ -109,15 +109,7 @@ const sessions: {
   title="Home"
   description="Lancaster University Magic and Circus Society (LUMACS) is a fun and friendly society, welcoming people of all abilities. No experience is required to join! We host regular practice sessions and we offer the opportunity to take part in paid performances both on and off campus."
 >
-  <h1 class="text-2xl font-bold text-center">Lancaster University</h1>
-  <Image
-    src="/logogay.png"
-    alt="Lancaster University Magic and Circus Society (LUMACS) logo"
-    width={250}
-    height={250}
-    loading="eager"
-  />
-  <h1 class="text-2xl font-bold text-center">Magic and Circus Society</h1>
+  <Logo />
 
   <p class="text-center max-w-2xl mx-2">
     We are a fun and friendly society, welcoming people of all abilities. <span
@@ -126,7 +118,7 @@ const sessions: {
     take part in paid performances both on and off campus.
   </p>
 
-  <div class="flex gap-32 mt-4">
+  <div class="flex gap-8 md:gap-32 lg:gap-64 mt-4">
     <a
       class={buttonVariants({})}
       href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
@@ -134,6 +126,9 @@ const sessions: {
       Join Us
     </a>
     <a class={buttonVariants({})} href="/hire/"> Hire Us </a>
+    <a class={buttonVariants({})} href="https://www.instagram.com/lu_macs/">
+      Instagram
+    </a>
   </div>
 
   <div class="grid grid-cols-2 gap-4 md:grid-cols-4 m-4">

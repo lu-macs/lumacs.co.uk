@@ -13,7 +13,7 @@ export const POST: APIRoute = async ({ request }) => {
     await fetch(
       `https://discord.com/api/webhooks/${
         import.meta.env.NODE_ENV !== 'development'
-          ? ''
+          ? 'REPLACE_WITH_WEBHOOK'
           : import.meta.env.WEBHOOK
       }`,
       {
