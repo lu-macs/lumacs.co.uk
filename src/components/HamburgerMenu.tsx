@@ -32,10 +32,10 @@ const locations: {
     name: 'Our History',
     href: '/timeline/',
   },
-  {
-    name: 'Gallery',
-    href: '/gallery/',
-  },
+  // {
+  //   name: 'Gallery',
+  //   href: '/gallery/',
+  // },
 ];
 
 export const HamburgerMenu = () => {

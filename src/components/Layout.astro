@@ -68,7 +68,7 @@ const { title, description, noindex } = Astro.props;
     <meta name="darkreader-lock" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="/logogaybg.png" />
+    <link rel="icon" type="image/svg+xml" href="/newlogo.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     {noindex && <meta name="robots" content="noindex" />}
@@ -100,6 +100,13 @@ const { title, description, noindex } = Astro.props;
       <div class="flex-grow"></div>
       <ModeToggle client:load />
     </header>
+    <Separator />
+    <div class="p-2 bg-yellow-400 dark:text-secondary">
+      LUMACS Convention coming 24 - 27th July, Follow <a
+        href="https://www.instagram.com/lu_macs/"
+        class="underline hover:text-muted-foreground">our instagram</a
+      > for updates.
+    </div>
     <Separator />
     <main class="flex flex-col items-center flex-grow relative">
       {/* cool colour bg thing */}
