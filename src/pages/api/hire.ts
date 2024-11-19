@@ -9,14 +9,12 @@ export const POST: APIRoute = async ({ request }) => {
     date: new Date(body.date),
   });
 
-  console.log(data, import.meta.env.WEBHOOK);
+  console.log(data, 'REPLACE_WITH_WEBHOOK');
 
   try {
     await fetch(
       `https://discord.com/api/webhooks/${
-        import.meta.env.NODE_ENV !== 'development'
-          ? ''
-          : import.meta.env.WEBHOOK
+        import.meta.env.NODE_ENV !== 'development' ? '' : 'REPLACE_WITH_WEBHOOK'
       }`,
       {
         method: 'POST',
