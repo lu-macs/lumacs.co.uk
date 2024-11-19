@@ -75,6 +75,7 @@ export const HireForm = () => {
 
   const onSubmit = async (data: z.infer<typeof HireFormSchema>) => {
     console.log(data);
+    // @ts-ignore
     window.plausible('hire', { props: data });
 
     toast.promise(
