@@ -74,6 +74,7 @@ const { title, description, noindex } = Astro.props;
     {noindex && <meta name="robots" content="noindex" />}
     <title>{title} - LUMACS</title>
     <meta name="description" content={description} />
+    <base target="_parent">
     <script
       is:inline
       defer
