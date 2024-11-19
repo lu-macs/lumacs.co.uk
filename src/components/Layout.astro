@@ -57,6 +57,21 @@ const { title, description, noindex } = Astro.props;
   document.addEventListener('astro:after-swap', () => {
     transitioning = false;
   });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Check if we're inside an iframe (and not the top window)
+    if (window.top !== window) {
+      // Ensure we're on lumacs.co.uk
+      if (window.location.hostname === 'lumacs.co.uk') {
+        document.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default navigation
+            window.parent.postMessage(link.href, 'https://lancastersu.co.uk');
+          });
+        });
+      }
+    }
+  });
 </script>
 
 <html lang="en">
