@@ -18,45 +18,58 @@ const { title, description, noindex } = Astro.props;
 ---
 
 <script is:inline>
-  const getThemePreference = () => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
-  };
-
-  const isDark = getThemePreference() === 'dark';
-  document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
-
-  let transitioning = false;
-
-  if (typeof localStorage !== 'undefined') {
-    const observer = new MutationObserver(() => {
-      if (!transitioning) {
-        const isDark = document.documentElement.classList.contains('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  try {
+    const getThemePreference = () => {
+      if (
+        typeof localStorage !== 'undefined' &&
+        localStorage.getItem('theme')
+      ) {
+        return localStorage.getItem('theme');
       }
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+    };
+
+    const isDark = getThemePreference() === 'dark';
+    document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+
+    let transitioning = false;
+
+    if (typeof localStorage !== 'undefined') {
+      const observer = new MutationObserver(() => {
+        if (!transitioning) {
+          const isDark = document.documentElement.classList.contains('dark');
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+      });
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+    }
+  } catch (e) {
+    console.error(e);
   }
 
-  document.addEventListener('astro:before-preparation', () => {
-    transitioning = true;
-  });
+  try {
+    document.addEventListener('astro:before-preparation', () => {
+      transitioning = true;
+    });
 
-  document.addEventListener('astro:before-swap', (ev) => {
-    const isDark = getThemePreference() === 'dark';
-    ev.newDocument.documentElement.classList[isDark ? 'add' : 'remove']('dark');
-  });
+    document.addEventListener('astro:before-swap', (ev) => {
+      const isDark = getThemePreference() === 'dark';
+      ev.newDocument.documentElement.classList[isDark ? 'add' : 'remove'](
+        'dark'
+      );
+    });
 
-  document.addEventListener('astro:after-swap', () => {
-    transitioning = false;
-  });
+    document.addEventListener('astro:after-swap', () => {
+      transitioning = false;
+    });
+  } catch (e) {
+    console.error(e);
+  }
 
   document.addEventListener('DOMContentLoaded', function () {
     console.log('Is in iframe?', window.top !== window);
