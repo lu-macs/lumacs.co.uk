@@ -1,0 +1,9 @@
+---
+import Layout from '@/components/Layout.astro';
+import { ChristmasCountdown } from '@/components/christmas';
+---
+
+<Layout title="Christmas" description="A fun christmas surprise!" noindex>
+  <h1 class="text-2xl font-bold text-center">Our Christmas Surprise</h1>
+  <ChristmasCountdown client:load />
+</Layout>
