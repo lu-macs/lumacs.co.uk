@@ -51,7 +51,7 @@ export const ChristmasCountdown = () => {
 
   return (
     <div
-      className="lg:text-8xl text-6xl font-bold pt-4"
+      className="lg:text-8xl md:text-6xl text-4xl font-bold pt-4"
       style={{
         background:
           'linear-gradient(45deg, #e05e6b, #ff9966, #98c379, #66c2a5, #7ea6e0, #b392f0, #e05e6b)',
