@@ -14,6 +14,10 @@ redirects.set(
   'join',
   'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs'
 );
+redirects.set(
+  'christmas',
+  'https://docs.google.com/forms/d/e/1FAIpQLScw_gNTtdFR3bW9DBAYuNtB_mGT9Uj0XZJfB_7nPEvirkB9wQ/viewform'
+);
 
 export const GET: APIRoute = async ({
   params,
