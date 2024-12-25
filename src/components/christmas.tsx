@@ -39,7 +39,7 @@ export const ChristmasCountdown = () => {
     return (
       <a
         className="gap-4 flex flex-col items-center pt-4 cursor-pointer hover:text-muted-foreground"
-        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+        href="https://www.instagram.com/p/DD_1EjluF94/"
       >
         <div className="text-8xl">🎁</div>
         <div className="text-2xl italic underline">
