@@ -48,11 +48,7 @@ const { title, description, noindex } = Astro.props;
         attributeFilter: ['class'],
       });
     }
-  } catch (e) {
-    console.error(e);
-  }
 
-  try {
     document.addEventListener('astro:before-preparation', () => {
       transitioning = true;
     });
