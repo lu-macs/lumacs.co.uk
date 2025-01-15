@@ -18,6 +18,10 @@ redirects.set(
   'christmas',
   'https://docs.google.com/forms/d/e/1FAIpQLScw_gNTtdFR3bW9DBAYuNtB_mGT9Uj0XZJfB_7nPEvirkB9wQ/viewform'
 );
+redirects.set(
+  'testing',
+  'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+);
 
 export const GET: APIRoute = async ({
   params,
