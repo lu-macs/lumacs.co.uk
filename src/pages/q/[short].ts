@@ -22,6 +22,10 @@ redirects.set(
   'testing',
   'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 );
+redirects.set(
+  'lucc',
+  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025'
+);
 
 export const GET: APIRoute = async ({
   params,
