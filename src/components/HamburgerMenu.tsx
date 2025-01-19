@@ -32,6 +32,10 @@ const locations: {
     name: 'Our History',
     href: '/timeline/',
   },
+  {
+    name: 'Branding',
+    href: '/branding/',
+  },
   // {
   //   name: 'Gallery',
   //   href: '/gallery/',

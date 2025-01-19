@@ -90,6 +90,14 @@ export const CommandSearch = () => {
           <CommandItem
             onSelect={() => {
               setOpen(false);
+              navigate('/branding/');
+            }}
+          >
+            Branding
+          </CommandItem>
+          <CommandItem
+            onSelect={() => {
+              setOpen(false);
               navigate('/privacy/');
             }}
           >

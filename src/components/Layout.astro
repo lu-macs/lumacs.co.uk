@@ -7,6 +7,7 @@ import { Separator } from '@/components/ui/separator';
 import { Toaster } from '@/components/ui/sonner';
 import { HamburgerMenu } from './HamburgerMenu';
 import { CommandSearch } from './CommandSearch';
+import Text from './Text.astro';
 
 type Props = {
   title: string;
@@ -86,6 +87,25 @@ const { title, description, noindex } = Astro.props;
   });
 </script>
 
+<script>
+  const injectRightClickBranding = (doc: Document) => {
+    doc.querySelectorAll('.right-click-branding').forEach((link) => {
+      console.log('Adding listener to', link);
+      link.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        console.log('Opening /branding');
+        window.location.href = '/branding/';
+      });
+    });
+  };
+  document.addEventListener('DOMContentLoaded', () =>
+    injectRightClickBranding(document)
+  );
+  document.addEventListener('astro:before-swap', (ev) =>
+    injectRightClickBranding(ev.newDocument)
+  );
+</script>
+
 <html lang="en">
   <head>
     <link
@@ -121,9 +141,13 @@ const { title, description, noindex } = Astro.props;
 
     <header class="p-4 flex items-center gap-4" transition:name="nav">
       <HamburgerMenu client:load />
-      <a href="/" class="font-bold text-2xl hover:text-muted-foreground"
-        >LUMACS</a
+      <a
+        href="/"
+        class="font-bold text-2xl hover:text-muted-foreground right-click-branding"
+        aria-label="Home button"
       >
+        <Text />
+      </a>
       <div class="flex-grow"></div>
       <ModeToggle client:load />
     </header>

@@ -1,0 +1,18 @@
+---
+import Layout from '@/components/Layout.astro';
+import { BrandingAsset } from '@/components/BrandingAsset';
+---
+
+<Layout title="Branding" description="Download our branding assets">
+  <h1 class="text-2xl font-bold text-center mb-4">Branding Assets</h1>
+  <div class="flex gap-4 flex-wrap justify-center">
+    <BrandingAsset client:load name="Logo and Text" type="light" />
+    <BrandingAsset client:load name="Logo and Text" type="dark" />
+    <BrandingAsset client:load name="Logo and Hoop" type="light" />
+    <BrandingAsset client:load name="Logo and Hoop" type="dark" />
+    <BrandingAsset client:load name="Text" type="light" />
+    <BrandingAsset client:load name="Text" type="dark" />
+    <BrandingAsset client:load name="LUCC" type="light" />
+    <BrandingAsset client:load name="LUCC" type="dark" />
+  </div>
+</Layout>
