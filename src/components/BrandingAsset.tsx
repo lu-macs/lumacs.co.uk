@@ -26,7 +26,7 @@ export const BrandingAsset = ({
           }`}
         >
           <img
-            src={`${assetPath}/${type}.png`}
+            src={`${assetPath}/${type}.svg`}
             alt={`${name} branding asset`}
             className="w-full h-full object-contain"
           />
