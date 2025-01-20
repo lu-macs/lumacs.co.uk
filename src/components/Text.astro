@@ -13,18 +13,18 @@ const { className } = Astro.props;
     <defs>
       <style>
         .text-text {
-          fill: #fff; //#231f20; //text
+          fill: hsl(var(--text-primary)); //#231f20; //text
         }
         .text-red-border {
           stroke: #ed1c24; //#ed1c24; // red border
           stroke-width: 2px;
         }
         .text-red-border, .text-bg-outline {
-          fill: #020817; //#231f20; //bg
+          fill: hsl(var(--background)); //#231f20; //bg
           stroke-miterlimit: 10;
         }
         .text-bg-outline {
-          stroke: #fff; //#231f20; //outline
+          stroke: hsl(var(--primary)); //#231f20; //outline
           stroke-width: 3px;
         }
       </style>
