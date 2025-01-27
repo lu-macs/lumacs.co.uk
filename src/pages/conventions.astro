@@ -7,21 +7,29 @@ const conventions: {
   location: string;
   startDate?: string;
   endDate?: string;
-  website?: string;
+  website?: {
+    href: string;
+    text?: string;
+  };
 }[] = [
   {
     name: 'Chocfest',
     location: 'York',
-    website: 'https://www.chocfest.net/',
+    website: {
+      href: 'https://www.chocfest.net/',
+    },
     startDate: 'February 15th, 10am',
     endDate: 'February 15th, 9pm',
   },
   {
-    name: 'LUMACS Convention',
-    location: 'Lancaster University',
-    startDate: '24th July',
+    name: 'LUCC (LUMACS Convention)',
+    location: 'Lancaster University, LICA',
+    startDate: '26th July',
     endDate: '27th July',
-    website: 'https://lumacs.co.uk',
+    website: {
+      href: 'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025',
+      text: 'https://lumacs.co.uk/q/lucc',
+    },
   },
 ];
 ---
@@ -52,11 +60,11 @@ const conventions: {
             <span class="font-bold text-xl">{name}</span>
             {website && (
               <a
-                href={website}
+                href={website.href}
                 target="_blank"
                 class="underline hover:text-muted-foreground"
               >
-                {website}
+                {website.text ?? website.href}
               </a>
             )}
             <div>
