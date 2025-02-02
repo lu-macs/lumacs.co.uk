@@ -26,6 +26,10 @@ redirects.set(
   'lucc',
   'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025'
 );
+redirects.set(
+  'merch',
+  'https://docs.google.com/presentation/d/1ZwXCOiEtYBMuc-Rc0N7E_uTkEvyVE5Tz67KDuLHbxH4/edit?usp=sharing'
+);
 
 export const GET: APIRoute = async ({
   params,
