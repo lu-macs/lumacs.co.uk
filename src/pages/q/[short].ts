@@ -31,7 +31,7 @@ export const GET: APIRoute = async ({
   redirect,
   request,
   clientAddress,
-  locals: { runtime },
+  locals
 }) => {
   const id = params.short?.toLowerCase();
 
@@ -39,7 +39,7 @@ export const GET: APIRoute = async ({
     return redirect(`/qnf/${id}/`, 307);
   }
 
-  runtime.waitUntil(
+  locals.runtime.ctx.waitUntil(
     fetch('https://ingest.tokia.dev/api/event', {
       method: 'POST',
       headers: {

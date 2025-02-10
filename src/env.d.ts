@@ -3,10 +3,9 @@
 
 interface WorkerRuntime {
   runtime: {
-    waitUntil: (promise: Promise<any>) => void;
-    env: Env;
-    cf: CFRequest['cf'];
-    caches: typeof caches;
+    ctx: {
+      waitUntil: (promise: Promise<any>) => void;
+    };
   };
 }
 
