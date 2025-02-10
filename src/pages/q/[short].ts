@@ -41,7 +41,7 @@ export const GET: APIRoute = async ({
   request,
   clientAddress,
 }) => {
-  const id = params.short.toLowerCase();
+  const id = params.short?.toLowerCase();
 
   if (!id || !redirects.has(id)) {
     return redirect(`/qnf/${id}/`, 307);
