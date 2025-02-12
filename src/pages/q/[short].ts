@@ -24,6 +24,10 @@ redirects.set(
   'merch',
   'https://docs.google.com/presentation/d/1ZwXCOiEtYBMuc-Rc0N7E_uTkEvyVE5Tz67KDuLHbxH4/edit?usp=sharing'
 );
+redirects.set(
+  'deposit',
+  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lumacs-merch-deposits'
+);
 redirects.set('reject', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 export const GET: APIRoute = async ({
