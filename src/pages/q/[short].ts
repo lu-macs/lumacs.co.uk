@@ -28,7 +28,7 @@ redirects.set(
   'deposit',
   'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lumacs-merch-deposits'
 );
-redirects.set('reject', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+redirects.set('roses', 'https://docs.google.com/forms/d/e/1FAIpQLScY3q8QqTDnqovWg1qMOhDGKjwfbvlnL44PXDsrkp6BPjugFA/viewform?usp=dialog');
 
 export const GET: APIRoute = async ({
   params,
