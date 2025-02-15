@@ -74,10 +74,10 @@ export const CommandSearch = () => {
           <CommandItem
             onSelect={() => {
               setOpen(false);
-              navigate('/conventions/');
+              navigate('/lucc/');
             }}
           >
-            Conventions
+            LUCC
           </CommandItem>
           <CommandItem
             onSelect={() => {

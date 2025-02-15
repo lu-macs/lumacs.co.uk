@@ -25,8 +25,8 @@ const locations: {
     href: '/events/',
   },
   {
-    name: 'Conventions',
-    href: '/conventions/',
+    name: 'LUCC',
+    href: '/lucc/',
   },
   {
     name: 'Our History',
