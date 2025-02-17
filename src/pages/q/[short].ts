@@ -16,10 +16,7 @@ redirects.set(
   'https://docs.google.com/forms/d/e/1FAIpQLScw_gNTtdFR3bW9DBAYuNtB_mGT9Uj0XZJfB_7nPEvirkB9wQ/viewform'
 );
 redirects.set('testing', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-redirects.set(
-  'lucc',
-  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025'
-);
+redirects.set('lucc', 'https://lumacs.co.uk/lucc/');
 redirects.set(
   'merch',
   'https://docs.google.com/presentation/d/1ZwXCOiEtYBMuc-Rc0N7E_uTkEvyVE5Tz67KDuLHbxH4/edit?usp=sharing'
@@ -28,14 +25,17 @@ redirects.set(
   'deposit',
   'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lumacs-merch-deposits'
 );
-redirects.set('roses', 'https://docs.google.com/forms/d/e/1FAIpQLScY3q8QqTDnqovWg1qMOhDGKjwfbvlnL44PXDsrkp6BPjugFA/viewform?usp=dialog');
+redirects.set(
+  'roses',
+  'https://docs.google.com/forms/d/e/1FAIpQLScY3q8QqTDnqovWg1qMOhDGKjwfbvlnL44PXDsrkp6BPjugFA/viewform?usp=dialog'
+);
 
 export const GET: APIRoute = async ({
   params,
   redirect,
   request,
   clientAddress,
-  locals
+  locals,
 }) => {
   const id = params.short?.toLowerCase();
 

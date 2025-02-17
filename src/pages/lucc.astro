@@ -1,6 +1,7 @@
 ---
 import { CountdownToDate } from '@/components/Countdown';
 import Layout from '@/components/Layout.astro';
+import { buttonVariants } from '@/components/ui/button';
 
 import { Card } from '@/components/ui/cool-card';
 import { Calendar, Clock, MapPin } from 'lucide-react';
@@ -22,6 +23,9 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
           circus convention open to all, no matter your experience or skill
           level!
         </p>
+        <a href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025" class={buttonVariants()}>
+          Buy tickets
+        </a>
       </div>
     </Card>
 
