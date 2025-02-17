@@ -1,4 +1,5 @@
 ---
+import { CountdownToDate } from '@/components/Countdown';
 import Layout from '@/components/Layout.astro';
 
 import { Card } from '@/components/ui/cool-card';
@@ -9,49 +10,6 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
   title="Lancaster Uni Circus Convention (LUCC)"
   description="Our annual circus convention at Lancaster University"
 >
-  <!-- <h1 class="text-3xl font-bold text-center mb-4">
-    Lancaster Uni Circus Convention (LUCC)
-  </h1>
-
-  <p class="text-center max-w-2xl mx-auto mb-6">
-    Back by popular demand, LUMACS is proudly presenting LUCC! A magic and
-    circus convention open to all, no matter your experience or skill level!
-  </p>
-
-  <h2 class="text-2xl font-bold text-center mb-2">Schedule</h2>
-  <div class="mb-4">
-    <h3 class="font-bold">Saturday:</h3>
-    <ul class="list-disc list-inside ml-6">
-      <li>Arrivals (10am)</li>
-      <li>Club combat (2pm - 4pm)</li>
-      <li>Renegade show (7pm - 9pm)</li>
-      <li>Fire Night (9pm onwards)</li>
-      <li>Workshops and Games (throughout day)</li>
-    </ul>
-
-    <h3 class="font-bold mt-4">Sunday:</h3>
-    <ul class="list-disc list-inside ml-6">
-      <li>Workshops and Games (throughout day)</li>
-      <li>Gala Show (3pm - 5pm)</li>
-    </ul>
-  </div>
-
-  <p class="text-center italic mb-4">
-    Subject to change. Follow our Instagram for updates: <a
-      class="underline hover:text-muted-foreground"
-      href="https://www.instagram.com/lu_macs/">@lu_macs</a
-    >
-  </p>
-
-  <h2 class="text-2xl font-bold text-center mb-2">Venue/Timing</h2>
-  <p class="text-center mb-4">
-    <strong>Venue:</strong> Lancaster University, LICA<br />
-    <strong>Type:</strong> Give It A Go, Meeting, Merch, Performing Arts, Society,
-    Sport, Tickets, Workshops & Training<br />
-    <strong>Start Date:</strong> Saturday 26-07-2025 - 10:00<br />
-    <strong>End Date:</strong> Sunday 27-07-2025 - 20:00
-  </p> -->
-
   <div class="flex flex-col items-center gap-4 max-w-5xl text-center mx-4">
     <h1 class="text-4xl font-bold text-center">
       Lancaster Uni Circus Convention (LUCC)
@@ -64,7 +22,6 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
           circus convention open to all, no matter your experience or skill
           level!
         </p>
-        <!-- TODO: countdown -->
       </div>
     </Card>
 
@@ -106,6 +63,11 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
               <Clock className="mr-2" /> Saturday 10:00 - Sunday 20:00
             </li>
           </ul>
+          <CountdownToDate
+            client:load
+            date={new Date(2025, 6, 26, 10)}
+            message="Convention Time!"
+          />
         </div>
       </Card>
     </div>
