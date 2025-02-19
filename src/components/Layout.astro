@@ -13,9 +13,18 @@ type Props = {
   title: string;
   description: string;
   noindex?: boolean;
+  frontmatter?: {
+    title: string;
+    description: string;
+  };
 };
 
-const { title, description, noindex } = Astro.props;
+let { title, description, noindex, frontmatter } = Astro.props;
+
+if (frontmatter) {
+  title = frontmatter.title;
+  description = frontmatter.description;
+}
 ---
 
 <script is:inline>
@@ -164,7 +173,7 @@ const { title, description, noindex } = Astro.props;
         class="underline hover:text-muted-foreground">convention page</a
       >.
     </div>
-    </div>
+
     <Separator />
     <main class="flex flex-col items-center flex-grow relative">
       {/* cool colour bg thing */}
@@ -184,7 +193,15 @@ const { title, description, noindex } = Astro.props;
         </div>
       </div>
       <div class="mb-4"></div>
-      <slot />
+      {
+        frontmatter ? (
+          <div class="prose dark:prose-invert mx-2">
+            <slot />
+          </div>
+        ) : (
+          <slot />
+        )
+      }
       <div class="mt-4"></div>
       {/* cool colour bg thing */}
       <div
