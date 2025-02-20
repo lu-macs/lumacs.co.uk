@@ -1,0 +1,99 @@
+---
+import Layout from '@/components/Layout.astro';
+import { buttonVariants, Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/cool-card';
+
+type Document = {
+  name: string;
+  url: string;
+};
+
+type DocumentSection = {
+  title: string;
+  documents: Document[];
+};
+
+const documents: DocumentSection[] = [
+  {
+    title: 'Constitution',
+    documents: [
+      {
+        name: 'Constitution 2025',
+        url: '/documents/constitution-2025.pdf',
+      },
+    ],
+  },
+  {
+    title: 'Health and Safety',
+    documents: [
+      {
+        name: 'General Health and Safety',
+        url: '/documents/general-health-and-safety.pdf',
+      },
+      {
+        name: 'Fire Health and Safety',
+        url: '/documents/fire-health-and-safety.pdf',
+      },
+      {
+        name: 'Aerial Health and Safety',
+        url: '/documents/aerial-health-and-safety.pdf',
+      },
+    ],
+  },
+  {
+    title: 'Meeting Minutes',
+    documents: [
+      {
+        name: 'Exec 2022-01-06',
+        url: '/documents/minutes-2022-01-06.pdf',
+      },
+      {
+        name: 'General 2022-01-13',
+        url: '/documents/minutes-2022-01-13.pdf',
+      },
+      {
+        name: 'IDK 2022-01-20',
+        url: '/documents/minutes-2022-01-20.pdf',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Documents"
+  description="Constitution, Health and Safety documents and meeting minutes."
+>
+  <div class="flex flex-wrap gap-8 justify-center">
+    {
+      documents.map((section) => (
+        <Card client:load>
+          <section class="flex min-w-96 flex-col gap-4 m-2">
+            <h2 class="text-2xl font-bold">{section.title}</h2>
+            <ul class="flex flex-col gap-4">
+              {section.documents.map((document) => (
+                <li class="flex">
+                  <a
+                    href={document.url}
+                    class={buttonVariants({ variant: 'link' })}
+                    data-astro-prefetch="false"
+                  >
+                    {document.name}
+                  </a>
+                  <div class="flex-grow" />
+                  <a
+                    href={document.url}
+                    class={buttonVariants({ variant: 'outline' })}
+                    data-astro-prefetch="false"
+                  >
+                    Download
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </Card>
+      ))
+    }
+  </div>
+</Layout>
