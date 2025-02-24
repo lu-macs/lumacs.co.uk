@@ -29,6 +29,10 @@ redirects.set(
   'roses',
   'https://docs.google.com/forms/d/e/1FAIpQLScY3q8QqTDnqovWg1qMOhDGKjwfbvlnL44PXDsrkp6BPjugFA/viewform?usp=dialog'
 );
+redirects.set(
+  'showcase', 'https://docs.google.com/forms/d/e/1FAIpQLScY3q8QqTDnqovWg1qMOhDGKjwfbvlnL44PXDsrkp6BPjugFA/viewform?usp=dialog'
+);
+
 
 export const GET: APIRoute = async ({
   params,
