@@ -30,7 +30,7 @@ redirects.set(
   'https://docs.google.com/forms/d/e/1FAIpQLScY3q8QqTDnqovWg1qMOhDGKjwfbvlnL44PXDsrkp6BPjugFA/viewform?usp=dialog'
 );
 redirects.set(
-  'showcase', 'https://docs.google.com/forms/d/e/1FAIpQLScY3q8QqTDnqovWg1qMOhDGKjwfbvlnL44PXDsrkp6BPjugFA/viewform?usp=dialog'
+  'showcase', 'https://docs.google.com/forms/d/e/1FAIpQLSeNUNQehW7FV0HyJQH_pJheMR57Yj06PaoTwEkgheoyCn1BUA/viewform?usp=dialog'
 );
 
 
