@@ -2,6 +2,14 @@
 import { CountdownToDate } from '@/components/Countdown';
 import Layout from '@/components/Layout.astro';
 import { buttonVariants } from '@/components/ui/button';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
 
 import { Card } from '@/components/ui/cool-card';
 import { Calendar, Clock, MapPin } from 'lucide-react';
@@ -35,12 +43,6 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
           />
           Your browser does not support the video tag.
         </video>
-        <a
-          href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025"
-          class={buttonVariants()}
-        >
-          Buy tickets
-        </a>
       </div>
     </Card>
 
@@ -88,7 +90,7 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
             message="Convention Time!"
           />
           <a
-          class={buttonVariants()}
+            class={buttonVariants()}
             target="_blank"
             href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MnVmcTV0NnZkcTRiNGFidXBrZnFsb2Zla3UgbHVtYWdpY2FuZGNpcmN1c0Bt&tmsrc=lumagicandcircus%40gmail.com"
             >Add to Google Calendar</a
@@ -96,6 +98,60 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
         </div>
       </Card>
     </div>
+
+    <div class="w-full">
+      <Card client:load>
+        <div class="m-4 flex flex-col items-center gap-4">
+          <h2 class="text-2xl font-bold mb-4">Event Pricing</h2>
+          <div>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="text-center">Ticket Type</TableHead>
+                  <TableHead className="text-center">Adult</TableHead>
+                  <TableHead className="text-center">Children</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium"
+                    >Full Access (Full Weekend)</TableCell
+                  >
+                  <TableCell className="text-center font-bold">£10</TableCell>
+                  <TableCell className="text-center font-bold">£7</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Saturday</TableCell>
+                  <TableCell className="text-center font-bold">£7</TableCell>
+                  <TableCell className="text-center font-bold">£5</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Sunday</TableCell>
+                  <TableCell className="text-center font-bold">£7</TableCell>
+                  <TableCell className="text-center font-bold">£5</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+
+            <a
+              href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025"
+              class={buttonVariants()}
+            >
+              Buy tickets
+            </a>
+
+            <div class="mt-6 text-sm text-muted-foreground">
+              <p>
+                * Children's tickets are for under 18s, must be accompanied by
+                an adult with an appropriate ticket.
+              </p>
+              <p>* Tickets will be available on the day of the convention.</p>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div>
+
     <a href="/lucc/terms/" class={buttonVariants({ variant: 'link' })}>
       Terms & Conditions
     </a>
