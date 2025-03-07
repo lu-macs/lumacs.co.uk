@@ -39,7 +39,11 @@ export const BrandingAsset = ({
             {['svg', 'png', 'png + bg'].map((extension) => (
               <Button asChild key={extension} variant={'secondary'}>
                 <a
-                  onClick={() => plausible('Branding Asset Download', {props: {name, type, extension}})}
+                  onClick={() =>
+                    (window as any).plausible('Branding Asset Download', {
+                      props: { name, type, extension },
+                    })
+                  }
                   href={`${assetPath}/${type}${
                     extension === 'png + bg' ? '_bg' : ''
                   }.${extension.replace('png + bg', 'png')}`}
