@@ -13,6 +13,36 @@ import {
 
 import { Card } from '@/components/ui/cool-card';
 import { Calendar, Clock, MapPin } from 'lucide-react';
+
+const questions: {
+  question: string;
+  answer: string;
+}[] = [
+  {
+    question: 'Can tickets be bought at the door?',
+    answer: 'Yes!',
+  },
+  {
+    question: 'Will accommodation be provided?',
+    answer:
+      'While we are looking into options for accommodation currently we cannot provide it.',
+  },
+  {
+    question: 'Where can we find the timetable for the convention?',
+    answer:
+      'The timetable is currently being worked on. We will update this page when it is available.',
+  },
+  {
+    question: 'Can I run a workshop or stall?',
+    answer:
+      'Yes! We are currently looking for workshops and stalls. If you are interested in running a workshop or stall, please fill out the applicable form below.',
+  },
+  {
+    question: 'Will there be a separate room for chilling/board games?',
+    answer:
+      'While the layout is still being worked out, we have assigned a room for board games and one for chilling.',
+  },
+];
 ---
 
 <Layout
@@ -51,7 +81,7 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
     >
       <Card client:load>
         <div class="m-4 flex flex-col items-center gap-4">
-          <h2 class="text-2xl font-bold mb-4">Schedule</h2>
+          <h2 class="text-2xl font-bold mb-4">Provisional Schedule</h2>
           <h3 class="text-xl font-semibold mb-2">Saturday:</h3>
           <ul class="list-disc list-inside mb-4">
             <li>Arrivals (10am)</li>
@@ -66,7 +96,10 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
             <li>Gala Show (3pm - 5pm)</li>
           </ul>
           <p class="text-sm italic">
-            Subject to change. Follow our Instagram for updates: @lu_macs
+            Subject to change. Follow our Instagram for updates: <a
+              href="https://www.instagram.com/lu_macs/"
+              class="underline hover:text-muted-foreground">@lu_macs</a
+            >
           </p>
         </div>
       </Card>
@@ -146,15 +179,58 @@ import { Calendar, Clock, MapPin } from 'lucide-react';
                 an adult with an appropriate ticket.
               </p>
               <p>* Tickets will be available on the day of the convention.</p>
-              <p>* Accommodation not provided.</p>
+              <p>* Accommodation is not provided.</p>
             </div>
           </div>
         </div>
       </Card>
     </div>
 
-    <a href="/lucc/terms/" class={buttonVariants({ variant: 'link' })}>
-      Terms & Conditions
-    </a>
+    <div class="w-full">
+      <Card>
+        <div class="m-4 flex flex-col items-center gap-4">
+          <h2 class="text-2xl font-bold">FAQ</h2>
+          <p class="text-sm">
+            More details will be added and questions will be answered as we get
+            closer to the convention, feel free to reach out to us if you have
+            any questions. Email: <a
+              href="mailto:lucc@lumacs.co.uk"
+              class="underline hover:text-muted-foreground">lucc@lumacs.co.uk</a
+            > or Instagram: <a
+              href="https://www.instagram.com/lu_macs"
+              class="underline hover:text-muted-foreground">@lu_macs</a
+            >.
+          </p>
+          {
+            questions.map(({ question, answer }) => (
+              <div class="flex flex-col gap-2">
+                <p class="text-xl font-semibold">{question}</p>
+                <p class="text-sm">{answer}</p>
+              </div>
+            ))
+          }
+        </div>
+      </Card>
+    </div>
+
+    <div
+      class="flex flex-col md:flex-row justify-center lg:gap-4 items-center text-center p-4 md:gap-2"
+    >
+      <a href="/lucc/terms/" class="underline hover:text-muted-foreground">
+        Terms & Conditions
+      </a>
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdtu0-xDeLR6OaSleRhJApHHEN9fVG9XC2qnd-0EvsujariSQ/viewform?usp=dialog"
+        class="underline hover:text-muted-foreground"
+      >
+        Run a Workshop
+      </a>
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLScij5NyCLuLwqUWuAMRt-9iF0wZ0jW6a3cAYqNoDp2Fh60jlQ/viewform?usp=dialog"
+        class="underline hover:text-muted-foreground"
+      >
+        Run a Stall
+      </a>
+    </div>
   </div>
 </Layout>
