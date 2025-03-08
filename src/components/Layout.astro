@@ -77,6 +77,27 @@ if (frontmatter) {
     console.error(e);
   }
 
+  try {
+    const tryPride = (environment = document) => {
+      const isPride = localStorage.getItem('pride') === 'true';
+      const queryPride = new URLSearchParams(window.location.search).get(
+        'pride'
+      );
+      if (isPride || queryPride) {
+        environment.documentElement.classList.add('pride');
+      }
+    };
+    tryPride();
+    window.addEventListener('storage', () => {
+      tryPride();
+    });
+    document.addEventListener('astro:before-swap', (ev) => {
+      tryPride(ev.newDocument);
+    });
+  } catch (e) {
+    console.error(e);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     console.log('Is in iframe?', window.top !== window);
     // Check if we're inside an iframe (and not the top window)
@@ -144,7 +165,7 @@ if (frontmatter) {
     </script>
     <ViewTransitions />
   </head>
-  <body class="flex flex-col h-screen">
+  <body class="flex flex-col h-screen pride">
     <Toaster client:load />
     <CommandSearch client:load />
 

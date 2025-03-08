@@ -76,10 +76,37 @@
 }
 
 @keyframes colorChange {
-  0%, 100% {
+  0%,
+  100% {
     filter: hue-rotate(0deg);
   }
   50% {
     filter: hue-rotate(360deg);
   }
+}
+
+@keyframes rainbow {
+  0% {
+    fill: #e40303;
+  }
+  17% {
+    fill: #ff8c00;
+  }
+  33% {
+    fill: #ffed00;
+  }
+  50% {
+    fill: #008026;
+  }
+  67% {
+    fill: #004cff;
+  }
+  83% {
+    fill: #732982;
+  }
+}
+
+:root.pride .st0,
+:root.pride .st1 {
+  animation: rainbow 12s linear infinite;
 }
