@@ -16,6 +16,7 @@ const useMousePosition = () => {
     };
     updateRect();
     window.addEventListener('resize', updateRect);
+    window.addEventListener('scroll', updateRect);
 
     const handleMouseMove = (e: MouseEvent) => {
       if (!el.current || !boundingRect.current) return;
@@ -36,6 +37,7 @@ const useMousePosition = () => {
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', updateRect);
+      window.removeEventListener('scroll', updateRect);
       if (rafId.current !== null) window.cancelAnimationFrame(rafId.current);
     };
   }, []);
