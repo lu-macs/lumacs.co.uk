@@ -80,9 +80,11 @@ if (frontmatter) {
   try {
     const tryPride = (environment = document) => {
       const isPride = localStorage.getItem('pride') === 'true';
-      const queryPride = new URLSearchParams(window.location.search).get(
+      console.log('isPride', isPride);
+      const queryPride = new URLSearchParams(window.location.search).has(
         'pride'
       );
+      console.log('queryPride', queryPride);
       if (isPride || queryPride) {
         environment.documentElement.classList.add('pride');
       }
