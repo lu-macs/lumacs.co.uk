@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && sed -i.bak \"s|REPLACE_WITH_WEBHOOK|$WEBHOOK|g\" ./src/pages/api/hire.ts && sed -i.bak \"s|replace-with-the-database-url|$DATABASE_URL|g\" ./src/server/db/index.ts && astro build",
+    "build": "astro check && sed -i.bak \"s|REPLACE_WITH_WEBHOOK|$WEBHOOK|g\" ./src/pages/api/hire.ts && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "images": "mkdir -p webp && for img in *.jpg *.png; do tmp=\"webp/tmp_${img%.*}.png\"; convert \"$img\" -resize 250x250 \"$tmp\"; q=100; out=\"webp/${img%.*}.webp\"; while :; do cwebp -q $q \"$tmp\" -o \"$out\" >/dev/null 2>&1 && [ $(stat -c%s \"$out\") -le 15360 ] && break || ((q-=5)); [ $q -le 5 ] && break; done; rm \"$tmp\"; echo \"Converted $img -> $out (q=$q)\"; done"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
