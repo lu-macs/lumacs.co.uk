@@ -119,7 +119,7 @@ if (frontmatter) {
   <head>
     <link
       rel="canonical"
-      href={`${Astro.site}${Astro.url.pathname.slice(1).replace(/\/$/, '')}/`}
+      href={`${Astro.site}${Astro.url.pathname === '/' ? '' : Astro.url.pathname.slice(1).replace(/\/$/, '')}${Astro.url.pathname !== '/' ? '/' : ''}`}
     />
     <meta name="darkreader-lock" />
     <link rel="sitemap" href="/sitemap-index.xml" />
