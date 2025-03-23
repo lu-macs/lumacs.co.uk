@@ -22,8 +22,8 @@ redirects.set(
   'https://docs.google.com/presentation/d/1ZwXCOiEtYBMuc-Rc0N7E_uTkEvyVE5Tz67KDuLHbxH4/edit?usp=sharing'
 );
 redirects.set(
-  'deposit',
-  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lumacs-merch-deposits'
+  'butmerch',
+  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lumacs-merch'
 );
 redirects.set(
   'roses',
