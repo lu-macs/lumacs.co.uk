@@ -32,6 +32,9 @@ redirects.set(
 redirects.set(
   'showcase', 'https://docs.google.com/forms/d/e/1FAIpQLSeNUNQehW7FV0HyJQH_pJheMR57Yj06PaoTwEkgheoyCn1BUA/viewform?usp=dialog'
 );
+redirects.set(
+  'pwb', 'https://www.pwb.ngo/'
+);
 
 
 export const GET: APIRoute = async ({
