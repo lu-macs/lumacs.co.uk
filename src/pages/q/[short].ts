@@ -35,7 +35,9 @@ redirects.set(
 redirects.set(
   'pwb', 'https://www.pwb.ngo/'
 );
-
+redirects.set(
+  'award', 'https://docs.google.com/forms/d/e/1FAIpQLSf1UZJQnRvcoyzKrPdW1D3QVIq3L_Tk8BuKwff0RtzeXLcNng/viewform?usp=header'
+);
 
 export const GET: APIRoute = async ({
   params,
