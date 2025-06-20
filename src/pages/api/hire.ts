@@ -54,7 +54,11 @@ export const POST: APIRoute = async ({ request }) => {
               },
               {
                 name: 'Date of Event',
-                value: data.date.toLocaleDateString(),
+                value: data.date.toLocaleDateString('en-GB', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                }),
               },
               {
                 name: 'Number of circus/magic performers',
