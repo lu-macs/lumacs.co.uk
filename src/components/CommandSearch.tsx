@@ -87,6 +87,9 @@ export const CommandSearch = () => {
           >
             Branding
           </CommandItem>
+          <CommandItem onSelect={() => navigate('/documents/')}>
+            Documents
+          </CommandItem>
           <CommandItem
             onSelect={() => {
               setOpen(false);

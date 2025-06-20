@@ -36,6 +36,10 @@ const locations: {
     name: 'Branding',
     href: '/branding/',
   },
+  {
+    name: 'Documents',
+    href: '/documents/',
+  },
   // {
   //   name: 'Gallery',
   //   href: '/gallery/',
