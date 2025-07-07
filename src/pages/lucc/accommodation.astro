@@ -1,0 +1,122 @@
+---
+import Layout from '@/components/Layout.astro';
+import { Card } from '@/components/ui/cool-card';
+import { buttonVariants } from '@/components/ui/button';
+import { Star } from 'lucide-react';
+
+const accommodations = [
+  {
+    href: 'https://booking.eu.guestline.app/RKINGSARMS/availability?hotel=RKINGSARMS',
+    name: 'The Royal Kings Arms Hotel',
+    price: '2 nights 2 people ~ £80-£100',
+    rating: 3,
+    note: 'Between train station and main bus link to the Uni',
+  },
+  {
+    href: 'https://direct-book.com/properties/crowshoteldirect',
+    name: 'Crows Hotel Lancaster',
+    price: '2 nights 2 people ~ £115',
+    rating: 3,
+    note: 'Between train station and main bus link to the Uni',
+  },
+  {
+    href: 'https://www.conferences.lancs.ac.uk/bedandbreakfast/',
+    name: 'University Guest Rooms',
+    price: '2 nights 2 people ~ £140',
+    rating: 4,
+    note: 'On campus right next to LICA',
+  },
+  {
+    href: 'https://englishlakes.co.uk/hotels/lancaster-house-hotel/',
+    name: 'Lancaster House Hotel',
+    price: '2 nights 2 people ~ £145',
+    rating: 4,
+    note: 'On campus, ~ 10 min walk from LICA',
+  },
+];
+
+const camping = [
+  {
+    name: 'Blossom Tree Camping',
+    details: 'The closest campsite to campus ~ 40 min walk, 4 min drive. Prices and availability available on request',
+  },
+  {
+    details: 'LUMACS are currently investigating farmland camping for the convention. Keep an eye out on our website and socials for confirmation and details, as campus camping is not permitted.',
+  },
+];
+---
+
+<Layout
+  title="LUCC Accommodation & Camping"
+  description="Accommodation and camping options for LUCC 2025"
+>
+  <div class="flex flex-col items-center gap-4 max-w-5xl text-center mx-4">
+    <h1 class="text-4xl font-bold text-center">
+      Accommodation & Camping Guide
+    </h1>
+
+    <a href="/lucc/" class={buttonVariants({ variant: "outline" })}>
+      ← Back to LUCC
+    </a>
+
+    <p class="text-xs text-muted-foreground">
+      All prices were estimated at time of writing for a booking of two
+      adults from the 25th to 27th of July and are subject to change.
+      LUMACS does not endorse any particular company and are solely
+      providing this information to support visitors of LUCC 2025.
+    </p>
+
+    <!-- Two-column layout -->
+    <div class="grid gap-4 md:grid-cols-2 w-full">
+      <!-- Accommodation column -->
+      <Card client:load>
+        <div class="m-4 flex flex-col items-center gap-4">
+          <h2 class="text-2xl font-bold">Accommodation</h2>
+
+          {
+            accommodations.map((a) => (
+              <article class="w-full rounded border border-border p-2 shadow-sm">
+                <h3 class="text-lg font-medium text-foreground">{a.name}</h3>
+                <p class="text-sm text-muted-foreground">{a.price}</p>
+
+                <div class="flex items-center justify-center gap-1 text-yellow-500 my-2" aria-label="{a.rating} star rating">
+                  {Array.from({ length: a.rating }, (_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-current" />
+                  ))}
+                </div>
+
+                <p class="text-sm text-muted-foreground">{a.note}</p>
+                
+                <div class="mt-4">
+                  <a
+                    href={a.href}
+                    target="_blank"
+                    class={buttonVariants({ size: "sm" })}
+                  >
+                    Book Now
+                  </a>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </Card>
+
+      <!-- Camping column -->
+      <Card client:load>
+        <div class="m-4 flex flex-col items-center gap-4">
+          <h2 class="text-2xl font-bold">& Camping</h2>
+
+          {
+            camping.map((c) => (
+              <article class="w-full rounded border border-border p-2 shadow-sm">
+                {c.name && <h3 class="text-lg font-medium text-foreground">{c.name}</h3>}
+                <p class="text-sm text-muted-foreground">{c.details}</p>
+              </article>
+            ))
+          }
+        </div>
+      </Card>
+    </div>
+  </div>
+</Layout>
