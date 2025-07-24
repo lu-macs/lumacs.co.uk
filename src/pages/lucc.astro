@@ -13,6 +13,7 @@ import {
 
 import { Card } from '@/components/ui/cool-card';
 import { Calendar, Clock, MapPin } from 'lucide-react';
+import { LUCCMaps } from '@/components/LUCCMaps';
 
 const questions: {
   question: string;
@@ -79,8 +80,10 @@ const questions: {
           Your browser does not support the video tag.
         </video>
         <p class="text-xl">
-          Check out our <a class="underline hover:text-muted-foreground" href="/lucc/accommodation/">accommodation guide</a> for
-          more information on where to stay.
+          Check out our <a
+            class="underline hover:text-muted-foreground"
+            href="/lucc/accommodation/">accommodation guide</a
+          > for more information on where to stay.
         </p>
       </div>
     </Card>
@@ -218,6 +221,38 @@ const questions: {
               </div>
             ))
           }
+        </div>
+      </Card>
+    </div>
+
+    <div class="w-full">
+      <Card client:load>
+        <LUCCMaps client:load />
+      </Card>
+    </div>
+
+    <div class="w-full">
+      <Card client:load>
+        <div class="flex flex-col items-center gap-4 w-full">
+          <h2 class="text-2xl font-bold my-4">Buses from Campus (Underpass)</h2>
+          <p class="text-sm">
+            Buses from the campus to town and other places, to get back from the
+            convention, see the website <a
+              class="underline hover:text-muted-foreground"
+              href="https://m.lancs.ac.uk/buses/?location=underpass"
+              target="_blank"
+              rel="noopener noreferrer">https://m.lancs.ac.uk/buses/</a
+            >.
+          </p>
+          <iframe
+            src="https://m.lancs.ac.uk/buses/?location=underpass"
+            title="Lancaster University Underpass Bus Departures"
+            width="100%"
+            height="500"
+            style="border: none;"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+            allowfullscreen></iframe>
         </div>
       </Card>
     </div>
