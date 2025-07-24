@@ -13,6 +13,7 @@ import {
 
 import { Card } from '@/components/ui/cool-card';
 import { Calendar, Clock, MapPin } from 'lucide-react';
+import { LUCCMaps } from '@/components/LUCCMaps';
 
 const questions: {
   question: string;
@@ -221,6 +222,12 @@ const questions: {
             ))
           }
         </div>
+      </Card>
+    </div>
+
+    <div class="w-full">
+      <Card client:load>
+        <LUCCMaps client:load />
       </Card>
     </div>
 
