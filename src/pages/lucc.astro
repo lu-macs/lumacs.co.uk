@@ -15,6 +15,8 @@ import { Card } from '@/components/ui/cool-card';
 import { Calendar, Clock, MapPin } from 'lucide-react';
 import { LUCCMaps } from '@/components/LUCCMaps';
 
+const isLink = (str: string) => /^https?:\/\//.test(str);
+
 const questions: {
   question: string;
   answer: string;
@@ -26,7 +28,7 @@ const questions: {
   {
     question: 'Where can we find the timetable for the convention?',
     answer:
-      'The timetable is currently being worked on. We will update this page when it is available.',
+      'https://lucc.lumacs.co.uk/',
   },
   {
     question: 'Can I run a workshop or stall?',
@@ -94,7 +96,7 @@ const questions: {
       <Card client:load>
         <div class="m-4 flex flex-col items-center gap-4">
           <h2 class="text-2xl font-bold">Schedule</h2>
-          <p class="text-sm">
+          <p class="">
             To view our up to date timetable, please visit our <a
               class="underline hover:text-muted-foreground"
               href="https://lucc.lumacs.co.uk/"
@@ -132,7 +134,7 @@ const questions: {
               <Calendar className="mr-2" /> July 26-27, 2025
             </li>
             <li class="flex items-center">
-              <Clock className="mr-2" /> Saturday 10:00 - Sunday 20:00
+              <Clock className="mr-2" /> Saturday 10:00 - 23:00, Sunday 10:00 - 17:00
             </li>
           </ul>
           <CountdownToDate
@@ -223,7 +225,7 @@ const questions: {
             questions.map(({ question, answer }) => (
               <div class="flex flex-col gap-2">
                 <p class="text-xl font-semibold">{question}</p>
-                <p class="text-sm">{answer}</p>
+                <p class="text-sm">{isLink(answer) ? <a class="underline hover:text-muted-foreground" href={answer}>{answer}</a> : answer}</p>
               </div>
             ))
           }
