@@ -98,6 +98,61 @@ export const HireForm = () => {
     );
   };
 
+  // Watch for changes in relevant fields to trigger price breakdown recalculation
+  const {
+    numNormalPerformers,
+    amountOfTimeForNormalPerformers,
+    numFirePerformers,
+    amountOfTimeForFirePerformers,
+    numAerialPerformers,
+    amountOfTimeForAerialPerformers,
+  } = form.watch();
+
+  // Calculate prices based on form values
+  const baseFee = 25;
+  const normalPerformerRate = 25;
+  const firePerformerRate = 35;
+  const aerialPerformerRate = 25;
+  const healthAndSafetyRate = 12.21;
+
+  const calculateBreakdown = () => {
+    const normalPerformersCost =
+      numNormalPerformers *
+      amountOfTimeForNormalPerformers *
+      normalPerformerRate;
+
+    const firePerformersCost =
+      numFirePerformers * amountOfTimeForFirePerformers * firePerformerRate;
+
+    const aerialPerformersCost =
+      numAerialPerformers *
+      amountOfTimeForAerialPerformers *
+      aerialPerformerRate;
+
+    const healthAndSafetyCost =
+      numFirePerformers > 0
+        ? amountOfTimeForFirePerformers * healthAndSafetyRate
+        : 0;
+
+    const totalEstimate =
+      baseFee +
+      normalPerformersCost +
+      firePerformersCost +
+      aerialPerformersCost +
+      healthAndSafetyCost;
+
+    return {
+      baseFee,
+      normalPerformersCost,
+      firePerformersCost,
+      aerialPerformersCost,
+      healthAndSafetyCost,
+      totalEstimate,
+    };
+  };
+
+  const priceBreakdown = calculateBreakdown();
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mx-2">
@@ -297,7 +352,9 @@ export const HireForm = () => {
                       min={0}
                       max={100}
                       value={field.value}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      onChange={(e) => {
+                        field.onChange(Number(e.target.value));
+                      }}
                     />
                   </FormControl>
                   <FormDescription>
@@ -324,7 +381,9 @@ export const HireForm = () => {
                       min={0}
                       max={100}
                       value={field.value}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      onChange={(e) => {
+                        field.onChange(Number(e.target.value));
+                      }}
                     />
                   </FormControl>
                   <FormDescription>
@@ -359,6 +418,10 @@ export const HireForm = () => {
 
         {showFirePerformers && (
           <>
+            <p className="text-sm text-red-500">
+              A health and safety overseer is required for all fire
+              performances. This will be added to your estimated cost.
+            </p>
             <FormField
               control={form.control}
               name="numFirePerformers"
@@ -373,7 +436,9 @@ export const HireForm = () => {
                       min={0}
                       max={100}
                       value={field.value}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      onChange={(e) => {
+                        field.onChange(Number(e.target.value));
+                      }}
                     />
                   </FormControl>
                   <FormDescription>
@@ -399,7 +464,9 @@ export const HireForm = () => {
                       min={0}
                       max={100}
                       value={field.value}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      onChange={(e) => {
+                        field.onChange(Number(e.target.value));
+                      }}
                     />
                   </FormControl>
                   <FormDescription>
@@ -448,7 +515,9 @@ export const HireForm = () => {
                       min={0}
                       max={100}
                       value={field.value}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      onChange={(e) => {
+                        field.onChange(Number(e.target.value));
+                      }}
                     />
                   </FormControl>
                   <FormDescription>
@@ -474,7 +543,9 @@ export const HireForm = () => {
                       min={0}
                       max={100}
                       value={field.value}
-                      onChange={(e) => field.onChange(Number(e.target.value))}
+                      onChange={(e) => {
+                        field.onChange(Number(e.target.value));
+                      }}
                     />
                   </FormControl>
                   <FormDescription>
@@ -488,24 +559,60 @@ export const HireForm = () => {
           </>
         )}
 
-        <div className="flex space-x-2 items-center">
-          <span>
-            Price Estimate (please note this is an estimate and is in no way a
-            guarantee):
-          </span>
-          <span className="font-bold">
-            £
-            {25 +
-              form.getValues('numNormalPerformers') *
-                form.getValues('amountOfTimeForNormalPerformers') *
-                25 +
-              form.getValues('numFirePerformers') *
-                form.getValues('amountOfTimeForFirePerformers') *
-                35 +
-              form.getValues('numAerialPerformers') *
-                form.getValues('amountOfTimeForAerialPerformers') *
-                25}
-          </span>
+        <div className="space-y-2">
+          <h3 className="text-lg font-semibold">Price Estimate Breakdown</h3>
+          <p className="text-sm text-muted-foreground">
+            Please note this is an estimate and is in no way a guarantee.
+          </p>
+          <div className="grid grid-cols-2 gap-y-1">
+            <span>Base Fee:</span>
+            <span className="font-bold text-right">
+              £{priceBreakdown.baseFee.toFixed(2)}
+            </span>
+
+            {priceBreakdown.normalPerformersCost > 0 && (
+              <>
+                <span>Circus/Magic Performers:</span>
+                <span className="font-bold text-right">
+                  £{priceBreakdown.normalPerformersCost.toFixed(2)}
+                </span>
+              </>
+            )}
+
+            {priceBreakdown.firePerformersCost > 0 && (
+              <>
+                <span>Fire Performers:</span>
+                <span className="font-bold text-right">
+                  £{priceBreakdown.firePerformersCost.toFixed(2)}
+                </span>
+              </>
+            )}
+
+            {priceBreakdown.healthAndSafetyCost > 0 && (
+              <>
+                <span>Health & Safety Overseer:</span>
+                <span className="font-bold text-right">
+                  £{priceBreakdown.healthAndSafetyCost.toFixed(2)}
+                </span>
+              </>
+            )}
+
+            {priceBreakdown.aerialPerformersCost > 0 && (
+              <>
+                <span>Aerial Performers:</span>
+                <span className="font-bold text-right">
+                  £{priceBreakdown.aerialPerformersCost.toFixed(2)}
+                </span>
+              </>
+            )}
+
+            <div className="col-span-2 border-t pt-2 mt-2"></div>
+
+            <span className="text-lg font-bold">Total Estimate:</span>
+            <span className="text-lg font-bold text-right">
+              £{priceBreakdown.totalEstimate.toFixed(2)}
+            </span>
+          </div>
         </div>
 
         <Button type="submit">Submit</Button>
