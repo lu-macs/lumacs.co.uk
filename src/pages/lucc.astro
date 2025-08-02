@@ -1,55 +1,7 @@
 ---
-import { CountdownToDate } from "@/components/Countdown";
-import Layout from "@/components/Layout.astro";
-import { buttonVariants } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import Layout from '@/components/Layout.astro';
 
-import { Card } from "@/components/ui/cool-card";
-import { Calendar, Clock, MapPin } from "lucide-react";
-import { LUCCMaps } from "@/components/LUCCMaps";
-
-const isLink = (str: string) => /^https?:\/\//.test(str);
-
-const questions: {
-  question: string;
-  answer: string;
-}[] = [
-  {
-    question: "Can tickets be bought at the door?",
-    answer: "Yes!",
-  },
-  {
-    question: "Where can we find the timetable for the convention?",
-    answer: "https://lucc.lumacs.co.uk/",
-  },
-  {
-    question: "Can I run a workshop or stall?",
-    answer:
-      "Yes! We are currently looking for workshops and stalls. If you are interested in running a workshop or stall, please fill out the applicable form below.",
-  },
-  {
-    question: "Will there be a separate room for chilling/board games?",
-    answer:
-      "While the layout is still being worked out, we have assigned a room for board games and one for chilling.",
-  },
-  {
-    question: "How accessible is the convention?",
-    answer:
-      "The convention is accessible to all, no matter your ability or disability. We'll do our best to accommodate all attendees. Please contact us if you have any specific needs or questions.",
-  },
-  {
-    question: "Are dogs allowed?",
-    answer:
-      "No, unless your dog is a service dog. We will not be allowing dogs at the convention.",
-  },
-];
+import { Card } from '@/components/ui/cool-card';
 ---
 
 <Layout
@@ -71,7 +23,9 @@ const questions: {
             >LUCC 2025 Feedback</a
           >.
         </p>
-        <p class="text-xl">Keep up with this page to find out more about LUCC 2026!</p>
+        <p class="text-xl">
+          Keep up with this page to find out more about LUCC 2026!
+        </p>
       </div>
     </Card>
   </div>

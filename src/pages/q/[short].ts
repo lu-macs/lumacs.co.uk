@@ -30,20 +30,22 @@ redirects.set(
   'https://docs.google.com/forms/d/e/1FAIpQLScY3q8QqTDnqovWg1qMOhDGKjwfbvlnL44PXDsrkp6BPjugFA/viewform?usp=dialog'
 );
 redirects.set(
-  'showcase', 'https://docs.google.com/forms/d/e/1FAIpQLSeNUNQehW7FV0HyJQH_pJheMR57Yj06PaoTwEkgheoyCn1BUA/viewform?usp=dialog'
+  'showcase',
+  'https://docs.google.com/forms/d/e/1FAIpQLSeNUNQehW7FV0HyJQH_pJheMR57Yj06PaoTwEkgheoyCn1BUA/viewform?usp=dialog'
+);
+redirects.set('pwb', 'https://www.pwb.ngo/');
+redirects.set(
+  'award',
+  'https://docs.google.com/forms/d/e/1FAIpQLSf1UZJQnRvcoyzKrPdW1D3QVIq3L_Tk8BuKwff0RtzeXLcNng/viewform?usp=header'
 );
 redirects.set(
-  'pwb', 'https://www.pwb.ngo/'
+  'runworkshop',
+  'https://docs.google.com/forms/d/e/1FAIpQLSdtu0-xDeLR6OaSleRhJApHHEN9fVG9XC2qnd-0EvsujariSQ/viewform?usp=dialog'
 );
 redirects.set(
-  'award', 'https://docs.google.com/forms/d/e/1FAIpQLSf1UZJQnRvcoyzKrPdW1D3QVIq3L_Tk8BuKwff0RtzeXLcNng/viewform?usp=header'
+  'luccresults',
+  'https://docs.google.com/forms/d/e/1FAIpQLSdM8WboAdjUnKGxlRgYJ_6YXDwukI3WFdW7bwkb4ybKfghbNQ/viewform?usp=dialog'
 );
-redirects.set(
-  'runworkshop', 'https://docs.google.com/forms/d/e/1FAIpQLSdtu0-xDeLR6OaSleRhJApHHEN9fVG9XC2qnd-0EvsujariSQ/viewform?usp=dialog'
-);
-redirects.set(
-  'luccresults', 'https://docs.google.com/forms/d/e/1FAIpQLSdM8WboAdjUnKGxlRgYJ_6YXDwukI3WFdW7bwkb4ybKfghbNQ/viewform?usp=dialog'
-)
 
 export const GET: APIRoute = async ({
   params,
