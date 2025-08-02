@@ -41,6 +41,9 @@ redirects.set(
 redirects.set(
   'runworkshop', 'https://docs.google.com/forms/d/e/1FAIpQLSdtu0-xDeLR6OaSleRhJApHHEN9fVG9XC2qnd-0EvsujariSQ/viewform?usp=dialog'
 );
+redirects.set(
+  'luccresults', 'https://docs.google.com/forms/d/e/1FAIpQLSdM8WboAdjUnKGxlRgYJ_6YXDwukI3WFdW7bwkb4ybKfghbNQ/viewform?usp=dialog'
+)
 
 export const GET: APIRoute = async ({
   params,

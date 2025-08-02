@@ -1,7 +1,7 @@
 ---
-import { CountdownToDate } from '@/components/Countdown';
-import Layout from '@/components/Layout.astro';
-import { buttonVariants } from '@/components/ui/button';
+import { CountdownToDate } from "@/components/Countdown";
+import Layout from "@/components/Layout.astro";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -9,11 +9,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from "@/components/ui/table";
 
-import { Card } from '@/components/ui/cool-card';
-import { Calendar, Clock, MapPin } from 'lucide-react';
-import { LUCCMaps } from '@/components/LUCCMaps';
+import { Card } from "@/components/ui/cool-card";
+import { Calendar, Clock, MapPin } from "lucide-react";
+import { LUCCMaps } from "@/components/LUCCMaps";
 
 const isLink = (str: string) => /^https?:\/\//.test(str);
 
@@ -22,33 +22,32 @@ const questions: {
   answer: string;
 }[] = [
   {
-    question: 'Can tickets be bought at the door?',
-    answer: 'Yes!',
+    question: "Can tickets be bought at the door?",
+    answer: "Yes!",
   },
   {
-    question: 'Where can we find the timetable for the convention?',
+    question: "Where can we find the timetable for the convention?",
+    answer: "https://lucc.lumacs.co.uk/",
+  },
+  {
+    question: "Can I run a workshop or stall?",
     answer:
-      'https://lucc.lumacs.co.uk/',
+      "Yes! We are currently looking for workshops and stalls. If you are interested in running a workshop or stall, please fill out the applicable form below.",
   },
   {
-    question: 'Can I run a workshop or stall?',
+    question: "Will there be a separate room for chilling/board games?",
     answer:
-      'Yes! We are currently looking for workshops and stalls. If you are interested in running a workshop or stall, please fill out the applicable form below.',
+      "While the layout is still being worked out, we have assigned a room for board games and one for chilling.",
   },
   {
-    question: 'Will there be a separate room for chilling/board games?',
-    answer:
-      'While the layout is still being worked out, we have assigned a room for board games and one for chilling.',
-  },
-  {
-    question: 'How accessible is the convention?',
+    question: "How accessible is the convention?",
     answer:
       "The convention is accessible to all, no matter your ability or disability. We'll do our best to accommodate all attendees. Please contact us if you have any specific needs or questions.",
   },
   {
-    question: 'Are dogs allowed?',
+    question: "Are dogs allowed?",
     answer:
-      'No, unless your dog is a service dog. We will not be allowing dogs at the convention.',
+      "No, unless your dog is a service dog. We will not be allowing dogs at the convention.",
   },
 ];
 ---
@@ -64,265 +63,16 @@ const questions: {
 
     <Card client:load>
       <div class="m-4 flex flex-col items-center gap-4">
-        <p class="text-xl">
-          Back by popular demand, LUMACS is proudly presenting LUCC! A magic and
-          circus convention open to all, no matter your experience or skill
-          level!
+        <p class="text-xl">Thanks for coming!!!</p>
+        <p>
+          Please fill out our
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdM8WboAdjUnKGxlRgYJ_6YXDwukI3WFdW7bwkb4ybKfghbNQ/viewform?usp=dialog"
+            >LUCC 2025 Feedback</a
+          >.
         </p>
-        <video
-          width="400"
-          height="400"
-          controls
-          poster="/assets/branding/lucc/dark_bg.png"
-        >
-          <source
-            src="https://m7c1r2a0nw.ufs.sh/f/UTm3I5JgKuqro3sMYYOq2Ml6XhEmrS5P9aRQiTeIdbsyGnJB"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        <p class="text-xl">
-          Check out our <a
-            class="underline hover:text-muted-foreground"
-            href="/lucc/accommodation/">accommodation guide</a
-          > for more information on where to stay.
-        </p>
+        <p class="text-xl">Keep up with this page to find out more about LUCC 2026!</p>
       </div>
     </Card>
-
-    <div
-      class="flex flex-col md:flex-row gap-4 w-full justify-around [&>*>*]:flex-1"
-    >
-      <Card client:load>
-        <div class="m-4 flex flex-col items-center gap-4">
-          <h2 class="text-2xl font-bold">Schedule</h2>
-          <p class="">
-            To view our up to date timetable, please visit our <a
-              class="underline hover:text-muted-foreground"
-              href="https://lucc.lumacs.co.uk/"
-              target="_blank">timetable</a
-            >.
-          </p>
-          <h3 class="text-xl font-semibold mb-2">Saturday:</h3>
-          <ul class="list-disc list-inside mb-4">
-            <li>Arrivals (10am)</li>
-            <li>Renegade show (9pm - 11pm)</li>
-            <li>Fire Night (6pm onwards)</li>
-            <li>Workshops (throughout day)</li>
-          </ul>
-          <h3 class="text-xl font-semibold mb-2">Sunday:</h3>
-          <ul class="list-disc list-inside mb-4">
-            <li>Workshops (throughout day)</li>
-            <li>Renegade Show (family friendly) (1pm - 3pm)</li>
-          </ul>
-          <p class="text-sm italic">
-            Subject to change. Follow our Instagram for updates: <a
-              href="https://www.instagram.com/lu_macs/"
-              class="underline hover:text-muted-foreground">@lu_macs</a
-            >
-          </p>
-        </div>
-      </Card>
-      <Card client:load>
-        <div class="m-4 flex flex-col items-center gap-4">
-          <h2 class="text-2xl font-bold mb-4">Venue/Timing</h2>
-          <ul class="space-y-2">
-            <li class="flex items-center">
-              <MapPin className="mr-2" /> Lancaster University, LICA
-            </li>
-            <li class="flex items-center">
-              <Calendar className="mr-2" /> July 26-27, 2025
-            </li>
-            <li class="flex items-center">
-              <Clock className="mr-2" /> Saturday 10:00 - 23:00, Sunday 10:00 - 17:00
-            </li>
-          </ul>
-          <CountdownToDate
-            client:load
-            date={new Date(2025, 6, 26, 10)}
-            message="Convention Time!"
-          />
-          <a
-            class={buttonVariants()}
-            target="_blank"
-            href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MnVmcTV0NnZkcTRiNGFidXBrZnFsb2Zla3UgbHVtYWdpY2FuZGNpcmN1c0Bt&tmsrc=lumagicandcircus%40gmail.com"
-            >Add to Google Calendar</a
-          >
-        </div>
-      </Card>
-    </div>
-
-    <div class="w-full">
-      <Card client:load>
-        <div class="m-4 flex flex-col items-center gap-4">
-          <h2 class="text-2xl font-bold mb-4">Event Pricing</h2>
-          <div>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="text-center">Ticket Type</TableHead>
-                  <TableHead className="text-center">Adult</TableHead>
-                  <TableHead className="text-center">Children</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="font-medium"
-                    >Full Access (Full Weekend)</TableCell
-                  >
-                  <TableCell className="text-center font-bold">£10</TableCell>
-                  <TableCell className="text-center font-bold">£7</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Saturday</TableCell>
-                  <TableCell className="text-center font-bold">£7</TableCell>
-                  <TableCell className="text-center font-bold">£5</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-medium">Sunday</TableCell>
-                  <TableCell className="text-center font-bold">£7</TableCell>
-                  <TableCell className="text-center font-bold">£5</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-
-            <a
-              href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025"
-              class={buttonVariants()}
-            >
-              Buy tickets
-            </a>
-
-            <div class="mt-6 text-sm text-muted-foreground">
-              <p>
-                * Children's tickets are for under 18s, must be accompanied by
-                an adult with an appropriate ticket.
-              </p>
-              <p>* Tickets will be available on the day of the convention.</p>
-              <p>* Accommodation is not provided.</p>
-            </div>
-          </div>
-        </div>
-      </Card>
-    </div>
-
-    <div class="w-full">
-      <Card client:load>
-        <div class="m-4 flex flex-col items-center gap-4">
-          <h2 class="text-2xl font-bold">FAQ</h2>
-          <p class="text-sm">
-            More details will be added and questions will be answered as we get
-            closer to the convention, feel free to reach out to us if you have
-            any questions. Email: <a
-              href="mailto:lucc@lumacs.co.uk"
-              class="underline hover:text-muted-foreground">lucc@lumacs.co.uk</a
-            > or Instagram: <a
-              href="https://www.instagram.com/lu_macs"
-              class="underline hover:text-muted-foreground">@lu_macs</a
-            >.
-          </p>
-          {
-            questions.map(({ question, answer }) => (
-              <div class="flex flex-col gap-2">
-                <p class="text-xl font-semibold">{question}</p>
-                <p class="text-sm">{isLink(answer) ? <a class="underline hover:text-muted-foreground" href={answer}>{answer}</a> : answer}</p>
-              </div>
-            ))
-          }
-        </div>
-      </Card>
-    </div>
-
-    <div class="w-full">
-      <Card client:load>
-        <LUCCMaps client:load />
-      </Card>
-    </div>
-
-    <div class="w-full">
-      <Card client:load>
-        <div class="flex flex-col items-center gap-4 w-full">
-          <h2 class="text-2xl font-bold my-4">Buses from Campus (Underpass)</h2>
-          <p class="text-sm">
-            Buses from the campus to town and other places, to get back from the
-            convention, see the website <a
-              class="underline hover:text-muted-foreground"
-              href="https://m.lancs.ac.uk/buses/?location=underpass"
-              target="_blank"
-              rel="noopener noreferrer">https://m.lancs.ac.uk/buses/</a
-            >.
-          </p>
-          <iframe
-            src="https://m.lancs.ac.uk/buses/?location=underpass"
-            title="Lancaster University Underpass Bus Departures"
-            width="100%"
-            height="500"
-            style="border: none;"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-            allowfullscreen></iframe>
-        </div>
-      </Card>
-    </div>
-
-    <div class="w-full">
-      <Card client:load>
-        <div class="m-4 flex flex-col items-center gap-4">
-          <h2 class="text-2xl font-bold">Get Involved</h2>
-          <a
-            class={buttonVariants()}
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdtu0-xDeLR6OaSleRhJApHHEN9fVG9XC2qnd-0EvsujariSQ/viewform?usp=dialog"
-            target="_blank">Run a Workshop</a
-          >
-          <a
-            class={buttonVariants()}
-            href="https://docs.google.com/forms/d/e/1FAIpQLScij5NyCLuLwqUWuAMRt-9iF0wZ0jW6a3cAYqNoDp2Fh60jlQ/viewform?usp=dialog"
-            target="_blank">Run a Stall</a
-          >
-          <a
-            class={buttonVariants()}
-            href="https://docs.google.com/forms/d/e/1FAIpQLSeHO-Zd1fRBI190V0yzLgcAMivedEC1REvtqK3v_0MMzGIcbQ/viewform?usp=dialog"
-            target="_blank">Perform in Show (Open Stage)</a
-          >
-          <a
-            class={buttonVariants()}
-            href="https://docs.google.com/forms/d/e/1FAIpQLSeDgdRwt5PvSqDxlZxAUgIp_NyJcbqCjBYWOit_o0GHOsgeBA/viewform?usp=dialog"
-            target="_blank">Volunteer</a
-          >
-        </div>
-      </Card>
-    </div>
-
-    <div
-      class="flex flex-col md:flex-row justify-center lg:gap-4 items-center text-center p-4 md:gap-2"
-    >
-      <a href="/lucc/terms/" class="underline hover:text-muted-foreground">
-        Terms & Conditions
-      </a>
-      <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSdtu0-xDeLR6OaSleRhJApHHEN9fVG9XC2qnd-0EvsujariSQ/viewform?usp=dialog"
-        class="underline hover:text-muted-foreground"
-      >
-        Run a Workshop
-      </a>
-      <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLScij5NyCLuLwqUWuAMRt-9iF0wZ0jW6a3cAYqNoDp2Fh60jlQ/viewform?usp=dialog"
-        class="underline hover:text-muted-foreground"
-      >
-        Run a Stall
-      </a>
-      <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSeHO-Zd1fRBI190V0yzLgcAMivedEC1REvtqK3v_0MMzGIcbQ/viewform?usp=dialog"
-        class="underline hover:text-muted-foreground"
-      >
-        Perform in Show
-      </a>
-      <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSeDgdRwt5PvSqDxlZxAUgIp_NyJcbqCjBYWOit_o0GHOsgeBA/viewform?usp=dialog"
-        class="underline hover:text-muted-foreground"
-      >
-        Volunteer
-      </a>
-    </div>
   </div>
 </Layout>
