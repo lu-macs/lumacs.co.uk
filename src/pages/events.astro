@@ -36,7 +36,7 @@ const formatter = new Intl.DateTimeFormat('en-UK', options);
   {
     // sort by start date, if no start date put at end and filter out events that are more than a day in the past
     events.length < 1
-      ? 'We currently have no planned events.'
+      ? 'More events coming soon :)'
       : events
           .sort((a, b) => {
             if (a.startDate && b.startDate) {

@@ -22,7 +22,7 @@ import { Image } from 'astro:assets';
 const items: {
   title: string;
   date: string;
-  description: string;
+  description?: string;
   image?: {
     src: string;
     alt: string;
@@ -49,34 +49,26 @@ const items: {
   {
     title: 'Lancaster University Halloween Juggling Convention',
     date: 'October 30th, 1994',
-    description: 'The second Lancaster University Circus Convention.',
   },
   {
     title: 'Lancaster Juggling Convention',
     date: 'October 28th, 1995',
-    description:
-      'The third Lancaster University Circus Convention, a one day event, mainly for juggling.',
   },
   {
     title: "Lancaster University's Fourth Hallowe'en Juggling Convention",
     date: 'November 2nd, 1996',
-    description: 'The fourth Lancaster University Circus Convention.',
   },
   {
     title: "5th Lancaster Hallowe'en Juggling Convention",
     date: 'October 31st, 1998',
-    description: 'The fifth Lancaster University Circus Convention.',
   },
   {
     title: "6th Lancaster Hallowe'en Juggling Convention",
     date: 'November 10th, 2001',
-    description:
-      'The sixth Lancaster University Circus Convention, a one day event with a variety of circus and juggling activities.',
   },
   {
     title: 'Lancaster Halloween Juggling Convention',
     date: 'November 1st, 2003',
-    description: 'The seventh Lancaster University Circus Convention.',
   },
   {
     title: 'Lancaster University Magic and Illusion Society (LUMIS) founded',
@@ -135,6 +127,17 @@ const items: {
     image: {
       src: '/assets/branding/logoandtext/light_bg.png',
       alt: 'LUMACS new logo 2024',
+      ratio: 1,
+    }
+  },
+  {
+    title: 'LUCC',
+    date: 'July 26th, 2025 to July 27th, 2025',
+    description:
+      'Back and better than ever, the Lancaster University Circus Convention returns to great success.',
+    image: {
+      src: '/assets/branding/lucc/light_bg.png',
+      alt: 'LUCC logo',
       ratio: 1,
     }
   }
@@ -213,7 +216,7 @@ const items: {
                       <>
                         <h2 class="text-xl font-semibold">{title}</h2>
                         <p class="mt-2 text-muted-foreground">{date}</p>
-                        <p class="mt-2">{description}</p>
+                        {description && <p class="mt-2">{description}</p>}
                         {image && (
                           <Image
                             width={200}
