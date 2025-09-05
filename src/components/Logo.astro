@@ -9,7 +9,7 @@ type Props = {
 const { className } = Astro.props;
 ---
 
-<div class={cn('w-64 my-4 fill-primary', className)}>
+<div class={cn('w-64 my-4 fill-foreground', className)}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     id="Layer_6_copy"
@@ -19,7 +19,7 @@ const { className } = Astro.props;
     <defs id="defs1">
       <style id="style1">
         .st0, .st1 {
-          fill: #ed2024; // accent colour
+          fill: hsl(var(--primary)); // accent colour
         }
 
         .st2, .st3 {
@@ -46,7 +46,7 @@ const { className } = Astro.props;
         .st1,
         .st3,
         .st7 {
-          stroke: hsl(var(--primary)); // outline for clubs and balls
+          stroke: hsl(var(--foreground)); // outline for clubs and balls
         }
 
         .st1,
@@ -61,7 +61,7 @@ const { className } = Astro.props;
         }
 
         .st6 {
-          stroke: hsl(var(--primary)); // card outline
+          stroke: hsl(var(--foreground)); // card outline
         }
       </style>
     </defs>

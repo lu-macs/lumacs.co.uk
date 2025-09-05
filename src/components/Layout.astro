@@ -167,11 +167,11 @@ if (frontmatter) {
     </script>
     <ViewTransitions />
   </head>
-  <body class="flex flex-col h-screen pride">
+  <body class="flex flex-col h-screen pride antialiased">
     <Toaster client:load />
     <CommandSearch client:load />
 
-    <header class="p-4 flex items-center gap-4" transition:name="nav">
+    <header class="p-2 flex items-center gap-4" transition:name="nav">
       <HamburgerMenu client:load />
       <a
         href="/"

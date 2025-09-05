@@ -4,6 +4,7 @@ import Logo from '@/components/Logo.astro';
 import { buttonVariants } from '@/components/ui/button';
 import { Card, Separator } from '@/components/ui/cool-card';
 import { Image } from 'astro:assets';
+import { ArrowRight, Instagram, Users, Star } from 'lucide-react';
 
 const displays: {
   title: string;
@@ -112,6 +113,12 @@ const sessions: {
     location: 'Check the discord for the location',
     activities: ['Bring your own equipment', 'Run on demand'],
   },
+  {
+    day: 'Socials',
+    time: '???',
+    location: '???',
+    activities: ['???'],
+  }
 ];
 ---
 
@@ -119,29 +126,83 @@ const sessions: {
   title="Home"
   description="Lancaster University Magic and Circus Society (LUMACS) is a fun and friendly society, welcoming people of all abilities. No experience is required to join! We host regular practice sessions and we offer the opportunity to take part in paid performances both on and off campus."
 >
-  <Logo className="right-click-branding" />
-
-  <p class="text-center max-w-2xl mx-2">
-    We are a fun and friendly society, welcoming people of all abilities. <span
-      class="font-bold">No experience is required</span
-    > to join! We host regular practice sessions and we offer the opportunity to
-    take part in paid performances both on and off campus.
+  <p class="text-4xl sm:text-6xl font-bold text-center">
+    Lancaster University
+    <br />
+    <span class="text-primary">Magic</span> and
+    <span class="text-primary">Circus</span> Society
   </p>
 
-  <div class="flex gap-8 md:gap-32 lg:gap-64 mt-4">
-    <a
-      class={buttonVariants({})}
-      href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
-    >
-      Join Us
-    </a>
-    <a class={buttonVariants({})} href="/hire/"> Hire Us </a>
-    <a class={buttonVariants({})} href="https://www.instagram.com/lu_macs/">
-      Instagram
-    </a>
+  <Logo className="right-click-branding" />
+
+  <p
+    class="text-center max-w-5xl mx-2 text-xl sm:text-3xl text-muted-foreground"
+  >
+    We are a fun and friendly society, welcoming people of all abilities.
+    <br />
+    <span class="font-bold text-foreground">No experience is required</span>
+    <br />
+    to join! We host regular practice sessions and we offer the opportunity to take
+    part in paid performances both on and off campus.
+  </p>
+
+  <div class="flex gap-6 flex-col items-center my-6 sm:my-8">
+    <div class="flex gap-4">
+      <a
+        class={buttonVariants({
+          size: 'lg',
+          class: 'text-lg sm:text-xl font-extrabold',
+        })}
+        href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
+      >
+        Join Us
+        <ArrowRight className="inline-block size-4 sm:size-5 ml-2" />
+      </a>
+      <a
+        class={buttonVariants({
+          variant: 'outline',
+          size: 'lg',
+          class: 'text-lg sm:text-xl font-extrabold',
+        })}
+        href="/events/"
+      >
+        Explore Activities
+      </a>
+    </div>
+    <div class="flex gap-4">
+      <a
+        class={buttonVariants({
+          variant: 'secondary',
+          size: 'lg',
+          class: 'text-lg sm:text-xl font-extrabold',
+        })}
+        href="/hire/"
+      >
+        <Users className="inline-block size-4 sm:size-5 mr-2" />
+        Hire Us for Events
+      </a>
+      <a
+        class={buttonVariants({
+          variant: 'outline',
+          size: 'lg',
+          class: 'text-lg sm:text-xl font-extrabold',
+        })}
+        href="https://www.instagram.com/lu_macs/"
+      >
+        <Instagram className="inline-block size-4 sm:size-5 mr-2" />
+        Follow Us
+      </a>
+    </div>
   </div>
 
-  <div class="grid grid-cols-2 gap-4 md:grid-cols-4 m-4">
+  <h2 class="font-bold text-3xl sm:text-5xl">What We Do</h2>
+  <p
+    class="text-center max-w-5xl mx-2 text-xl sm:text-3xl text-muted-foreground"
+  >
+    From juggling to aerial arts, fire performance to magic tricks - discover
+    the amazing world of circus arts
+  </p>
+  <div class="grid grid-cols-2 gap-4 md:grid-cols-4 m-4 mb-10">
     {
       displays.map(({ img, title }) => (
         <Card client:load>
@@ -149,62 +210,86 @@ const sessions: {
             <Image
               src={img.split('.')[0] + '.webp'}
               alt={`lumacs members displaying ${title}`}
-              class="size-40 lg:size-48 rounded"
+              class="size-40 md:size-48 lg:size-64 rounded"
               width={192}
               height={192}
               loading="eager"
             />
             <Separator client:load className="my-2" />
-            <span class="font-bold">{title}</span>
+            <span class="font-bold text-2xl">{title}</span>
           </div>
         </Card>
       ))
     }
   </div>
-  <h2 class="font-bold text-4xl">Memberships</h2>
-  <!-- TODO: need to center -->
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 m-2">
-  {
-    memberships.map(({ name, price, mostPopular, benefits }) => (
-      <Card client:load>
-        <a
-          href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
-          class="flex flex-col items-center p-4 w-64 h-72 hover:cursor-pointer"
-        >
-          <span class="font-bold text-xl">{name} Membership</span>
-          <span class="text-muted-foreground">£{price}/year</span>
-          {mostPopular && <span class="text-sm font-bold">Most Popular</span>}
-          <Separator client:load className="my-2" />
-          <ul class="flex flex-col gap-2 w-full">
-            {benefits.map((benefit) => (
-              <li class="list-disc list-inside">{benefit}</li>
-            ))}
-          </ul>
-        </a>
-      </Card>
-    ))
-  }
-</Layout>
 
-<h2 class="font-bold text-4xl mt-4">Sessions</h2>
-<div class="grid grid-cols-1 gap-4 md:grid-cols-3 m-2">
-  {
-    sessions.map(({ day, time, activities, location }) => (
-      <Card client:load>
-        <div class="flex flex-col items-center p-4 w-64 h-96">
-          <span class="font-bold text-xl">{day}</span>
-          <span>{time}</span>
-          <span class="text-sm text-center text-muted-foreground">
-            {location}
-          </span>
-          <Separator client:load className="my-2" />
-          <ul class="flex flex-col gap-2 w-full">
-            {activities.map((activity) => (
-              <li class="list-disc list-inside">{activity}</li>
-            ))}
-          </ul>
-        </div>
-      </Card>
-    ))
-  }
-</div>
+  <h2 class="font-bold text-3xl sm:text-5xl">Our Memberships</h2>
+  <p
+    class="text-center max-w-5xl mx-2 text-xl sm:text-3xl text-muted-foreground"
+  >
+    We offer a variety of memberships to suit your interests
+  </p>
+  <div class="flex flex-col sm:flex-row gap-4 m-2 mt-3">
+    {
+      memberships.map(({ name, price, mostPopular, benefits }) => (
+        <Card client:load>
+          <div
+            class="flex flex-col items-center p-4 sm:w-64 w-full h-72"
+          >
+            {mostPopular && (
+              <div class="absolute -top-3 bg-primary border-border border-2 px-1 rounded-sm flex items-center justify-center gap-1">
+                <Star className="inline-block size-4" />
+                Most Popular
+              </div>
+            )}
+            <span class="font-bold text-xl">{name} Membership</span>
+            <span class="text-muted-foreground font-bold text-2xl">
+              <span class="text-primary">£{price}</span><!-- -->{price !== 0 && '/year'}
+            </span>
+            <Separator client:load className="my-2" />
+            <ul class='flex flex-col gap-2 w-full list-none p-0'>
+              {benefits.map((benefit) => (
+                <li class='before:content-["✓"] before:inline-block before:mr-2 before:text-primary before:font-extrabold'>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+            <div class="flex-grow" />
+            <a 
+            href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
+            class={buttonVariants({ variant: mostPopular ? 'default' : 'outline' })}
+            >Join Now</a>
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+
+  <h2 class="font-bold text-3xl sm:text-5xl mt-10">When We Meet</h2>
+  <p
+    class="text-center max-w-5xl mx-2 text-xl sm:text-3xl text-muted-foreground"
+  >
+    Regular sessions are held throughout the week
+  </p>
+  <div class="flex flex-col sm:flex-row gap-4 m-2 mt-3">
+    {
+      sessions.map(({ day, time, activities, location }) => (
+        <Card client:load>
+          <div class="flex flex-col items-center p-4 w-64 h-96">
+            <span class="font-bold text-xl">{day}</span>
+            <span>{time}</span>
+            <span class="text-sm text-center text-muted-foreground">
+              {location}
+            </span>
+            <Separator client:load className="my-2" />
+            <ul class="flex flex-col gap-2 w-full">
+              {activities.map((activity) => (
+                <li class="list-disc list-inside">{activity}</li>
+              ))}
+            </ul>
+          </div>
+        </Card>
+      ))
+    }
+  </div>
+</Layout>
