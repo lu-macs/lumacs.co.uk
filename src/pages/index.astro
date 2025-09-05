@@ -162,49 +162,49 @@ const sessions: {
     }
   </div>
   <h2 class="font-bold text-4xl">Memberships</h2>
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-4 m-2">
-    {
-      memberships.map(({ name, price, mostPopular, benefits }) => (
-        <Card client:load>
-          <a
-            href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
-            class="flex flex-col items-center p-4 w-64 h-72 hover:cursor-pointer"
-          >
-            <span class="font-bold text-xl">{name} Membership</span>
-            <span class="text-muted-foreground">£{price}/year</span>
-            {mostPopular && <span class="text-sm font-bold">Most Popular</span>}
-            <Separator client:load className="my-2" />
-            <ul class="flex flex-col gap-2 w-full">
-              {benefits.map((benefit) => (
-                <li class="list-disc list-inside">{benefit}</li>
-              ))}
-            </ul>
-          </a>
-        </Card>
-      ))
-    }
-  </div>
-
-  <h2 class="font-bold text-4xl mt-4">Sessions</h2>
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 m-2">
-    {
-      sessions.map(({ day, time, activities, location }) => (
-        <Card client:load>
-          <div class="flex flex-col items-center p-4 w-64 h-96">
-            <span class="font-bold text-xl">{day}</span>
-            <span>{time}</span>
-            <span class="text-sm text-center text-muted-foreground">
-              {location}
-            </span>
-            <Separator client:load className="my-2" />
-            <ul class="flex flex-col gap-2 w-full">
-              {activities.map((activity) => (
-                <li class="list-disc list-inside">{activity}</li>
-              ))}
-            </ul>
-          </div>
-        </Card>
-      ))
-    }
-  </div>
+  <!-- TODO: need to center -->
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 m-2">
+  {
+    memberships.map(({ name, price, mostPopular, benefits }) => (
+      <Card client:load>
+        <a
+          href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
+          class="flex flex-col items-center p-4 w-64 h-72 hover:cursor-pointer"
+        >
+          <span class="font-bold text-xl">{name} Membership</span>
+          <span class="text-muted-foreground">£{price}/year</span>
+          {mostPopular && <span class="text-sm font-bold">Most Popular</span>}
+          <Separator client:load className="my-2" />
+          <ul class="flex flex-col gap-2 w-full">
+            {benefits.map((benefit) => (
+              <li class="list-disc list-inside">{benefit}</li>
+            ))}
+          </ul>
+        </a>
+      </Card>
+    ))
+  }
 </Layout>
+
+<h2 class="font-bold text-4xl mt-4">Sessions</h2>
+<div class="grid grid-cols-1 gap-4 md:grid-cols-3 m-2">
+  {
+    sessions.map(({ day, time, activities, location }) => (
+      <Card client:load>
+        <div class="flex flex-col items-center p-4 w-64 h-96">
+          <span class="font-bold text-xl">{day}</span>
+          <span>{time}</span>
+          <span class="text-sm text-center text-muted-foreground">
+            {location}
+          </span>
+          <Separator client:load className="my-2" />
+          <ul class="flex flex-col gap-2 w-full">
+            {activities.map((activity) => (
+              <li class="list-disc list-inside">{activity}</li>
+            ))}
+          </ul>
+        </div>
+      </Card>
+    ))
+  }
+</div>
