@@ -81,7 +81,7 @@ const documents: DocumentSection[] = [
     {
       documents.map((section) => (
         <Card client:load>
-          <section class="flex w-80 flex-col gap-4 m-2 md:w-96">
+          <section class="flex w-80 flex-col gap-4 p-2 md:w-96">
             <h2 class="text-2xl font-bold">{section.title}</h2>
             <ul class="flex flex-col gap-4">
               {section.documents.map((document) => (

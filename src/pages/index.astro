@@ -83,9 +83,11 @@ const memberships: {
   },
 ];
 
+const generalBenefits: string[] = ['Access to our socials and events', 'Vote in our elections', 'Have fun!'];
+
 const sessions: {
   day: string;
-  time: string;
+  time?: string;
   location: string;
   activities: string[];
 }[] = [
@@ -103,8 +105,7 @@ const sessions: {
       'Aerial Hoop',
       'Aerial Silks',
       'Come in time for warmup',
-      'Bring/come in sports clothing',
-      'Something that covers at least the back and the knees',
+      'Bring/come in sports clothing and something that covers at least the back and the knees',
     ],
   },
   {
@@ -114,10 +115,9 @@ const sessions: {
     activities: ['Bring your own equipment', 'Run on demand'],
   },
   {
-    day: 'Socials',
-    time: '???',
-    location: '???',
-    activities: ['???'],
+    day: 'Socials and Events',
+    location: 'Check Instagram and Discord for the details',
+    activities: ['Fun socials every ~2 weeks', 'Showcases hopefully termly'],
   }
 ];
 ---
@@ -164,7 +164,7 @@ const sessions: {
           size: 'lg',
           class: 'text-lg sm:text-xl font-extrabold',
         })}
-        href="/events/"
+        href="#when-we-meet"
       >
         Explore Activities
       </a>
@@ -216,7 +216,7 @@ const sessions: {
               loading="eager"
             />
             <Separator client:load className="my-2" />
-            <span class="font-bold text-2xl">{title}</span>
+            <span class="font-bold text-2xl text-center">{title}</span>
           </div>
         </Card>
       ))
@@ -234,21 +234,21 @@ const sessions: {
       memberships.map(({ name, price, mostPopular, benefits }) => (
         <Card client:load>
           <div
-            class="flex flex-col items-center p-4 sm:w-64 w-full h-72"
+            class="flex flex-col items-center p-4 md:w-72 w-full md:h-96 h-80"
           >
             {mostPopular && (
-              <div class="absolute -top-3 bg-primary border-border border-2 px-1 rounded-sm flex items-center justify-center gap-1">
+              <div class="absolute -top-3 bg-primary px-1 rounded-sm flex items-center justify-center gap-1">
                 <Star className="inline-block size-4" />
                 Most Popular
               </div>
             )}
-            <span class="font-bold text-xl">{name} Membership</span>
-            <span class="text-muted-foreground font-bold text-2xl">
+            <span class="font-bold text-2xl">{name} Membership</span>
+            <span class="text-muted-foreground font-bold text-4xl">
               <span class="text-primary">£{price}</span><!-- -->{price !== 0 && '/year'}
             </span>
             <Separator client:load className="my-2" />
             <ul class='flex flex-col gap-2 w-full list-none p-0'>
-              {benefits.map((benefit) => (
+              {[...benefits, ...(price !== 0 ? generalBenefits : [])].map((benefit) => (
                 <li class='before:content-["✓"] before:inline-block before:mr-2 before:text-primary before:font-extrabold'>
                   {benefit}
                 </li>
@@ -257,15 +257,15 @@ const sessions: {
             <div class="flex-grow" />
             <a 
             href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join"
-            class={buttonVariants({ variant: mostPopular ? 'default' : 'outline' })}
-            >Join Now</a>
+            class={buttonVariants({ variant: mostPopular ? 'default' : 'outline', class: 'w-full text-lg font-bold' })}
+            >Join {price !== 0 ? 'Now' : 'For Free'}</a>
           </div>
         </Card>
       ))
     }
   </div>
 
-  <h2 class="font-bold text-3xl sm:text-5xl mt-10">When We Meet</h2>
+  <h2 class="font-bold text-3xl sm:text-5xl mt-10" id="when-we-meet">When We Meet</h2>
   <p
     class="text-center max-w-5xl mx-2 text-xl sm:text-3xl text-muted-foreground"
   >
@@ -275,18 +275,24 @@ const sessions: {
     {
       sessions.map(({ day, time, activities, location }) => (
         <Card client:load>
-          <div class="flex flex-col items-center p-4 w-64 h-96">
+          <div class="flex flex-col items-center p-4 w-full md:w-72 h-72">
             <span class="font-bold text-xl">{day}</span>
-            <span>{time}</span>
+            {time && <span>{time}</span>}
             <span class="text-sm text-center text-muted-foreground">
               {location}
             </span>
             <Separator client:load className="my-2" />
-            <ul class="flex flex-col gap-2 w-full">
-              {activities.map((activity) => (
-                <li class="list-disc list-inside">{activity}</li>
-              ))}
-            </ul>
+              <ul class="flex flex-col gap-2 w-full">
+                {activities.map((activity) => (
+                  <li class="list-disc list-inside">{activity}</li>
+                ))}
+              </ul>
+              {
+                day === 'Socials and Events' && (
+                  <div class="flex-grow" />
+                  <a href="/events/" class={buttonVariants({ variant: 'outline', class: 'w-full text-lg font-bold' })}>Explore Events</a>
+                )
+              }
           </div>
         </Card>
       ))

@@ -261,7 +261,7 @@ export const Card = ({ children }: { children: React.ReactNode }) => {
       ref={ref}
       className="relative isolate overflow-visible rounded-lg bg-border bg-radial-gradient-border p-[2px]"
     >
-      <div className="relative rounded-[calc(theme(borderRadius.lg)-2px)] bg-background bg-radial-gradient-content">
+      <div className="relative rounded-[calc(theme(borderRadius.lg)-2px)] bg-background bg-radial-gradient-content h-full">
         {children}
       </div>
     </div>
