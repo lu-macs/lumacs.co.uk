@@ -138,12 +138,9 @@ const sessions: {
   <p
     class="text-center max-w-5xl mx-2 text-xl sm:text-3xl text-muted-foreground"
   >
-    We are a fun and friendly society, welcoming people of all abilities.
-    <br />
-    <span class="font-bold text-foreground">No experience is required</span>
-    <br />
-    to join! We host regular practice sessions and we offer the opportunity to take
-    part in paid performances both on and off campus.
+    Try juggling, aerial, fire and more, <span class="font-bold text-foreground">no experience required</span>. Not sure? Get our <span class="font-bold text-foreground">2 week</span> trial membership for <span class="font-bold text-primary">free</span>! 
+    We are fun and friendly society welcoming <span class="font-bold text-foreground">people of all abilities</span>. We host circus sessions Monday and Wednesday
+    with aerial on Sunday; with socials run biweekly.
   </p>
 
   <div class="flex gap-6 flex-col items-center my-6 sm:my-8">
@@ -277,7 +274,7 @@ const sessions: {
         <Card client:load>
           <div class="flex flex-col items-center p-4 w-full md:w-72 h-72">
             <span class="font-bold text-xl">{day}</span>
-            {time && <span>{time}</span>}
+            {time && <span class="text-primary">{time}</span>}
             <span class="text-sm text-center text-muted-foreground">
               {location}
             </span>
@@ -290,7 +287,7 @@ const sessions: {
               {
                 day === 'Socials and Events' && (
                   <div class="flex-grow" />
-                  <a href="/events/" class={buttonVariants({ variant: 'outline', class: 'w-full text-lg font-bold' })}>Explore Events</a>
+                  <a href="/events/" class={buttonVariants({ variant: 'default', class: 'w-full text-lg font-bold' })}>Explore Events</a>
                 )
               }
           </div>
