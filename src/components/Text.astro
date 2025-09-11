@@ -8,15 +8,15 @@ type Props = {
 const { className } = Astro.props;
 ---
 
-<div class={cn('w-48 fill-primary', className)}>
+<div class={cn('w-48 fill-foreground', className)}>
   <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 595.28 148">
     <defs>
       <style>
         .text-text {
-          fill: hsl(var(--text-primary)); //#231f20; //text
+          fill: hsl(var(--text-foreground)); //#231f20; //text
         }
         .text-red-border {
-          stroke: #ed1c24; //#ed1c24; // red border
+          stroke: hsl(var(--primary)); //#ed1c24; // red border
           stroke-width: 2px;
         }
         .text-red-border, .text-bg-outline {
@@ -24,7 +24,7 @@ const { className } = Astro.props;
           stroke-miterlimit: 10;
         }
         .text-bg-outline {
-          stroke: hsl(var(--primary)); //#231f20; //outline
+          stroke: hsl(var(--foreground)); //#231f20; //outline
           stroke-width: 3px;
         }
       </style>
