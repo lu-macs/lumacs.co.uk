@@ -28,7 +28,7 @@ const displays: {
   },
   {
     title: 'Plates',
-    img: '/display/plates.jpeg',
+    img: '/display/plates2.jpeg',
   },
   {
     title: 'POI',
@@ -127,7 +127,7 @@ const sessions: {
   document.addEventListener('DOMContentLoaded', function () {
     if (window.location.search.includes('charley')) {
       document.querySelectorAll('img[src^="/display/"]').forEach(img => {
-        img.src = '/display/plates.webp';
+        img.src = '/display/plates2.webp';
       });
       // replace all the titles with charley
       document.querySelectorAll('.font-bold.text-2xl.text-center').forEach(title => {
