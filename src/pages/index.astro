@@ -122,6 +122,21 @@ const sessions: {
 ];
 ---
 
+<script is:inline>
+  // replace all display images with plates if ?charley is present
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.location.search.includes('charley')) {
+      document.querySelectorAll('img[src^="/display/"]').forEach(img => {
+        img.src = '/display/plates.webp';
+      });
+      // replace all the titles with charley
+      document.querySelectorAll('.font-bold.text-2xl.text-center').forEach(title => {
+        title.innerHTML = 'Charley';
+      });
+    }
+  });
+</script>
+
 <Layout
   title="Home"
   description="Lancaster University Magic and Circus Society (LUMACS) is a fun and friendly society, welcoming people of all abilities. No experience is required to join! We host regular practice sessions and we offer the opportunity to take part in paid performances both on and off campus."
