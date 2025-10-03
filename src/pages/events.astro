@@ -10,12 +10,40 @@ const events: {
   location: string;
   startDate?: Date;
   endDate?: Date;
-}[] = [];
+}[] = [
+  {
+    name: 'Ball Making Social',
+    description: 'We\'re making juggling balls, come along and make your own!',
+    location: 'Slaidburn house',
+    startDate: new Date('2025-10-03T09:00:00.000Z'),
+    endDate: new Date('2025-10-03T11:00:00.000Z'),
+  }, {
+    name: 'Pendle Carnival',
+    description: 'We\'re performing and jamming at Pendle College\'s Autumn Carnival',
+    location: 'Pendle College',
+    startDate: new Date('2025-10-03T11:00:00.000Z'),
+    endDate: new Date('2025-10-03T18:00:00.000Z'),
+  }, {
+    name: 'Gaming Social',
+    description: 'Come along to play games, eat some free food & meet your fellow clowns!',
+    location: 'BLN SR2',
+    startDate: new Date('2025-10-04T16:00:00.000Z'),
+    endDate: new Date('2025-10-04T19:00:00.000Z'),
+  }, {
+    name: 'Picnic & Jamming',
+    description: 'Join us for snacks and to try out our equipment! (Weather permitting)',
+    location: 'County Square',
+    startDate: new Date('2025-10-05T11:00:00.000Z'),
+    endDate: new Date('2025-10-05T16:00:00.000Z'),
+  }
+].filter(({ endDate }) => {
+  const now = new Date();
+  return (!endDate || endDate > now);
+});
 
 const options = {
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
+  month: 'long',
+  day: 'numeric',
   hour: '2-digit',
   minute: '2-digit',
   hour12: false, // Use 24-hour format
