@@ -6,35 +6,51 @@ import { Separator } from '@/components/ui/separator';
 
 const events: {
   name: string;
-  description: string;
-  location: string;
+  description?: string;
+  location?: string;
   startDate?: Date;
   endDate?: Date;
 }[] = [
   {
-    name: 'Ball Making Social',
-    description: 'We\'re making juggling balls, come along and make your own!',
-    location: 'Slaidburn house',
-    startDate: new Date('2025-10-03T09:00:00.000Z'),
-    endDate: new Date('2025-10-03T11:00:00.000Z'),
+    name: 'Arts & Crafts',
+    description: 'Bring your own arts and crafts.',
+    location: 'BLN SR18',
+    startDate: new Date('2025-10-25T17:00:00.000Z'),
+    endDate: new Date('2025-10-25T19:00:00.000Z'),
   }, {
-    name: 'Pendle Carnival',
-    description: 'We\'re performing and jamming at Pendle College\'s Autumn Carnival',
-    location: 'Pendle College',
-    startDate: new Date('2025-10-03T11:00:00.000Z'),
-    endDate: new Date('2025-10-03T18:00:00.000Z'),
-  }, {
-    name: 'Gaming Social',
-    description: 'Come along to play games, eat some free food & meet your fellow clowns!',
+    name: 'Halloween Party',
     location: 'BLN SR2',
-    startDate: new Date('2025-10-04T16:00:00.000Z'),
-    endDate: new Date('2025-10-04T19:00:00.000Z'),
+    startDate: new Date('2025-10-31T18:00:00.000Z'),
+    endDate: new Date('2025-10-31T21:00:00.000Z'),
   }, {
-    name: 'Picnic & Jamming',
-    description: 'Join us for snacks and to try out our equipment! (Weather permitting)',
-    location: 'County Square',
-    startDate: new Date('2025-10-05T11:00:00.000Z'),
-    endDate: new Date('2025-10-05T16:00:00.000Z'),
+    name: 'Karaoke',
+    description: 'Karaoke night.',
+    location: 'MFL',
+    startDate: new Date('2025-11-08T18:00:00.000Z'),
+    endDate: new Date('2025-11-08T20:00:00.000Z'),
+  }, {
+    name: 'Presentation',
+    description: 'Give a presentation on a topic of your choice!',
+    location: 'Cavendish Colloquium',
+    startDate: new Date('2025-11-22T18:00:00.000Z'),
+    endDate: new Date('2025-11-22T20:00:00.000Z'),
+  }, {
+    name: 'Christmas Party/Winter Ball',
+    description: 'End-of-term Christmas party / winter ball.',
+    location: 'BLN SR20',
+    startDate: new Date('2025-11-29T18:00:00.000Z'),
+    endDate: new Date('2025-11-29T22:00:00.000Z'),
+  }, {
+    name: 'Christmas Dinner',
+    description: 'Details to be confirmed.',
+    startDate: new Date('2025-12-12T00:00:00.000Z'),
+    endDate: new Date('2025-12-12T00:00:00.000Z'),
+  }, {
+    name: 'Internal Showcase',
+    description: 'A chance for our members to showcase their skills with a performance',
+    location: 'MFL',
+    startDate: new Date('2025-12-08T18:00:00.000Z'),
+    endDate: new Date('2025-12-08T20:00:00.000Z'),
   }
 ].filter(({ endDate }) => {
   const now = new Date();
