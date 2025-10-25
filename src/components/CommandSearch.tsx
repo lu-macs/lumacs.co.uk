@@ -101,10 +101,26 @@ export const CommandSearch = () => {
           <CommandItem
             onSelect={() => {
               setOpen(false);
+              navigate('/terms/');
+            }}
+          >
+            Membership Terms & Conditions
+          </CommandItem>
+          <CommandItem
+            onSelect={() => {
+              setOpen(false);
               navigate('/admin/');
             }}
           >
             Admin
+          </CommandItem>
+          <CommandItem
+            onSelect={() => {
+              setOpen(false);
+              navigate('/qr/');
+            }}
+          >
+            QR
           </CommandItem>
         </CommandGroup>
       </CommandList>
