@@ -16,6 +16,8 @@ These terms and conditions are subject to change at any time. The latest version
 
 All non-trial memberships give members access to all socials and events; the ability to vote in our elections and the ability to borrow equipment inline with our equipment borrowing guidelines. All memberships are valid for the entirety of the academic year that they are purchased in.
 
+The Lifetime Membership gives access to all LUMACS sessions. It is only available and valid for the individuals listed as current honorary members in the society constitution.
+
 The Full Access Membership gives access to all LUMACS sessions.
 
 The Weekday Session Membership gives access only to weekday sessions (Monday and Wednesday) involving teaching and practice of magic/circus skills, access to equipment and preparation for performances.
