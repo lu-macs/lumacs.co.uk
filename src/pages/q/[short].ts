@@ -51,6 +51,7 @@ redirects.set(
   'https://docs.google.com/forms/d/e/1FAIpQLSdYFd1yxZ18GXzLu2W99uWkiPU8OYVtQtf3hbN0PkRMMXJVHg/viewform'
 );
 redirects.set('meal', 'https://docs.google.com/forms/d/e/1FAIpQLSdw5J2eegK8v-ciNPGtifwfmWlPsZVAafwOSIXia5u8aWxQEQ/viewform?usp=publish-editor');
+redirects.set('gm', 'https://docs.google.com/presentation/d/1yd7CRsH35zW_TMDPEbIZcvojnF9rccY66eWpOyT5xxM/edit');
 
 export const GET: APIRoute = async ({
   params,
