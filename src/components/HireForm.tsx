@@ -191,7 +191,7 @@ export const HireForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Preferred Method of Contact</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} defaultValue={field.value ?? ''}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a method" />
