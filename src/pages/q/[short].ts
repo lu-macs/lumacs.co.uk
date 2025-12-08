@@ -53,6 +53,7 @@ redirects.set(
 redirects.set('meal', 'https://docs.google.com/forms/d/e/1FAIpQLSdw5J2eegK8v-ciNPGtifwfmWlPsZVAafwOSIXia5u8aWxQEQ/viewform?usp=publish-editor');
 redirects.set('gm', 'https://docs.google.com/presentation/d/1yd7CRsH35zW_TMDPEbIZcvojnF9rccY66eWpOyT5xxM/edit');
 redirects.set('ellie', 'https://drive.google.com/file/d/1M55-Sa9uqEfy4p84fKd_FHaHQx2ScUWT/view?usp=sharing');
+redirects.set('ell', 'https://docs.google.com/presentation/d/1V_UiR2Su1aA599mtSXfbz8mgI2wkt8NjC14Q0axwaSM/edit?usp=sharing');
 
 export const GET: APIRoute = async ({
   params,
