@@ -17,44 +17,51 @@ const events: {
     location: 'BLN SR18',
     startDate: new Date('2025-10-25T17:00:00.000Z'),
     endDate: new Date('2025-10-25T19:00:00.000Z'),
-  }, {
+  },
+  {
     name: 'Halloween Party',
     location: 'BLN SR2',
     startDate: new Date('2025-10-31T18:00:00.000Z'),
     endDate: new Date('2025-10-31T21:00:00.000Z'),
-  }, {
+  },
+  {
     name: 'Karaoke',
     description: 'Karaoke night.',
     location: 'MFL',
     startDate: new Date('2025-11-08T18:00:00.000Z'),
     endDate: new Date('2025-11-08T20:00:00.000Z'),
-  }, {
+  },
+  {
     name: 'Presentation',
     description: 'Give a presentation on a topic of your choice!',
     location: 'Cavendish Colloquium',
     startDate: new Date('2025-11-22T18:00:00.000Z'),
     endDate: new Date('2025-11-22T20:00:00.000Z'),
-  }, {
+  },
+  {
     name: 'Christmas Party/Winter Ball',
     description: 'End-of-term Christmas party / winter ball.',
     location: 'BLN SR20',
     startDate: new Date('2025-11-29T18:00:00.000Z'),
     endDate: new Date('2025-11-29T22:00:00.000Z'),
-  }, {
+  },
+  {
     name: 'Christmas Dinner',
     description: 'Details to be confirmed.',
     startDate: new Date('2025-12-12T00:00:00.000Z'),
     endDate: new Date('2025-12-12T00:00:00.000Z'),
-  }, {
+  },
+  {
     name: 'Internal Showcase',
-    description: 'A chance for our members to showcase their skills with a performance',
+    description:
+      'A chance for our members to showcase their skills with a performance',
     location: 'MFL',
     startDate: new Date('2025-12-08T18:00:00.000Z'),
     endDate: new Date('2025-12-08T20:00:00.000Z'),
-  }
+  },
 ].filter(({ endDate }) => {
   const now = new Date();
-  return (!endDate || endDate > now);
+  return !endDate || endDate > now;
 });
 
 const options = {
@@ -71,7 +78,7 @@ const formatter = new Intl.DateTimeFormat('en-UK', options);
 
 <Layout
   title="Events"
-  description="Events for the Lancaster University Magic and Circus Society (LUMACS)"
+  description="Events for the Lancaster University Magic, Aerial & Circus Society (LUMACS)"
 >
   <h1 class="text-2xl font-bold text-center">Events</h1>
   <p class="text-center max-w-2xl">

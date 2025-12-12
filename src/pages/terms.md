@@ -1,7 +1,7 @@
 ---
 layout: ../components/Layout.astro
 title: Terms & Conditions - LUMACS
-description: Terms & Conditions for the Lancaster University Magic and Circus Society
+description: Terms & Conditions for the Lancaster University Magic, Aerial & Circus Society
 ---
 
 # Terms & Conditions

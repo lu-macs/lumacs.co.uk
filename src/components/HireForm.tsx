@@ -176,7 +176,10 @@ export const HireForm = () => {
             <FormItem>
               <FormLabel>Company / Organisation</FormLabel>
               <FormControl>
-                <Input placeholder="Magic and Circus Society" {...field} />
+                <Input
+                  placeholder="Magic, Aerial and Circus Society"
+                  {...field}
+                />
               </FormControl>
               <FormDescription>
                 Name of the hiring company or organisation.
@@ -191,7 +194,10 @@ export const HireForm = () => {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Preferred Method of Contact</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value ?? ''}>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value ?? ''}
+              >
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue placeholder="Select a method" />

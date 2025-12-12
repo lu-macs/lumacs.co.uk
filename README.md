@@ -1,6 +1,6 @@
-# Lancaster University Magic and Circus Society Website [lumacs.co.uk](https://lumacs.co.uk)
+# Lancaster University Magic, Aerial and Circus Society Website [lumacs.co.uk](https://lumacs.co.uk)
 
-This is the source code for the website of Lancaster University Magic and Circus Society.
+This is the source code for the website of Lancaster University Magic, Aerial and Circus Society.
 
 ## License
 
