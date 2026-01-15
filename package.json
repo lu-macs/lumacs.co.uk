@@ -14,7 +14,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^11.2.0",
     "@astrojs/react": "^3.6.2",
-    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/sitemap": "^3.6.1",
     "@astrojs/tailwind": "^5.1.2",
     "@hookform/resolvers": "^3.4.2",
     "@radix-ui/react-checkbox": "^1.0.4",
