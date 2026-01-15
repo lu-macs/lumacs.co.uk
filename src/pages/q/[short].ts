@@ -55,7 +55,7 @@ redirects.set('gm', 'https://docs.google.com/presentation/d/1yd7CRsH35zW_TMDPEbI
 redirects.set('ellie', 'https://drive.google.com/file/d/1M55-Sa9uqEfy4p84fKd_FHaHQx2ScUWT/view?usp=sharing');
 redirects.set('ell', 'https://docs.google.com/presentation/d/1V_UiR2Su1aA599mtSXfbz8mgI2wkt8NjC14Q0axwaSM/edit?usp=sharing');
 redirects.set('bjc', 'https://docs.google.com/forms/d/e/1FAIpQLSfnPAVL2jyuCkQ-RXz8eVmrZkfya8MOuDbSn5z7JfCfwKlNmQ/viewform');
-redirects.set('socialsurver', 'https://docs.google.com/forms/d/e/1FAIpQLSddK1dHqQ_NX34c2D8kKXDFMQyEgcf6aCVzpK4_bh-ERDEAsA/viewform');
+redirects.set('socialsurvey', 'https://docs.google.com/forms/d/e/1FAIpQLSddK1dHqQ_NX34c2D8kKXDFMQyEgcf6aCVzpK4_bh-ERDEAsA/viewform');
 
 export const GET: APIRoute = async ({
   params,
