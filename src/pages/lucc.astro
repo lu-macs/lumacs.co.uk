@@ -1,7 +1,46 @@
 ---
+import { CountdownToDate } from '@/components/Countdown';
 import Layout from '@/components/Layout.astro';
-
+import { buttonVariants } from '@/components/ui/button';
 import { Card } from '@/components/ui/cool-card';
+import { Calendar, MapPin } from 'lucide-react';
+// import { LUCCMaps } from '@/components/LUCCMaps';
+
+const isLink = (str: string) => /^https?:\/\//.test(str);
+
+const questions: {
+  question: string;
+  answer: string;
+}[] = [
+  {
+    question: 'How much will pricing be?',
+    answer: 'Pricing is currently in the works, we are looking at price around £20 for a full access ticket.',
+  },
+  {
+    question: 'Where will tickets be available?',
+    answer: 'We will be selling tickets online and at the door.',
+  },
+  {
+    question: 'Can I run a workshop or stall?',
+    answer:
+      'Yes! We are currently looking for workshops and stalls. If you are interested in running a workshop or stall, please contact us at lucc@lumacs.co.uk.',
+  },
+  {
+    question: 'How accessible is the convention?',
+    answer:
+      "The convention is accessible to all, no matter your ability or disability. We'll do our best to accommodate all attendees. Please contact us if you have any specific needs or questions.",
+  },
+  {
+    question: 'Are dogs allowed?',
+    answer:
+      'No, unless your dog is a service dog. We will not be allowing dogs at the convention.',
+  },
+  {
+    question: 'Where should I stay?',
+    answer:
+      'We are currently looking into accommodation options for attendees. More information will be available soon!',
+  },
+];
 ---
 
 <Layout
@@ -10,17 +49,116 @@ import { Card } from '@/components/ui/cool-card';
 >
   <div class="flex flex-col items-center gap-4 max-w-5xl text-center mx-4">
     <h1 class="text-4xl font-bold text-center">
-      Lancaster Uni Circus Convention (LUCC) 2026
+      Lancaster Uni Circus Convention (LUCC)
     </h1>
 
     <Card client:load>
       <div class="p-4 flex flex-col items-center gap-4">
-        <p class="text-xl">Provisional Dates:</p>
-        <p>
-          Saturday, July 4th, 2026 to Sunday, July 5th, 2026
+        <p class="text-xl">
+          After the success of LUCC 2025, we are proudly presenting Lancaster University Circus
+          Convention (LUCC) 2026!
         </p>
-        <p class="text-sm">More info coming soon!</p>
       </div>
     </Card>
+
+    <div
+      class="flex flex-col md:flex-row gap-4 w-full justify-around [&>*>*]:flex-1"
+    >
+      <Card client:load>
+        <div class="p-4 flex flex-col items-center gap-4">
+          <h2 class="text-2xl font-bold">Venue/Timing</h2>
+          <ul class="space-y-2">
+            <li class="flex items-center">
+              <MapPin className="mr-2" /> Lancaster University, LICA
+            </li>
+            <li class="flex items-center">
+              <Calendar className="mr-2" /> July 4th - 5th, 2026
+            </li>
+            <!-- <li class="flex items-center">
+              <Clock className="mr-2" /> Saturday 10:00 - 23:00, Sunday 10:00 - 17:00
+            </li> -->
+          </ul>
+          <CountdownToDate
+            client:load
+            date={new Date(2026, 6, 4, 0)}
+            message="Convention Time!"
+          />
+          <a
+            class={buttonVariants()}
+            target="_blank"
+            href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MnVmcTV0NnZkcTRiNGFidXBrZnFsb2Zla3UgbHVtYWdpY2FuZGNpcmN1c0Bt&tmsrc=lumagicandcircus%40gmail.com"
+            >Add to Google Calendar</a
+          >
+        </div>
+      </Card>
+    </div>
+<!-- 
+    <div class="w-full">
+      <Card client:load>
+        <div class="p-4 flex flex-col items-center gap-4">
+          <h2 class="text-2xl font-bold mb-4">Event Pricing</h2>
+          <div>
+            <p class="text-lg text-muted-foreground mb-4">
+              Pricing is currently in the works. Check back soon!
+            </p>
+
+            <div class="mt-6 text-sm text-muted-foreground">
+              <p>
+                * Children's tickets are for under 18s, must be accompanied by
+                an adult with an appropriate ticket.
+              </p>
+              <p>* Tickets will be available on the day of the convention.</p>
+              <p>* Accommodation is not provided.</p>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </div> -->
+
+    <div class="w-full">
+      <Card client:load>
+        <div class="p-4 flex flex-col items-center gap-4">
+          <h2 class="text-2xl font-bold">FAQ</h2>
+          <p class="text-sm">
+            More details will be added and questions will be answered as we get
+            closer to the convention, feel free to reach out to us if you have
+            any questions. Email: <a
+              href="mailto:lucc@lumacs.co.uk"
+              class="underline hover:text-muted-foreground">lucc@lumacs.co.uk</a
+            > or Instagram: <a
+              href="https://www.instagram.com/lu_macs"
+              class="underline hover:text-muted-foreground">@lu_macs</a
+            >.
+          </p>
+          {
+            questions.map(({ question, answer }) => (
+              <div class="flex flex-col gap-2">
+                <p class="text-xl font-semibold">{question}</p>
+                <p class="text-sm">
+                  {isLink(answer) ? (
+                    <a
+                      class="underline hover:text-muted-foreground"
+                      href={answer}
+                    >
+                      {answer}
+                    </a>
+                  ) : (
+                    answer
+                  )}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </Card>
+    </div>
+
+    <div
+      class="flex flex-col md:flex-row justify-center lg:gap-4 items-center text-center p-4 md:gap-2"
+    >
+      <a href="/lucc/terms/" class="underline hover:text-muted-foreground">
+        Terms & Conditions
+      </a>
+    </div>
   </div>
 </Layout>
