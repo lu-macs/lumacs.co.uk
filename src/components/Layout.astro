@@ -66,7 +66,7 @@ if (frontmatter) {
     document.addEventListener('astro:before-swap', (ev) => {
       const isDark = getThemePreference() === 'dark';
       ev.newDocument.documentElement.classList[isDark ? 'add' : 'remove'](
-        'dark'
+        'dark',
       );
     });
 
@@ -82,7 +82,7 @@ if (frontmatter) {
       const isPride = localStorage.getItem('pride') === 'true';
       console.log('isPride', isPride);
       const queryPride = new URLSearchParams(window.location.search).has(
-        'pride'
+        'pride',
       );
       console.log('queryPride', queryPride);
       if (isPride || queryPride) {
@@ -131,10 +131,10 @@ if (frontmatter) {
     });
   };
   document.addEventListener('DOMContentLoaded', () =>
-    injectRightClickBranding(document)
+    injectRightClickBranding(document),
   );
   document.addEventListener('astro:before-swap', (ev) =>
-    injectRightClickBranding(ev.newDocument)
+    injectRightClickBranding(ev.newDocument),
   );
 </script>
 
@@ -183,6 +183,17 @@ if (frontmatter) {
       <div class="flex-grow"></div>
       <ModeToggle client:load />
     </header>
+
+    <Separator />
+    <div class="p-2 bg-yellow-400 dark:text-secondary text-xl">
+      Lancaster Uni Circus Convention (LUCC) coming 4 - 5th July, Follow <a
+        href="https://www.instagram.com/lu_macs/"
+        class="underline hover:text-muted-foreground">our instagram</a
+      > for updates. For more information, see our <a
+        href="/lucc/"
+        class="underline hover:text-muted-foreground">convention page</a
+      >.
+    </div>
 
     <Separator />
     <main class="flex flex-col items-center flex-grow relative">
