@@ -1,7 +1,7 @@
 ---
 layout: ../../components/Layout.astro
 title: Terms & Conditions - LUCC
-description: Terms & Conditions for the Lancaster University Circus Convention 2025
+description: Terms & Conditions for the Lancaster University Circus Convention 2026
 ---
 
 # Terms & Conditions
@@ -12,7 +12,7 @@ If you have any questions or concerns, please contact us at: [lucc@lumacs.co.uk]
 
 ## 1. General
 
-1. The Lancaster University Circus Convention 2025 (The Convention) is organised by dedicated volunteers from the Lancaster University Magic and Circus Society (LUMACS). By attending, you agree to follow any reasonable requests from the organisers and adhere to the following terms and conditions.
+1. The Lancaster University Circus Convention 2026 (The Convention) is organised by dedicated volunteers from the Lancaster University Magic and Circus Society (LUMACS). By attending, you agree to follow any reasonable requests from the organisers and adhere to the following terms and conditions.
 
 2. The organisers are not liable for the safety of any participants engaging in activities at the convention. All circus equipment must be used according to the guidelines provided by the organisers and workshop leaders. Participants are responsible for their own safety and must be mindful of the safety of others. The organisers will not be held accountable for any accidents that occur while using equipment or participating in activities.
 
@@ -40,7 +40,7 @@ If you have any questions or concerns, please contact us at: [lucc@lumacs.co.uk]
 
 1. All attendees, regardless of age, must register for The Convention.
 
-2. Tickets are available exclusively from the organisers and can be purchased online at: [https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025](https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2025).
+2. Tickets are available exclusively from the organisers and can be purchased online at: [https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2026](https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2026).
 
 3. Young attendees under 18 years old must be accompanied by a ticket-holding adult. There must be one adult for every three children.
 
