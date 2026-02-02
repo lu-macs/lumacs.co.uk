@@ -13,14 +13,6 @@ const questions: {
   answer: string;
 }[] = [
   {
-    question: 'How much will pricing be?',
-    answer: 'Pricing is currently in the works, we are looking at price around £20 for a full access ticket.',
-  },
-  {
-    question: 'Where will tickets be available?',
-    answer: 'We will be selling tickets online and at the door.',
-  },
-  {
     question: 'Can I run a workshop or stall?',
     answer:
       'Yes! We are currently looking for workshops and stalls. If you are interested in running a workshop or stall, please contact us at lucc@lumacs.co.uk.',
@@ -55,9 +47,17 @@ const questions: {
     <Card client:load>
       <div class="p-4 flex flex-col items-center gap-4">
         <p class="text-xl">
-          After the success of LUCC 2025, we are proudly presenting Lancaster University Circus
-          Convention (LUCC) 2026!
+          After the success of LUCC 2025, we are proudly presenting Lancaster
+          University Circus Convention (LUCC) 2026!
         </p>
+        <div class="flex flex-col space-2 text-sm">
+          <p>
+            <span class="font-semibold">Saturday:</span> Workshops, Games, Fire
+          </p>
+          <p>
+            <span class="font-semibold">Sunday:</span> Informal skill share & Jamming
+          </p>
+        </div>
       </div>
     </Card>
 
@@ -92,28 +92,66 @@ const questions: {
         </div>
       </Card>
     </div>
-<!-- 
+
     <div class="w-full">
       <Card client:load>
         <div class="p-4 flex flex-col items-center gap-4">
-          <h2 class="text-2xl font-bold mb-4">Event Pricing</h2>
-          <div>
-            <p class="text-lg text-muted-foreground mb-4">
-              Pricing is currently in the works. Check back soon!
-            </p>
-
-            <div class="mt-6 text-sm text-muted-foreground">
-              <p>
-                * Children's tickets are for under 18s, must be accompanied by
-                an adult with an appropriate ticket.
-              </p>
-              <p>* Tickets will be available on the day of the convention.</p>
-              <p>* Accommodation is not provided.</p>
+          <h2 class="text-3xl font-bold">Pricing</h2>
+          <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div
+              class="flex flex-col items-center justify-center p-2 bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg border border-primary/20"
+            >
+              <p class="font-semibold text-lg">Ages 14+</p>
+              <div class="text-center">
+                <p class="text-3xl text-primary font-medium">£17 online</p>
+                <p class="text-xs text-muted-foreground">(until July 3rd)</p>
+                <p class="text-xl font-bold mt-2">£20</p>
+                <p class="text-xs text-muted-foreground">at the door</p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col items-center justify-center p-2 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-lg border border-secondary"
+            >
+              <p class="font-semibold text-lg">Ages 5-14</p>
+              <div class="text-center">
+                <p class="text-3xl font-bold">£10</p>
+                <p class="text-xs text-muted-foreground">
+                  online & at the door
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex flex-col items-center justify-center p-2 bg-gradient-to-br from-accent/10 to-accent/5 rounded-lg border border-accent"
+            >
+              <p class="font-semibold text-lg">Ages 0-4</p>
+              <div class="text-center">
+                <p class="text-3xl font-bold">Free</p>
+                <p class="text-xs text-muted-foreground">
+                  online & at the door
+                </p>
+              </div>
             </div>
           </div>
+          <div class="w-full p-4 bg-muted rounded-lg border border-border">
+            <p class="text-sm font-medium text-center mb-2">Workshop Runners</p>
+            <p class="text-sm text-muted-foreground text-center">
+              Everyone running a workshop will receive a free ticket.
+              Interested? Contact us at <a
+                href="mailto:lucc@lumacs.co.uk"
+                class="font-medium underline hover:text-foreground"
+                >lucc@lumacs.co.uk</a
+              >
+            </p>
+          </div>
+          <a
+            target="_blank"
+            class={buttonVariants()}
+            href="https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2026"
+            >Get Your Tickets!</a
+          >
         </div>
       </Card>
-    </div> -->
+    </div>
 
     <div class="w-full">
       <Card client:load>
