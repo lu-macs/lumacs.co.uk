@@ -19,43 +19,22 @@ redirects.set('testing', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 redirects.set('lucc', 'https://lumacs.co.uk/lucc/');
 redirects.set(
   'merch',
-  'https://docs.google.com/presentation/d/1ZwXCOiEtYBMuc-Rc0N7E_uTkEvyVE5Tz67KDuLHbxH4/edit?usp=sharing'
+  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lumacs-merch'
 );
 redirects.set(
   'buymerch',
   'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lumacs-merch'
 );
 redirects.set(
-  'roses',
-  'https://docs.google.com/forms/d/e/1FAIpQLScY3q8QqTDnqovWg1qMOhDGKjwfbvlnL44PXDsrkp6BPjugFA/viewform?usp=dialog'
-);
-redirects.set(
   'showcase',
-  'https://docs.google.com/forms/d/e/1FAIpQLSeNUNQehW7FV0HyJQH_pJheMR57Yj06PaoTwEkgheoyCn1BUA/viewform?usp=dialog'
+  'https://docs.google.com/forms/d/e/1FAIpQLSddqNdPALZdCaRTmKoQM8Hm47nCLqEm3M4Q20Y3oXgnD4w5iQ/viewform'
 );
 redirects.set('pwb', 'https://www.pwb.ngo/');
 redirects.set(
-  'award',
-  'https://docs.google.com/forms/d/e/1FAIpQLSf1UZJQnRvcoyzKrPdW1D3QVIq3L_Tk8BuKwff0RtzeXLcNng/viewform?usp=header'
-);
-redirects.set(
-  'runworkshop',
-  'https://docs.google.com/forms/d/e/1FAIpQLSdtu0-xDeLR6OaSleRhJApHHEN9fVG9XC2qnd-0EvsujariSQ/viewform?usp=dialog'
-);
-redirects.set(
-  'luccresults',
-  'https://docs.google.com/forms/d/e/1FAIpQLSdM8WboAdjUnKGxlRgYJ_6YXDwukI3WFdW7bwkb4ybKfghbNQ/viewform?usp=dialog'
-);
-redirects.set(
   'giveitagocase',
-  'https://docs.google.com/forms/d/e/1FAIpQLSdYFd1yxZ18GXzLu2W99uWkiPU8OYVtQtf3hbN0PkRMMXJVHg/viewform'
+  'https://docs.google.com/forms/d/e/1FAIpQLSddqNdPALZdCaRTmKoQM8Hm47nCLqEm3M4Q20Y3oXgnD4w5iQ/viewform'
 );
-redirects.set('meal', 'https://docs.google.com/forms/d/e/1FAIpQLSdw5J2eegK8v-ciNPGtifwfmWlPsZVAafwOSIXia5u8aWxQEQ/viewform?usp=publish-editor');
-redirects.set('gm', 'https://docs.google.com/presentation/d/1yd7CRsH35zW_TMDPEbIZcvojnF9rccY66eWpOyT5xxM/edit');
-redirects.set('ellie', 'https://drive.google.com/file/d/1M55-Sa9uqEfy4p84fKd_FHaHQx2ScUWT/view?usp=sharing');
-redirects.set('ell', 'https://docs.google.com/presentation/d/1V_UiR2Su1aA599mtSXfbz8mgI2wkt8NjC14Q0axwaSM/edit?usp=sharing');
 redirects.set('bjc', 'https://docs.google.com/forms/d/e/1FAIpQLSfnPAVL2jyuCkQ-RXz8eVmrZkfya8MOuDbSn5z7JfCfwKlNmQ/viewform');
-redirects.set('socialsurvey', 'https://docs.google.com/forms/d/e/1FAIpQLSddK1dHqQ_NX34c2D8kKXDFMQyEgcf6aCVzpK4_bh-ERDEAsA/viewform');
 
 export const GET: APIRoute = async ({
   params,
