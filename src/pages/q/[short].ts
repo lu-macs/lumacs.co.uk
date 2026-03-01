@@ -35,6 +35,7 @@ redirects.set(
   'https://docs.google.com/forms/d/e/1FAIpQLSddqNdPALZdCaRTmKoQM8Hm47nCLqEm3M4Q20Y3oXgnD4w5iQ/viewform'
 );
 redirects.set('bjc', 'https://docs.google.com/forms/d/e/1FAIpQLSfnPAVL2jyuCkQ-RXz8eVmrZkfya8MOuDbSn5z7JfCfwKlNmQ/viewform');
+redirects.set('exec', 'https://docs.google.com/forms/d/e/1FAIpQLSf17YLfbDSxsxQhQc9_EI8sQgclWecD5mR3xmKykH0FMH1dlw/viewform');
 
 export const GET: APIRoute = async ({
   params,
