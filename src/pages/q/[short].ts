@@ -9,7 +9,7 @@ redirects.set(
 redirects.set('insta', 'https://www.instagram.com/lu_macs/');
 redirects.set(
   'join',
-  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs'
+  'https://lancastersu.co.uk/groups/magic-aerial-circus-society-lumacs'
 );
 redirects.set(
   'christmas',
@@ -19,11 +19,11 @@ redirects.set('testing', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 redirects.set('lucc', 'https://lumacs.co.uk/lucc/');
 redirects.set(
   'merch',
-  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lumacs-merch'
+  'https://lancastersu.co.uk/groups/magic-aerial-circus-society-lumacs/events/lumacs-merch'
 );
 redirects.set(
   'buymerch',
-  'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lumacs-merch'
+  'https://lancastersu.co.uk/groups/magic-aerial-circus-society-lumacs/events/lumacs-merch'
 );
 redirects.set(
   'showcase',
