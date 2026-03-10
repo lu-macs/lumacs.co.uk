@@ -40,7 +40,7 @@ If you have any questions or concerns, please contact us at: [lucc@lumacs.co.uk]
 
 1. All attendees, regardless of age, must register for The Convention.
 
-2. Tickets are available exclusively from the organisers and can be purchased online at: [https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2026](https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/events/lucc-lumacs-convention-2026).
+2. Tickets are available exclusively from the organisers and can be purchased online at: [https://lancastersu.co.uk/groups/magic-aerial-circus-society-lumacs/events/lucc-lumacs-convention-2026](https://lancastersu.co.uk/groups/magic-aerial-circus-society-lumacs/events/lucc-lumacs-convention-2026).
 
 3. Young attendees under 18 years old must be accompanied by a ticket-holding adult. There must be one adult for every three children.
 

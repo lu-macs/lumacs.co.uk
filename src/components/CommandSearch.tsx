@@ -41,7 +41,7 @@ export const CommandSearch = () => {
             onSelect={() => {
               setOpen(false);
               navigate(
-                'https://lancastersu.co.uk/groups/magic-and-circus-society-lumacs/join'
+                'https://lancastersu.co.uk/groups/magic-aerial-circus-society-lumacs/join',
               );
             }}
           >
