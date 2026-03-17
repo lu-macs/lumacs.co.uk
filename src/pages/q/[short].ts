@@ -36,6 +36,7 @@ redirects.set(
 );
 redirects.set('bjc', 'https://docs.google.com/forms/d/e/1FAIpQLSfnPAVL2jyuCkQ-RXz8eVmrZkfya8MOuDbSn5z7JfCfwKlNmQ/viewform');
 redirects.set('exec', 'https://docs.google.com/forms/d/e/1FAIpQLSf17YLfbDSxsxQhQc9_EI8sQgclWecD5mR3xmKykH0FMH1dlw/viewform');
+redirects.set('stateoflumacs', 'https://docs.google.com/forms/d/e/1FAIpQLSdqNPm8_AQu61GMwcJ3p7owUx4fKdkx5IqfYBp4dDblD06bQA/viewform');
 
 export const GET: APIRoute = async ({
   params,
