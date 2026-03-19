@@ -12,7 +12,7 @@ const useCountdown = (targetDate: Date) => {
       setCountDown(countDownDate - new Date().getTime());
     }, 100);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval as any);
   }, [countDownDate]);
 
   return getReturnValues(countDown);
