@@ -16,6 +16,6 @@ export default defineConfig({
   integrations: [tailwind({
     applyBaseStyles: false,
   }), react(), sitemap()],
-  output: 'static',
+  output: 'hybrid',
   adapter: cloudflare(),
 });
