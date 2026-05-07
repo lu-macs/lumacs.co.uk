@@ -27,13 +27,9 @@ redirects.set(
 );
 redirects.set(
   'showcase',
-  'https://docs.google.com/forms/d/e/1FAIpQLSddqNdPALZdCaRTmKoQM8Hm47nCLqEm3M4Q20Y3oXgnD4w5iQ/viewform'
+  'https://docs.google.com/forms/d/e/1FAIpQLSdLIHQc5a4IRV4iT2vbw0alU-_zKhUSdqKMLhGcWimT0jPUgw/viewform'
 );
 redirects.set('pwb', 'https://www.pwb.ngo/');
-redirects.set(
-  'giveitagocase',
-  'https://docs.google.com/forms/d/e/1FAIpQLSddqNdPALZdCaRTmKoQM8Hm47nCLqEm3M4Q20Y3oXgnD4w5iQ/viewform'
-);
 redirects.set('bjc', 'https://docs.google.com/forms/d/e/1FAIpQLSfnPAVL2jyuCkQ-RXz8eVmrZkfya8MOuDbSn5z7JfCfwKlNmQ/viewform');
 redirects.set('exec', 'https://docs.google.com/forms/d/e/1FAIpQLSf17YLfbDSxsxQhQc9_EI8sQgclWecD5mR3xmKykH0FMH1dlw/viewform');
 redirects.set('stateoflumacs', 'https://docs.google.com/forms/d/e/1FAIpQLSdqNPm8_AQu61GMwcJ3p7owUx4fKdkx5IqfYBp4dDblD06bQA/viewform');
