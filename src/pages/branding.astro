@@ -4,21 +4,36 @@ import { BrandingAsset } from '@/components/BrandingAsset';
 ---
 
 <Layout title="Branding" description="Download our branding assets">
-  <h1 class="text-2xl font-bold text-center mb-4">Branding Assets</h1>
-  <div class="flex gap-4 flex-wrap justify-center">
-    <BrandingAsset client:load name="Logo and Text" type="light" />
-    <BrandingAsset client:load name="Logo and Text" type="dark" />
-    <BrandingAsset client:load name="Logo and Hoop" type="light" />
-    <BrandingAsset client:load name="Logo and Hoop" type="dark" />
-    <BrandingAsset client:load name="Logo" type="light" />
-    <BrandingAsset client:load name="Logo" type="dark" />
-    <BrandingAsset client:load name="Text" type="light" />
-    <BrandingAsset client:load name="Text" type="dark" />
-    <BrandingAsset client:load name="Text Alt" type="light" />
-    <BrandingAsset client:load name="Text Alt" type="dark" />
-    <BrandingAsset client:load name="LUCC" type="light" />
-    <BrandingAsset client:load name="LUCC" type="dark" />
-    <BrandingAsset client:load name="LUCC Text" type="light" />
-    <BrandingAsset client:load name="LUCC Text" type="dark" />
+  <div class="mx-auto max-w-5xl px-4 py-8 space-y-10">
+    <section class="space-y-4 text-center">
+      <h1 class="text-3xl font-bold">Branding Assets</h1>
+      <p class="mx-auto max-w-3xl text-sm text-muted-foreground">
+        Use light assets on dark backgrounds and dark assets on light
+        backgrounds. The Logo + Text version works best for most uses. Logo +
+        Hoop suits favicons or avatars, while the standalone Logo is ideal for
+        merch or larger brand-led designs. Use Text or Text Alt when horizontal
+        space is tight or for text-based layouts. LUCC variants are specifically
+        for Lancaster Uni Circus Convention branding. Favour SVGs where
+        possible, then PNGs, and use PNG + BG only when a baked-in background is
+        needed.
+      </p>
+    </section>
+
+    <div class="flex gap-4 flex-wrap justify-center">
+      <BrandingAsset client:load name="Logo and Text" type="light" />
+      <BrandingAsset client:load name="Logo and Text" type="dark" />
+      <BrandingAsset client:load name="Logo and Hoop" type="light" />
+      <BrandingAsset client:load name="Logo and Hoop" type="dark" />
+      <BrandingAsset client:load name="Logo" type="light" />
+      <BrandingAsset client:load name="Logo" type="dark" />
+      <BrandingAsset client:load name="Text" type="light" />
+      <BrandingAsset client:load name="Text" type="dark" />
+      <BrandingAsset client:load name="Text Alt" type="light" />
+      <BrandingAsset client:load name="Text Alt" type="dark" />
+      <BrandingAsset client:load name="LUCC" type="light" />
+      <BrandingAsset client:load name="LUCC" type="dark" />
+      <BrandingAsset client:load name="LUCC Text" type="light" />
+      <BrandingAsset client:load name="LUCC Text" type="dark" />
+    </div>
   </div>
 </Layout>
