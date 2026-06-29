@@ -1,6 +1,7 @@
 ---
 import { CountdownToDate } from '@/components/Countdown';
 import Layout from '@/components/Layout.astro';
+import { LUCCMaps } from '@/components/LUCCMaps';
 import { buttonVariants } from '@/components/ui/button';
 import { Card } from '@/components/ui/cool-card';
 import { Calendar, MapPin } from 'lucide-react';
@@ -77,6 +78,12 @@ const questions: {
         </video>
       </div>
     </Card>
+
+    <div class="w-full">
+      <Card client:load>
+        <LUCCMaps client:load />
+      </Card>
+    </div>
 
     <div
       class="flex flex-col md:flex-row gap-4 w-full justify-around [&>*>*]:flex-1"
