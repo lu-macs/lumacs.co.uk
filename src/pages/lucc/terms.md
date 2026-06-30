@@ -24,7 +24,7 @@ If you have any questions or concerns, please contact us at: [lucc@lumacs.co.uk]
 
 6. Commercial photography or videography is not allowed without explicit permission from the organisers. Personal camera equipment is permitted, but if you plan to use any personal media for commercial purposes, you must obtain permission from the organisers beforehand.
 
-7. By attending The Convention, you consent to being recorded audibly or visually.
+7. By attending The Convention, you consent to being recorded audibly and/or visually.
 
 8. You are responsible for your behaviour while attending The Convention. Any hostile, abusive, or aggressive conduct towards the organisers, volunteers, contractors, or other attendees will result in removal from the event without a refund for any tickets purchased. The organisers reserve the right to remove individuals for inappropriate behaviour without prior warning.
 
