@@ -34,7 +34,7 @@ export function LUCCMaps() {
         <Dialog>
           <DialogTrigger asChild>
             <img
-              src="/assets/lucc/campus.png"
+              src="/assets/lucc/campus-fixed.png"
               alt="Lancaster University Campus Map for LUCC 2026"
               className="rounded-lg shadow-lg cursor-pointer max-w-xs md:max-w-sm hover:scale-105 transition-transform"
               loading="lazy"
@@ -42,7 +42,7 @@ export function LUCCMaps() {
           </DialogTrigger>
           <DialogContent className="max-w-3xl flex flex-col items-center">
             <img
-              src="/assets/lucc/campus.png"
+              src="/assets/lucc/campus-fixed.png"
               alt="Lancaster University Campus Map for LUCC 2026 enlarged"
               className="rounded-lg w-full h-auto"
               style={{ maxHeight: '80vh', objectFit: 'contain' }}
