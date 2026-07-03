@@ -42,9 +42,12 @@ export default function BusDepartures() {
     const loadDepartures = async () => {
       try {
         setError(null);
-        const response = await fetch('/api/bus-departures', {
-          cache: 'no-store',
-        });
+        const response = await fetch(
+          'https://screen.bailriggfm.co.uk/api/bus-departures',
+          {
+            cache: 'no-store',
+          },
+        );
 
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
