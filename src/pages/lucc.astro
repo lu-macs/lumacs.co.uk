@@ -1,38 +1,38 @@
 ---
-import { CountdownToDate } from '@/components/Countdown';
+// import { CountdownToDate } from '@/components/Countdown';
 import Layout from '@/components/Layout.astro';
-import { LUCCMaps } from '@/components/LUCCMaps';
-import { buttonVariants } from '@/components/ui/button';
+// import { LUCCMaps } from '@/components/LUCCMaps';
+// import { buttonVariants } from '@/components/ui/button';
 import { Card } from '@/components/ui/cool-card';
-import { Calendar, MapPin } from 'lucide-react';
+// import { Calendar, MapPin } from 'lucide-react';
 // import { LUCCMaps } from '@/components/LUCCMaps';
 
-const isLink = (str: string) => /^https?:\/\//.test(str);
+// const isLink = (str: string) => /^https?:\/\//.test(str);
 
-const questions: {
-  question: string;
-  answer: string;
-}[] = [
-  {
-    question: 'How accessible is the convention?',
-    answer:
-      "The convention is accessible to all, no matter your ability or disability. We'll do our best to accommodate all attendees. Please contact us if you have any specific needs or questions.",
-  },
-  {
-    question: 'Are dogs allowed?',
-    answer:
-      'No, unless your dog is a service dog. We will not be allowing dogs at the convention.',
-  },
-  {
-    question: 'Where should I stay?',
-    answer:
-      'We are unable to provide accommodation for attendees. There are plenty of wonderful places to stay in town that we recommend!',
-  },
-  {
-    question: 'Will day tickets be available?',
-    answer: 'Yes! We day tickets will be available for purchase at the door.',
-  },
-];
+// const questions: {
+//   question: string;
+//   answer: string;
+// }[] = [
+//   {
+//     question: 'How accessible is the convention?',
+//     answer:
+//       "The convention is accessible to all, no matter your ability or disability. We'll do our best to accommodate all attendees. Please contact us if you have any specific needs or questions.",
+//   },
+//   {
+//     question: 'Are dogs allowed?',
+//     answer:
+//       'No, unless your dog is a service dog. We will not be allowing dogs at the convention.',
+//   },
+//   {
+//     question: 'Where should I stay?',
+//     answer:
+//       'We are unable to provide accommodation for attendees. There are plenty of wonderful places to stay in town that we recommend!',
+//   },
+//   {
+//     question: 'Will day tickets be available?',
+//     answer: 'Yes! We day tickets will be available for purchase at the door.',
+//   },
+// ];
 ---
 
 <Layout
@@ -45,6 +45,33 @@ const questions: {
     </h1>
 
     <Card client:load>
+      <div class="p-4 flex flex-col items-center gap-4">
+        <p class="text-xl">
+          Thank you to everyone who attended LUCC 2026! We had a fantastic time
+          and hope you did too. See you next year!
+        </p>
+
+        <p>
+          Feel free to send us any feedback you have about the convention either
+          by email
+          <a
+            href="mailto:lucc@lumacs.co.uk"
+            class="underline hover:text-muted-foreground"
+          >
+            lucc@lumacs.co.uk
+          </a>
+          or by DM on Instagram
+          <a
+            href="https://www.instagram.com/lancastercircusconvention"
+            class="underline hover:text-muted-foreground"
+          >
+            @lancastercircusconvention
+          </a>.
+        </p>
+      </div>
+    </Card>
+
+    <!-- <Card client:load>
       <div class="p-4 flex flex-col items-center gap-4">
         <p class="text-xl">
           After the success of LUCC 2025, we are proudly presenting Lancaster
@@ -91,9 +118,6 @@ const questions: {
               <Calendar className="mr-2" /> July 4th (10am - 9pm) - 5th (10am - 5pm),
               2026
             </li>
-            <!-- <li class="flex items-center">
-              <Clock className="mr-2" /> Saturday 10:00 - 23:00, Sunday 10:00 - 17:00
-            </li> -->
           </ul>
           <CountdownToDate
             client:load
@@ -233,6 +257,6 @@ const questions: {
       <a href="/lucc/terms/" class="underline hover:text-muted-foreground">
         Terms & Conditions
       </a>
-    </div>
+    </div> -->
   </div>
 </Layout>
