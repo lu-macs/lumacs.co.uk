@@ -4,7 +4,7 @@ import Logo from '@/components/Logo.astro';
 import { buttonVariants } from '@/components/ui/button';
 import { Card, Separator } from '@/components/ui/cool-card';
 import { Image } from 'astro:assets';
-import { ArrowRight, Instagram, Users, Star } from 'lucide-react';
+import { ArrowRight, Instagram, Star } from 'lucide-react';
 
 const displays: {
   title: string;
@@ -51,21 +51,6 @@ const memberships: {
   benefits: string[];
 }[] = [
   {
-    name: 'Aerial',
-    price: 5,
-    mostPopular: false,
-    benefits: ['Access to our Sunday Aerial sessions', 'Cheapest way to do Aerial in Lancaster'],
-  },
-  {
-    name: 'Full',
-    price: 15,
-    mostPopular: true,
-    benefits: [
-      'Access to our Sunday Aerial sessions',
-      'Access to our Weekday sessions',
-    ],
-  },
-  {
     name: 'Trial',
     price: 0,
     mostPopular: false,
@@ -75,11 +60,26 @@ const memberships: {
       'Find out if circus is for you!',
     ],
   },
+  { 
+    name: 'Aerial',
+    price: 5,
+    mostPopular: false,
+    benefits: ['Access to our Sunday Aerial sessions', 'Cheapest way to do Aerial in Lancaster'],
+  },
   {
     name: 'Weekday',
     price: 10,
     mostPopular: false,
     benefits: ['Access to our Weekday sessions'],
+  },
+  {
+    name: 'Full',
+    price: 15,
+    mostPopular: true,
+    benefits: [
+      'Access to our Sunday Aerial sessions',
+      'Access to our Weekday sessions',
+    ],
   },
 ];
 
@@ -108,12 +108,12 @@ const sessions: {
       'Bring/come in sports clothing and something that covers at least the back and the knees',
     ],
   },
-  {
-    day: 'Friday',
-    time: '5pm - 6pm',
-    location: 'Check the discord for the location',
-    activities: ['Bring your own equipment', 'Run on demand'],
-  },
+  // {
+  //   day: 'Friday',
+  //   time: '5pm - 6pm',
+  //   location: 'Check the discord for the location',
+  //   activities: ['Bring your own equipment', 'Run on demand'],
+  // },
   {
     day: 'Socials and Events',
     location: 'Check Instagram and Discord for the details',
@@ -183,7 +183,7 @@ const sessions: {
       </a>
     </div>
     <div class="flex gap-4">
-      <a
+      <!-- <a
         class={buttonVariants({
           variant: 'secondary',
           size: 'lg',
@@ -193,7 +193,7 @@ const sessions: {
       >
         <Users className="inline-block size-4 sm:size-5 mr-2" />
         Hire Us for Events
-      </a>
+      </a> -->
       <a
         class={buttonVariants({
           variant: 'outline',
@@ -205,8 +205,6 @@ const sessions: {
         <Instagram className="inline-block size-4 sm:size-5 mr-2" />
         Follow Us
       </a>
-    </div>
-    <div class="flex gap-4">
       <a
         class={buttonVariants({
           variant: 'outline',
@@ -267,7 +265,7 @@ const sessions: {
                 Most Popular
               </div>
             )}
-            <span class="font-bold text-2xl">{name} Membership</span>
+            <span class="font-bold text-2xl text-center">{name} Membership</span>
             <span class="text-muted-foreground font-bold text-4xl">
               <span class="text-primary">£{price}</span><!-- -->{price !== 0 && '/year'}
             </span>
@@ -300,7 +298,7 @@ const sessions: {
     {
       sessions.map(({ day, time, activities, location }) => (
         <Card client:load>
-          <div class="flex flex-col items-center p-4 w-full md:w-72 h-80">
+          <div class="flex flex-col items-center p-4 w-full md:w-72 h-full">
             <span class="font-bold text-xl">{day}</span>
             {time && <span class="text-primary">{time}</span>}
             <span class="text-sm text-center text-muted-foreground">
@@ -315,7 +313,7 @@ const sessions: {
               {
                 day === 'Socials and Events' && (
                   <div class="flex-grow" />
-                  <a href="/events/" class={buttonVariants({ variant: 'default', class: 'w-full text-lg font-bold' })}>Explore Events</a>
+                  <a href="/events/" class={buttonVariants({ variant: 'default', class: 'w-full text-lg font-bold mt-2' })}>Explore Events</a>
                 )
               }
           </div>
