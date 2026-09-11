@@ -36,7 +36,7 @@
         fill: #fff
        }
        
-       #rect8, #rect9, rect6 {
+       #rect8, #rect9, #rect6 {
         fill: #fff
        }
        
