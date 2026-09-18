@@ -6,9 +6,41 @@ import { Button } from '@/components/ui/button';
 import { Copy, Download } from 'lucide-react';
 
 const OUTPUT_WIDTH = 1200;
-const OVERLAY_SRC = '/assets/card_overlay.png';
 const ASPECT = 5 / 7;
-const CORNER_RADIUS = 45;
+
+// corner radii (scaled from a 600px baseline)
+const CARD_CORNER_RADIUS = 30; // outer image clip
+const BORDER_CORNER_RADIUS = 30; // inset border radius
+
+// defaults
+const DEFAULT_COLOUR = '#dc2626';
+
+// selectable logos
+const LOGO_OPTIONS = [
+  '/assets/branding/logo/light.png',
+  '/assets/branding/logo/dark.png',
+  '/assets/branding/logoandhoop/light.png',
+  '/assets/branding/logoandhoop/dark.png',
+  '/assets/branding/logoandtext/light.png',
+  '/assets/branding/logoandtext/dark.png',
+] as const;
+
+// all fractions of output width
+const BORDER_INSET = 0.05; // distance from card edge to border
+const BORDER_WIDTH = 0.01; // stroke thickness
+
+// per-logo config (width/inset)
+const PER_LOGO: Record<
+  (typeof LOGO_OPTIONS)[number],
+  { width: number; inset: number }
+> = {
+  '/assets/branding/logo/light.png': { width: 0.2, inset: 0.06 },
+  '/assets/branding/logo/dark.png': { width: 0.2, inset: 0.06 },
+  '/assets/branding/logoandhoop/light.png': { width: 0.16, inset: 0.08 },
+  '/assets/branding/logoandhoop/dark.png': { width: 0.16, inset: 0.08 },
+  '/assets/branding/logoandtext/light.png': { width: 0.18, inset: 0.07 },
+  '/assets/branding/logoandtext/dark.png': { width: 0.18, inset: 0.07 },
+};
 
 function loadImage(src: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
@@ -20,6 +52,17 @@ function loadImage(src: string): Promise<HTMLImageElement> {
   });
 }
 
+const logoCache = new Map<string, Promise<HTMLImageElement>>();
+function loadLogo(src: string) {
+  let p = logoCache.get(src);
+  if (!p) {
+    p = loadImage(src);
+    p.catch(() => logoCache.delete(src));
+    logoCache.set(src, p);
+  }
+  return p;
+}
+
 export default function ImageFramer() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
@@ -27,8 +70,11 @@ export default function ImageFramer() {
   const [croppedArea, setCroppedArea] = useState<Area | null>(null);
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+
+  const [colour, setColour] = useState(DEFAULT_COLOUR);
+  const [logoSrc, setLogoSrc] = useState<string>(LOGO_OPTIONS[0]);
+
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const pasteZoneRef = useRef<HTMLDivElement | null>(null);
 
   const onFile = (file: File | undefined | null) => {
     if (!file) return;
@@ -41,16 +87,13 @@ export default function ImageFramer() {
     if (!e.clipboardData) return;
     const items = Array.from(e.clipboardData.items);
 
-    // 1. image blob directly from clipboard
     const imgItem = items.find((it) => it.type.startsWith('image/'));
     if (imgItem) {
-      const blob = imgItem.getAsFile();
-      onFile(blob);
+      onFile(imgItem.getAsFile());
       e.preventDefault();
       return;
     }
 
-    // 2. data URL text
     const text = e.clipboardData.getData('text/plain')?.trim();
     if (text?.startsWith('data:image/')) {
       setImageSrc(text);
@@ -58,7 +101,6 @@ export default function ImageFramer() {
       return;
     }
 
-    // 3. remote URL - attempt fetch (will fail without CORS)
     if (text?.startsWith('http')) {
       try {
         const res = await fetch(text, { mode: 'cors' });
@@ -75,10 +117,8 @@ export default function ImageFramer() {
 
   useEffect(() => {
     const handler = (e: ClipboardEvent) => onPaste(e);
-    window.addEventListener('paste', handler as EventListener);
-    return () => {
-      window.removeEventListener('paste', handler as EventListener);
-    };
+    window.addEventListener('paste', handler);
+    return () => window.removeEventListener('paste', handler);
   }, [onPaste]);
 
   const render = useCallback(async () => {
@@ -92,11 +132,15 @@ export default function ImageFramer() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
 
-    const img = await loadImage(imageSrc);
+    // clip to card shape
+    {
+      const r = CARD_CORNER_RADIUS * (width / 600);
+      ctx.beginPath();
+      ctx.roundRect(0, 0, width, height, r);
+      ctx.clip();
+    }
 
-    ctx.beginPath();
-    ctx.roundRect(0, 0, width, height, CORNER_RADIUS * (width / 600));
-    ctx.clip();
+    const img = await loadImage(imageSrc);
 
     ctx.imageSmoothingQuality = 'high';
     ctx.drawImage(
@@ -111,23 +155,63 @@ export default function ImageFramer() {
       height,
     );
 
+    // inset border
+    {
+      const inset = width * BORDER_INSET;
+      const lineWidth = width * BORDER_WIDTH;
+      const x = inset + lineWidth / 2;
+      const y = inset + lineWidth / 2;
+      const w = width - inset * 2 - lineWidth;
+      const h = height - inset * 2 - lineWidth;
+      const desired = BORDER_CORNER_RADIUS * (width / 600);
+      const radius = Math.min(desired, Math.min(w, h) / 2);
+
+      ctx.save();
+      ctx.strokeStyle = colour;
+      ctx.lineWidth = lineWidth;
+      ctx.beginPath();
+      ctx.roundRect(x, y, w, h, radius);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // logos - size and inset per-logo
     try {
-      const overlay = await loadImage(OVERLAY_SRC);
-      ctx.drawImage(overlay, 0, 0, width, height);
+      const cfg =
+        PER_LOGO[logoSrc as (typeof LOGO_OPTIONS)[number]] ??
+        PER_LOGO['/assets/branding/logo/light.png'];
+      const logo = await loadLogo(logoSrc);
+      const lw = width * cfg.width;
+      const lh = lw * (logo.naturalHeight / logo.naturalWidth);
+      const insetPx = width * cfg.inset;
+
+      // top-left
+      ctx.drawImage(logo, insetPx, insetPx, lw, lh);
+
+      // bottom-right rotated 180deg
+      ctx.save();
+      ctx.translate(width, height);
+      ctx.rotate(Math.PI);
+      ctx.drawImage(logo, insetPx, insetPx, lw, lh);
+      ctx.restore();
     } catch {
-      // ignore
+      // ignore logo load issues
     }
 
     canvasRef.current = canvas;
     return canvas;
-  }, [imageSrc, croppedArea]);
+  }, [imageSrc, croppedArea, colour, logoSrc]);
 
   useEffect(() => {
+    let cancelled = false;
     const t = setTimeout(async () => {
       const canvas = await render();
-      if (canvas) setResultUrl(canvas.toDataURL('image/png'));
+      if (canvas && !cancelled) setResultUrl(canvas.toDataURL('image/png'));
     }, 150);
-    return () => clearTimeout(t);
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
   }, [render]);
 
   const toBlob = (): Promise<Blob | null> =>
@@ -167,10 +251,17 @@ export default function ImageFramer() {
     }
   };
 
+  const isLightLogo = (src: string) => src.includes('/light');
+
+  const presetColours = [
+    { name: 'White', value: '#ffffff' },
+    { name: 'Black', value: '#000000' },
+    { name: 'Red', value: '#dc2626' },
+  ];
+
   return (
     <div className="m-4 space-y-6">
       <div
-        ref={pasteZoneRef}
         tabIndex={0}
         onPaste={(e) => onPaste(e.nativeEvent)}
         onDrop={(e) => {
@@ -199,19 +290,90 @@ export default function ImageFramer() {
         )}
       </div>
 
-      {imageSrc && (
-        <div className="space-y-3">
-          <div className="relative h-[500px] w-full overflow-hidden rounded-lg bg-muted">
-            <Cropper
-              image={imageSrc}
-              crop={crop}
-              zoom={zoom}
-              aspect={ASPECT}
-              onCropChange={setCrop}
-              onZoomChange={setZoom}
-              onCropComplete={(_, pixels) => setCroppedArea(pixels)}
-            />
+      <div className="space-y-2">
+        <div className="flex items-center gap-3">
+          <span className="text-sm">Colour</span>
+          <div className="flex items-center gap-2">
+            {presetColours.map((c) => {
+              const selected = colour.toLowerCase() === c.value.toLowerCase();
+              return (
+                <button
+                  key={c.value}
+                  type="button"
+                  onClick={() => setColour(c.value)}
+                  className={[
+                    'h-8 w-8 rounded-md border',
+                    selected ? 'ring-2 ring-offset-2 ring-primary' : '',
+                  ].join(' ')}
+                  style={{ backgroundColor: c.value }}
+                  title={c.name}
+                  aria-label={c.name}
+                />
+              );
+            })}
+            <div className="flex items-center gap-2 rounded-md border bg-background px-2 py-1">
+              <input
+                type="color"
+                value={colour}
+                onChange={(e) => setColour(e.target.value)}
+                className="h-7 w-7 cursor-pointer rounded border bg-background"
+                aria-label="Custom colour"
+                title="Custom colour"
+              />
+              <input
+                type="text"
+                value={colour}
+                onChange={(e) => setColour(e.target.value)}
+                className="w-28 bg-transparent text-sm outline-none"
+                spellCheck={false}
+                aria-label="Hex colour"
+                title="Hex colour"
+                placeholder="#rrggbb"
+              />
+            </div>
           </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
+        {LOGO_OPTIONS.map((src) => {
+          const selected = src === logoSrc;
+          const lightBg = isLightLogo(src);
+          return (
+            <button
+              key={src}
+              type="button"
+              onClick={() => setLogoSrc(src)}
+              className={[
+                'rounded-md border p-1 transition',
+                selected
+                  ? 'ring-2 ring-offset-2 ring-primary border-transparent'
+                  : 'hover:border-foreground/40',
+                lightBg ? 'bg-white' : 'bg-transparent',
+              ].join(' ')}
+              title={src.split('/').slice(-2).join('/')}
+            >
+              <img
+                src={src}
+                alt="Logo option"
+                className="h-14 w-full rounded object-contain"
+              />
+            </button>
+          );
+        })}
+      </div>
+
+      {imageSrc && (
+        <div className="relative h-[500px] w-full overflow-hidden rounded-lg bg-muted">
+          <Cropper
+            image={imageSrc}
+            crop={crop}
+            zoom={zoom}
+            aspect={ASPECT}
+            onCropChange={setCrop}
+            onZoomChange={setZoom}
+            onCropComplete={(_, pixels) => setCroppedArea(pixels)}
+          />
         </div>
       )}
 
