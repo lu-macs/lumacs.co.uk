@@ -349,7 +349,7 @@ export default function ImageFramer() {
                 selected
                   ? 'ring-2 ring-offset-2 ring-primary border-transparent'
                   : 'hover:border-foreground/40',
-                lightBg ? 'bg-white' : 'bg-transparent',
+                lightBg ? 'bg-white' : 'bg-black',
               ].join(' ')}
               title={src.split('/').slice(-2).join('/')}
             >
