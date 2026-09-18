@@ -122,6 +122,14 @@ export const CommandSearch = () => {
           >
             QR
           </CommandItem>
+          <CommandItem
+            onSelect={() => {
+              setOpen(false);
+              navigate('/card/');
+            }}
+          >
+            Card Generator
+          </CommandItem>
         </CommandGroup>
       </CommandList>
     </CommandDialog>
