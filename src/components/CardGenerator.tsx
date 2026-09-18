@@ -28,13 +28,58 @@ export default function ImageFramer() {
   const [resultUrl, setResultUrl] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const pasteZoneRef = useRef<HTMLDivElement | null>(null);
 
-  const onFile = (file: File | undefined) => {
+  const onFile = (file: File | undefined | null) => {
     if (!file) return;
     const reader = new FileReader();
     reader.onload = () => setImageSrc(reader.result as string);
     reader.readAsDataURL(file);
   };
+
+  const onPaste = useCallback(async (e: ClipboardEvent) => {
+    if (!e.clipboardData) return;
+    const items = Array.from(e.clipboardData.items);
+
+    // 1. image blob directly from clipboard
+    const imgItem = items.find((it) => it.type.startsWith('image/'));
+    if (imgItem) {
+      const blob = imgItem.getAsFile();
+      onFile(blob);
+      e.preventDefault();
+      return;
+    }
+
+    // 2. data URL text
+    const text = e.clipboardData.getData('text/plain')?.trim();
+    if (text?.startsWith('data:image/')) {
+      setImageSrc(text);
+      e.preventDefault();
+      return;
+    }
+
+    // 3. remote URL - attempt fetch (will fail without CORS)
+    if (text?.startsWith('http')) {
+      try {
+        const res = await fetch(text, { mode: 'cors' });
+        if (!res.ok) return;
+        const blob = await res.blob();
+        if (!blob.type.startsWith('image/')) return;
+        onFile(new File([blob], 'pasted.png', { type: blob.type }));
+        e.preventDefault();
+      } catch {
+        // ignore
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const handler = (e: ClipboardEvent) => onPaste(e);
+    window.addEventListener('paste', handler as EventListener);
+    return () => {
+      window.removeEventListener('paste', handler as EventListener);
+    };
+  }, [onPaste]);
 
   const render = useCallback(async () => {
     if (!imageSrc || !croppedArea) return null;
@@ -49,7 +94,6 @@ export default function ImageFramer() {
 
     const img = await loadImage(imageSrc);
 
-    // rounded clip
     ctx.beginPath();
     ctx.roundRect(0, 0, width, height, CORNER_RADIUS * (width / 600));
     ctx.clip();
@@ -67,19 +111,17 @@ export default function ImageFramer() {
       height,
     );
 
-    // overlay (stretched to the output size)
     try {
       const overlay = await loadImage(OVERLAY_SRC);
       ctx.drawImage(overlay, 0, 0, width, height);
     } catch {
-      // ignore if overlay missing
+      // ignore
     }
 
     canvasRef.current = canvas;
     return canvas;
   }, [imageSrc, croppedArea]);
 
-  // Live preview (debounced)
   useEffect(() => {
     const t = setTimeout(async () => {
       const canvas = await render();
@@ -127,20 +169,34 @@ export default function ImageFramer() {
 
   return (
     <div className="m-4 space-y-6">
-      <div className="space-y-2">
-        <label
-          htmlFor="file"
-          className="block text-sm font-medium text-foreground"
-        >
-          Image
-        </label>
-        <input
-          id="file"
-          type="file"
-          accept="image/*"
-          onChange={(e) => onFile(e.target.files?.[0])}
-          className="block w-full rounded-md border bg-background p-2 text-sm"
-        />
+      <div
+        ref={pasteZoneRef}
+        tabIndex={0}
+        onPaste={(e) => onPaste(e.nativeEvent)}
+        onDrop={(e) => {
+          e.preventDefault();
+          onFile(e.dataTransfer.files?.[0] ?? null);
+        }}
+        onDragOver={(e) => e.preventDefault()}
+        className="flex min-h-[140px] cursor-pointer items-center 
+                   justify-center rounded-md border border-dashed 
+                   bg-muted/30 p-4 text-sm text-muted-foreground"
+        onClick={() => {
+          const input = document.createElement('input');
+          input.type = 'file';
+          input.accept = 'image/*';
+          input.onchange = () => onFile(input.files?.[0] ?? null);
+          input.click();
+        }}
+        title="Click to choose an image, paste (Ctrl+V), or drop a file"
+      >
+        {imageSrc ? (
+          <span className="text-foreground">
+            Image loaded. Paste again to replace or drop/click to change.
+          </span>
+        ) : (
+          <span>Paste an image (Ctrl+V), drop a file or click to choose.</span>
+        )}
       </div>
 
       {imageSrc && (
