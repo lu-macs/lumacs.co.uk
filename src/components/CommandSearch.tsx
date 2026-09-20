@@ -117,7 +117,7 @@ export const CommandSearch = () => {
           <CommandItem
             onSelect={() => {
               setOpen(false);
-              navigate('/qr/');
+              navigate('/tools/qr/');
             }}
           >
             QR
@@ -125,7 +125,7 @@ export const CommandSearch = () => {
           <CommandItem
             onSelect={() => {
               setOpen(false);
-              navigate('/card/');
+              navigate('/tools/card/');
             }}
           >
             Card Generator

@@ -1,0 +1,38 @@
+---
+import Layout from '@/components/Layout.astro';
+import { Image } from 'astro:assets';
+
+// (cash price / online price [link])
+
+// Merch:
+// Hoodie (£40/£42.83 https://campus.hellorubric.com/?s=15351&merchid=10537): available in Small, Medium, Large, Extra Large
+// Shirt (£15/16.61 https://campus.hellorubric.com/?s=15351&merchid=10595): available in Small, Medium, Large, Extra Large
+// Beanie (£10/£11.36 https://campus.hellorubric.com/?s=15351&merchid=10597): available in Red, Black
+// Pin: available in 1 (£6/£7.16 https://campus.hellorubric.com/?s=15351&merchid=10605), 1 with locking back (£6.50/7.69 https://campus.hellorubric.com/?s=15351&merchid=10606), 5 pack (£25/£27.10 https://campus.hellorubric.com/?s=15351&merchid=10607)
+// Charm (£5/£6.11 https://campus.hellorubric.com/?s=15351&merchid=10603)
+// Sticker (£2/£2.97 https://campus.hellorubric.com/?s=15351&merchid=10604)
+// Merch Pack (£12/£13.46 https://campus.hellorubric.com/?s=15351&merchid=10608): includes 1 sticker, 1 pin with locking back, 1 charm
+
+// Photos:
+// /assets/merch/beanie_black.png
+// /assets/merch/beanie_red.png
+// /assets/merch/charm.png
+// /assets/merch/hoodie_back.png
+// /assets/merch/hoodie_front.png
+// /assets/merch/pack.png
+// /assets/merch/pin_basic.png
+// /assets/merch/pin_locking.png
+// /assets/merch/pin_pack.png
+// /assets/merch/shirt.png
+// /assets/merch/sticker.png
+---
+
+<Layout title="Merch" description="Society Merch">
+  <Image
+    src="/assets/merch/hoodie_front.png"
+    alt="LUMACS Hoodie Front"
+    width={500}
+    height={500}
+    class="mx-auto my-4"
+  />
+</Layout>
