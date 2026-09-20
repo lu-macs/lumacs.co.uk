@@ -133,6 +133,11 @@ const sessions: {
       document.querySelectorAll('.font-bold.text-2xl.text-center').forEach(title => {
         title.innerHTML = 'Charley';
       });
+    } else if (window.location.search.includes('sluj')) {
+      document.getElementById('slujlogo').classList.remove('hidden');
+      document.getElementById('logo').classList.add('hidden');
+
+      document.getElementById('society-name').innerHTML = 'Society of Lancaster University Jugglers';
     }
   });
 </script>
@@ -141,7 +146,7 @@ const sessions: {
   title="Home"
   description="Lancaster University Magic, Aerial & Circus Society (LUMACS) is a fun and friendly society, welcoming people of all abilities. No experience is required to join! We host regular practice sessions and we offer the opportunity to take part in paid performances both on and off campus."
 >
-  <p class="text-4xl sm:text-6xl font-bold text-center">
+  <p class="text-4xl sm:text-6xl font-bold text-center" id="society-name">
     Lancaster University
     <br />
     <span class="text-primary">Magic</span>,
@@ -150,6 +155,14 @@ const sessions: {
   </p>
 
   <Logo className="right-click-branding" />
+  <Image
+    src="/timeline/slujlogo.png"
+    alt="lumacs members displaying juggling balls"
+    id="slujlogo"
+    class="size-64 rounded mx-auto my-4 right-click-branding hidden"
+    width={512}
+    height={512}
+  />
 
   <p
     class="text-center max-w-5xl mx-2 text-xl sm:text-3xl text-muted-foreground"
