@@ -50,14 +50,6 @@ export const CommandSearch = () => {
           <CommandItem
             onSelect={() => {
               setOpen(false);
-              navigate('/hire/');
-            }}
-          >
-            Hire Us
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false);
               navigate('/events/');
             }}
           >

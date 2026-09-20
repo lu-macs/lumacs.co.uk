@@ -17,10 +17,6 @@ const locations: {
     href: '/',
   },
   {
-    name: 'Hire Us',
-    href: '/hire/',
-  },
-  {
     name: 'Events',
     href: '/events/',
   },

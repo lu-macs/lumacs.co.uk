@@ -1,6 +1,9 @@
 ---
 import Layout from '@/components/Layout.astro';
+import { buttonVariants } from '@/components/ui/button';
+import { Card, Separator } from '@/components/ui/cool-card';
 import { Image } from 'astro:assets';
+import { ShoppingBag } from 'lucide-react';
 
 // (cash price / online price [link])
 
@@ -25,14 +28,251 @@ import { Image } from 'astro:assets';
 // /assets/merch/pin_pack.png
 // /assets/merch/shirt.png
 // /assets/merch/sticker.png
+
+type Variant = {
+  name: string;
+  cashPrice: number;
+  onlinePrice: number;
+  link: string;
+};
+
+const merch: {
+  name: string;
+  description: string;
+  imgs: { src: string; alt: string }[];
+  options?: string[];
+  variants: Variant[];
+}[] = [
+  {
+    name: 'Merch Pack',
+    description: '',
+    imgs: [{ src: '/assets/merch/pack.png', alt: 'LUMACS merch pack' }],
+    options: ['1 sticker', '1 pin with locking back', '1 charm'],
+    variants: [
+      {
+        name: 'Merch Pack',
+        cashPrice: 12,
+        onlinePrice: 13.46,
+        link: 'https://campus.hellorubric.com/?s=15351&merchid=10608',
+      },
+    ],
+  },
+  {
+    name: 'Hoodie',
+    description: 'test description',
+    imgs: [
+      { src: '/assets/merch/hoodie_front.png', alt: 'LUMACS hoodie front' },
+      { src: '/assets/merch/hoodie_back.png', alt: 'LUMACS hoodie back' },
+    ],
+    options: ['Small', 'Medium', 'Large', 'Extra Large'],
+    variants: [
+      {
+        name: 'Hoodie',
+        cashPrice: 40,
+        onlinePrice: 42.83,
+        link: 'https://campus.hellorubric.com/?s=15351&merchid=10537',
+      },
+    ],
+  },
+  {
+    name: 'Shirt',
+    description: '',
+    imgs: [{ src: '/assets/merch/shirt.png', alt: 'LUMACS shirt' }],
+    options: ['Small', 'Medium', 'Large', 'Extra Large'],
+    variants: [
+      {
+        name: 'Shirt',
+        cashPrice: 15,
+        onlinePrice: 16.61,
+        link: 'https://campus.hellorubric.com/?s=15351&merchid=10595',
+      },
+    ],
+  },
+  {
+    name: 'Beanie',
+    description: '',
+    imgs: [
+      { src: '/assets/merch/beanie_red.png', alt: 'LUMACS beanie in red' },
+      { src: '/assets/merch/beanie_black.png', alt: 'LUMACS beanie in black' },
+    ],
+    options: ['Red', 'Black'],
+    variants: [
+      {
+        name: 'Beanie',
+        cashPrice: 10,
+        onlinePrice: 11.36,
+        link: 'https://campus.hellorubric.com/?s=15351&merchid=10597',
+      },
+    ],
+  },
+  {
+    name: 'Pin',
+    description: '',
+    imgs: [
+      { src: '/assets/merch/pin_basic.png', alt: 'LUMACS pin' },
+      {
+        src: '/assets/merch/pin_locking.png',
+        alt: 'LUMACS pin with locking back',
+      },
+      { src: '/assets/merch/pin_pack.png', alt: 'LUMACS pin 5 pack' },
+    ],
+    variants: [
+      {
+        name: 'Single',
+        cashPrice: 6,
+        onlinePrice: 7.16,
+        link: 'https://campus.hellorubric.com/?s=15351&merchid=10605',
+      },
+      {
+        name: 'Single (locking back)',
+        cashPrice: 6.5,
+        onlinePrice: 7.69,
+        link: 'https://campus.hellorubric.com/?s=15351&merchid=10606',
+      },
+      {
+        name: '5 Pack',
+        cashPrice: 25,
+        onlinePrice: 27.1,
+        link: 'https://campus.hellorubric.com/?s=15351&merchid=10607',
+      },
+    ],
+  },
+  {
+    name: 'Charm',
+    description: '',
+    imgs: [{ src: '/assets/merch/charm.png', alt: 'LUMACS charm' }],
+    variants: [
+      {
+        name: 'Charm',
+        cashPrice: 5,
+        onlinePrice: 6.11,
+        link: 'https://campus.hellorubric.com/?s=15351&merchid=10603',
+      },
+    ],
+  },
+  {
+    name: 'Sticker',
+    description: '',
+    imgs: [{ src: '/assets/merch/sticker.png', alt: 'LUMACS sticker' }],
+    variants: [
+      {
+        name: 'Sticker',
+        cashPrice: 2,
+        onlinePrice: 2.97,
+        link: 'https://campus.hellorubric.com/?s=15351&merchid=10604',
+      },
+    ],
+  },
+];
+
+const formatPrice = (price: number) =>
+  `£${Number.isInteger(price) ? price : price.toFixed(2)}`;
 ---
 
-<Layout title="Merch" description="Society Merch">
-  <Image
-    src="/assets/merch/hoodie_front.png"
-    alt="LUMACS Hoodie Front"
-    width={500}
-    height={500}
-    class="mx-auto my-4"
-  />
+<!-- TODO: remove noindex and add links to merch page from other places -->
+<Layout title="Merch" description="Society Merch" noindex>
+  <h1 class="text-2xl font-bold text-center">
+    Society <span class="text-primary">Merch</span>
+  </h1>
+
+  <p class="text-center max-w-5xl mx-2 text-muted-foreground">
+    Summary about merch - get our merch online or with cash, all proceeds go to
+    the society and help us run events and socials for you!
+  </p>
+
+  <style is:inline>
+    .masonry {
+      column-gap: 1.5rem;
+    }
+
+    /* avoid splitting cards across columns */
+    .masonry > * {
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+  </style>
+
+  <div
+    class="masonry m-4 mb-10
+           columns-1
+           sm:columns-2
+           lg:columns-3"
+  >
+    {
+      merch.map(({ name, description, imgs, options, variants }) => (
+        <div class="mb-6">
+          <Card client:load>
+            <div class="flex flex-col items-center p-4 w-full">
+              <div class="flex flex-wrap gap-2 justify-center">
+                {imgs.map(({ src, alt }) => (
+                  <Image
+                    src={src}
+                    alt={alt}
+                    width={192}
+                    height={192}
+                    class={`rounded object-contain ${
+                      imgs.length === 1 ? 'size-48' : 'size-32 lg:size-40'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <Separator client:load className="my-3" />
+
+              <span class="font-bold text-2xl text-center">{name}</span>
+
+              {description && (
+                <p class="text-center text-muted-foreground mt-1">
+                  {description}
+                </p>
+              )}
+
+              {options && (
+                <p class="text-sm text-center text-muted-foreground mt-1">
+                  {name === 'Merch Pack' ? 'Includes: ' : 'Available in: '}
+                  {options.join(', ')}
+                </p>
+              )}
+
+              <div class="flex-grow" />
+
+              <ul class="flex flex-col gap-2 w-full mt-4 list-none p-0">
+                {variants.map(
+                  ({ name: vName, cashPrice, onlinePrice, link }) => (
+                    <li class="flex items-center justify-between gap-2">
+                      <div class="flex flex-col">
+                        {variants.length > 1 && (
+                          <span class="font-bold">{vName}</span>
+                        )}
+                        <span class="text-sm text-muted-foreground">
+                          <span class="text-primary font-bold text-base">
+                            {formatPrice(cashPrice)}
+                          </span>{' '}
+                          cash / {formatPrice(onlinePrice)} online
+                        </span>
+                      </div>
+
+                      <a
+                        href={link}
+                        target="_blank"
+                        rel="noopener"
+                        class={buttonVariants({
+                          variant: 'outline',
+                          size: 'sm',
+                          class: 'font-bold',
+                        })}
+                      >
+                        <ShoppingBag className="inline-block size-4 mr-2" />
+                        Buy Online
+                      </a>
+                    </li>
+                  ),
+                )}
+              </ul>
+            </div>
+          </Card>
+        </div>
+      ))
+    }
+  </div>
 </Layout>
