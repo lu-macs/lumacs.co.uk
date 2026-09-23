@@ -15,19 +15,23 @@ const displays: {
     img: '/display/balls.webp',
   },
   {
-    title: 'Fire',
+    title: 'Magic',
     img: '/display/fire2.webp',
   },
   {
-    title: 'Juggling Clubs',
+    title: 'Aerial Hoop',
     img: '/display/clubs.webp',
   },
   {
-    title: 'Aerial Hoop',
+    title: 'LED',
     img: '/display/hoop2.webp',
   },
   {
-    title: 'Plates',
+    title: 'Fire',
+    img: '/display/plates2.jpeg',
+  },
+  {
+    title: 'Something else really good',
     img: '/display/plates2.jpeg',
   },
 ];
@@ -37,6 +41,8 @@ const memberships: {
   price: number;
   mostPopular: boolean;
   benefits: string[];
+  description: string;
+  href: string;
 }[] = [
   {
     name: 'Trial',
@@ -47,18 +53,24 @@ const memberships: {
       'No fee',
       'Find out if circus is for you!',
     ],
+    description: "Trouble with commitment? With our free trial membership, you can access all of our sessions, socials and events for 2 weeks starting from your first session! You can find out if LUMACS is the place for you at any point during the year, not just at the start of term!",
+    href: 'https://campus.hellorubric.com/?s=15351&tab=memberships&mid=23627',
   },
   { 
     name: 'Aerial',
-    price: 5,
+    price: 10,
     mostPopular: false,
     benefits: ['Access to our Sunday Aerial sessions', 'Cheapest way to do Aerial in Lancaster'],
+    description: "Our aerial membership is the cheapest way to do aerial hoop and silks in Lancaster! Gain access to our Sunday aerial sessions with guided instruction from our aerial co-ordinators, as well as jamming and acrobatic time! With this membership you can also attend our socials and events, and votes in our elections.",
+    href: "https://campus.hellorubric.com/?s=15351&tab=memberships&mid=23845"
   },
   {
     name: 'Weekday',
     price: 10,
     mostPopular: false,
     benefits: ['Access to our Weekday sessions'],
+    description: "Join us at our Monday and Wednesday sessions! Gain access to our magic and circus equipment, regular workshops from experienced members, and try something new! With over 15 different prop types, there is something for everyone at our weekday sessions! Now introducing Magic Monday, where we will have dedicated magic workshops alongside regular session activities every Monday! With this membership you can also attend our socials and events, and votes in our elections.",
+    href: "https://campus.hellorubric.com/?s=15351&tab=memberships&mid=23846"
   },
   {
     name: 'Full',
@@ -68,7 +80,17 @@ const memberships: {
       'Access to our Sunday Aerial sessions',
       'Access to our Weekday sessions',
     ],
+    description: "Want the best of both worlds? Join us at our weekday sessions for magic and circus workshops and jamming, and at our Sunday aerial session for guided aerial silks, hoop, and acrobatics! With this membership you can also attend our socials and events, and votes in our elections.",
+    href: "https://campus.hellorubric.com/?s=15351&tab=memberships&mid=23844"
   },
+  {
+    name: 'Upgrade',
+    price: 5,
+    mostPopular: false,
+    benefits: ['Upgrade your existing aerial or weekday membership to a full membership'],
+    description: "Do you have one membership and want to upgrade to a full one? With this saver deal, you can upgrade without having to pay full price for a second membership!",
+    href: "https://campus.hellorubric.com/?s=15351&tab=memberships&mid=23847"
+  }
 ];
 
 const generalBenefits: string[] = ['Access to our socials and events', 'Vote in our elections', 'Have fun!'];
@@ -216,7 +238,7 @@ const sessions: {
     the amazing world of circus arts
   </p>
 
-  <div class="grid gap-4 grid-cols-5 m-4 mb-10">
+  <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 m-4">
     {
       displays.map(({ img, title }) => (
         <Image
@@ -238,7 +260,7 @@ const sessions: {
   >
     Regular sessions are held throughout the week
   </p>
-  <div class="flex flex-col sm:flex-row gap-4 m-2 mt-3">
+  <div class="flex flex-col sm:flex-row gap-4 m-2 mt-3 flex-wrap justify-center">
     {
       sessions.map(({ day, time, activities, location }) => (
         <Card client:load>
@@ -266,7 +288,7 @@ const sessions: {
     }
   </div>
 
-  <div class="grid gap-4 grid-cols-5 m-4 mb-10">
+  <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 m-4">
     {
       displays.map(({ img, title }) => (
         <Image
@@ -288,9 +310,9 @@ const sessions: {
   >
     We offer a variety of memberships to suit your interests
   </p>
-  <div class="flex flex-col sm:flex-row gap-4 m-2 mt-3">
+  <div class="flex flex-col sm:flex-row gap-4 m-2 mt-3 flex-wrap justify-center">
     {
-      memberships.map(({ name, price, mostPopular, benefits }) => (
+      memberships.map(({ name, price, mostPopular, benefits, href }) => (
         <Card client:load>
           <div
             class="flex flex-col items-center p-4 md:w-72 w-full md:h-96 h-80"
@@ -315,7 +337,8 @@ const sessions: {
             </ul>
             <div class="flex-grow" />
             <a 
-            href="https://lancastersu.co.uk/groups/magic-aerial-circus-society-lumacs/join"
+            // href="https://lancastersu.co.uk/groups/magic-aerial-circus-society-lumacs/join"
+            href={href}
             class={buttonVariants({ variant: mostPopular ? 'default' : 'outline', class: 'w-full text-lg font-bold' })}
             >Join {price !== 0 ? 'Now' : 'For Free'}</a>
           </div>
