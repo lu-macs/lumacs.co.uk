@@ -1,102 +1,45 @@
 ---
 import Layout from '@/components/Layout.astro';
-import { Separator } from '@/components/ui/separator';
-
-// all time are in british time, including daylight savings time
-
-const events: {
-  name: string;
-  description?: string;
-  location?: string;
-  startDate?: Date;
-  endDate?: Date;
-}[] = [
-  {
-    name: "Freshers' Fair",
-    description:
-      "We'll be at one of the Freshers' Fair days with a stall and hopefully some aerial. Come and chat with us!",
-    startDate: new Date('2026-09-30T11:00:00.000Z'),
-    endDate: new Date('2026-10-01T15:00:00.000Z'),
-  },
-  {
-    name: 'Circus Jamming',
-    description: 'We will be on campus throughout the week, come and have a go with our circus equipment!',
-  },
-  {
-    name: 'Fire Night',
-    description: 'Want to see some fire? We will be in Lancaster (County) Square performing with our fire equipment!',
-  },
-  {
-    name: 'LED Night',
-    description: 'It might not be fire but it sure does glow!',
-  },
-  {
-    name: 'Aerial Show',
-    description: 'Interested in aerial? Come and see our aerial show!',
-  },
-].filter(({ endDate }) => {
-  const now = new Date();
-  return !endDate || endDate > now;
-});
-
-const options = {
-  month: 'long',
-  day: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit',
-  hour12: false, // Use 24-hour format
-  timeZone: 'Europe/London',
-} satisfies Intl.DateTimeFormatOptions;
-
-const formatter = new Intl.DateTimeFormat('en-UK', options);
 ---
 
 <Layout
   title="Events"
   description="Events for the Lancaster University Magic, Aerial & Circus Society (LUMACS)"
 >
-  <h1 class="text-2xl font-bold text-center">Events</h1>
-  <p class="text-center max-w-2xl">
-    These are the events and socials that we are either running or will be at
-    during welcome week. Days and times are subject to change and will be
-    confirmed closer to the events.
-  </p>
-  {
-    // sort by start date, if no start date put at end and filter out events that are more than a day in the past
-    events.length < 1
-      ? 'More events coming soon :)'
-      : events
-          .sort((a, b) => {
-            if (a.startDate && b.startDate) {
-              return a.startDate.getTime() - b.startDate.getTime();
-            }
-            if (a.startDate && !b.startDate) {
-              return -1;
-            }
-            if (b.startDate) {
-              return 1;
-            }
-            return 0;
-          })
-          // .filter(({ startDate }) => startDate)
-          .map(({ name, description, location, startDate, endDate }) => (
-            <div class="flex flex-col items-center max-w-2xl text-center">
-              <span class="font-bold text-xl">{name}</span>
-              <span>{description}</span>
-              <span class="text-sm text-center text-muted-foreground">
-                {location}
-              </span>
-              {startDate && (
-              <span class="text-sm text-center text-muted-foreground">
-                {formatter.format(startDate)}{' '}
-                {endDate && `- ${formatter.format(endDate)}`}
-              </span>
-              )}
-            </div>
-          ))
-          .reduce(
-            (acc, cur) => [...acc, <Separator className="my-2" />, cur],
-            []
-          )
-  }
+  <h1 class="text-3xl font-bold text-center">Events</h1>
+  <div id="iframe-height" class="w-full" style="height: 700px">
+    <iframe
+      title="LUMACS events"
+      scrolling="no"
+      class="gallery-thumbnail"
+      width="100%"
+      src="https://campus.hellorubric.com/search?type=events&societyid=15351&iframe=true&showall=true&borderRadius=rounded&bodyFontFamily=Roboto&headingFontFamily=Roboto"
+      frameborder="0"
+      style="position: relative; height: 100%; border: none; width: 100% !important; overflow-y: hidden;"
+      allowfullscreen></iframe>
+  </div>
 </Layout>
+
+<script is:inline>
+  window.addEventListener('message', (event) => {
+    if (event.data?.type !== 'resize-iframe') return;
+
+    const iframeSource = event.data.iframe_src;
+    let iframeElement = document.querySelector(`iframe[src="${iframeSource}"]`);
+
+    if (!iframeElement && typeof iframeSource === 'string') {
+      const alternateSource = iframeSource.replace(
+        'campus.hellorubric.com',
+        'clubs.getqpay.com',
+      );
+      iframeElement = document.querySelector(
+        `iframe[src="${alternateSource}"]`,
+      );
+    }
+
+    const parentElement = iframeElement?.parentElement;
+    if (parentElement) {
+      parentElement.style.height = `${event.data.height}px`;
+    }
+  });
+</script>
