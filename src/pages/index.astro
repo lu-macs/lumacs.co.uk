@@ -12,27 +12,27 @@ const displays: {
 }[] = [
   {
     title: 'Juggling Balls',
-    img: '/display/balls.webp',
+    img: '/display/cards/juggling.png',
   },
   {
     title: 'Magic',
-    img: '/display/fire2.webp',
+    img: '/display/cards/juggling.png',
   },
   {
     title: 'Aerial Hoop',
-    img: '/display/clubs.webp',
+    img: '/display/cards/hoop.png',
   },
   {
     title: 'LED',
-    img: '/display/hoop2.webp',
+    img: '/display/cards/led.png',
   },
   {
     title: 'Fire',
-    img: '/display/plates2.jpeg',
+    img: '/display/cards/fire.png',
   },
   {
-    title: 'Something else really good',
-    img: '/display/plates2.jpeg',
+    title: 'Aerial Silks',
+    img: '/display/cards/silks.png',
   },
 ];
 
@@ -242,8 +242,7 @@ const sessions: {
     {
       displays.map(({ img, title }) => (
         <Image
-          // src={img.split('.')[0] + '.webp'}
-          src="/display/placeholder.png"
+          src={img}
           alt={`lumacs members displaying ${title}`}
           class=""
           width={1200}
@@ -288,7 +287,7 @@ const sessions: {
     }
   </div>
 
-  <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 m-4">
+  <!-- <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 m-4">
     {
       displays.map(({ img, title }) => (
         <Image
@@ -302,7 +301,7 @@ const sessions: {
         />
       ))
     }
-  </div>
+  </div> -->
 
   <h2 class="font-bold text-3xl sm:text-5xl">Our Memberships</h2>
   <p
