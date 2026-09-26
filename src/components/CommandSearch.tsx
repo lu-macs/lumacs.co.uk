@@ -41,7 +41,7 @@ export const CommandSearch = () => {
             onSelect={() => {
               setOpen(false);
               navigate(
-                'https://lancastersu.co.uk/groups/magic-aerial-circus-society-lumacs/join',
+                'https://campus.hellorubric.com/?s=15351&tab=memberships',
               );
             }}
           >
