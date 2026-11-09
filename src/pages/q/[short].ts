@@ -27,7 +27,7 @@ redirects.set(
 );
 redirects.set(
   'showcase',
-  'https://docs.google.com/forms/d/e/1FAIpQLSdLIHQc5a4IRV4iT2vbw0alU-_zKhUSdqKMLhGcWimT0jPUgw/viewform'
+  'https://docs.google.com/forms/d/e/1FAIpQLSe2pEp42iojqynCy3Ar84wWABkGDzitjZWLmu7waOKqF9KbIg/viewform'
 );
 redirects.set('pwb', 'https://www.pwb.ngo/');
 redirects.set('bjc', 'https://docs.google.com/forms/d/e/1FAIpQLSfnPAVL2jyuCkQ-RXz8eVmrZkfya8MOuDbSn5z7JfCfwKlNmQ/viewform');
