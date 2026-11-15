@@ -46,6 +46,10 @@ const documents: DocumentSection[] = [
       //   name: 'Aerial Health and Safety Document',
       //   url: '/documents/aerial-health-and-safety.pdf',
       // },
+      {
+        name: 'LUMACS Accessibility Guidelines',
+        url: '/documents/LUMACS-Accessibility-Guidelines.pdf',
+      },
     ],
   },
   {
@@ -62,7 +66,7 @@ const documents: DocumentSection[] = [
       {
         name: 'LUMACS Fire Risk Assessment',
         url: '/documents/LUMACS-Fire-Risk-Assessment.pdf',
-      }
+      },
     ],
   },
   {
@@ -103,38 +107,36 @@ const documents: DocumentSection[] = [
   description="Constitution, Health and Safety documents and meeting minutes."
 >
   <div class="flex flex-wrap gap-8 justify-center">
-    {
-      documents.map((section) => (
-        <Card client:load>
-          <section class="flex w-80 flex-col gap-4 p-2 md:w-96">
-            <h2 class="text-2xl font-bold">{section.title}</h2>
-            <ul class="flex flex-col gap-4">
-              {section.documents.map((document) => (
-                <li class="flex">
-                  <a
-                    href={document.url}
-                    class={`${buttonVariants({ variant: 'link' })} text-wrap`}
-                    data-astro-prefetch="false"
-                    target="_blank"
-                  >
-                    {document.name}
-                  </a>
-                  <div class="flex-grow" />
-                  <a
-                    href={document.url}
-                    class={buttonVariants({ variant: 'outline' })}
-                    data-astro-prefetch="false"
-                    target="_blank"
-                    download={`${document.name}.pdf`}
-                  >
-                    Download
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </Card>
-      ))
-    }
+    {documents.map((section) => (
+      <Card client:load>
+        <section class="flex w-80 flex-col gap-4 p-2 md:w-96">
+          <h2 class="text-2xl font-bold">{section.title}</h2>
+          <ul class="flex flex-col gap-4">
+            {section.documents.map((document) => (
+              <li class="flex">
+                <a
+                  href={document.url}
+                  class={`${buttonVariants({ variant: 'link' })} text-wrap`}
+                  data-astro-prefetch="false"
+                  target="_blank"
+                >
+                  {document.name}
+                </a>
+                <div class="flex-grow" />
+                <a
+                  href={document.url}
+                  class={buttonVariants({ variant: 'outline' })}
+                  data-astro-prefetch="false"
+                  target="_blank"
+                  download={`${document.name}.pdf`}
+                >
+                  Download
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </Card>
+    ))}
   </div>
 </Layout>
