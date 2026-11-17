@@ -12,8 +12,7 @@ redirects.set(
   'https://campus.hellorubric.com/?s=15351&tab=memberships',
 );
 redirects.set(
-  'christmas',
-  'https://docs.google.com/forms/d/e/1FAIpQLScw_gNTtdFR3bW9DBAYuNtB_mGT9Uj0XZJfB_7nPEvirkB9wQ/viewform'
+  'christmas', 'https://docs.google.com/forms/d/e/1FAIpQLSdJjY8WCupX_Xgob0x2LDskERLOHCpzXaaVQbH5Typ6XVflDg/viewform'
 );
 redirects.set('testing', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 redirects.set('lucc', 'https://lumacs.co.uk/lucc/');
